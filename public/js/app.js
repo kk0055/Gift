@@ -1959,6 +1959,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -1969,10 +1983,98 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       id: '',
       title: '',
       body: ''
-    }), _defineProperty(_ref, "item_id", ''), _ref;
+    }), _defineProperty(_ref, "item_id", ''), _defineProperty(_ref, "pagination", {}), _defineProperty(_ref, "edit", false), _ref;
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  created: function created() {
+    this.fetchItems();
+  },
+  methods: {
+    fetchItems: function fetchItems(page_url) {
+      var _this = this;
+
+      var vm = this;
+      page_url = page_url || 'api/items';
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.items = _this.data;
+        vm.makePagination(res.meta, res.links);
+        console.log(res.data);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    deleteItem: function deleteItem(id) {
+      var _this2 = this;
+
+      if (confirm('Are you sure?')) {
+        fetch("api/item/".concat(id), {
+          method: 'delete'
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          alert('Item removed');
+
+          _this2.fetchItems();
+        });
+      }
+    },
+    addItem: function addItem() {
+      var _this3 = this;
+
+      if (this.edit === false) {
+        fetch('api/item', {
+          method: 'post',
+          body: JSON.stringify(this.item),
+          headers: {
+            'content-type': 'application/json'
+          }
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          _this3.item.title = '';
+          _this3.item.body = '';
+          alert('Item Added');
+
+          _this3.fetchItems();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      } else {
+        // Update
+        fetch('api/item', {
+          method: 'put',
+          body: JSON.stringify(this.item),
+          headers: {
+            'content-type': 'application/json'
+          }
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          _this3.clearForm();
+
+          alert('Item Updated');
+
+          _this3.fetchitems();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+    },
+    editItem: function editItem(item) {
+      this.edit = true;
+      this.item.id = item.id;
+      this.item.item_id = item.id;
+      this.item.title = item.title;
+      this.item.body = item.body;
+    },
+    clearForm: function clearForm() {
+      this.edit = false;
+      this.item.id = null;
+      this.item.item_id = null;
+      this.item.title = '';
+      this.item.body = '';
+    }
   }
 });
 
@@ -37615,32 +37717,123 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+  return _c(
+    "div",
+    [
+      _c("h2", [_vm._v("Items")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { action: "" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.addItem($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.item.title,
+                  expression: "item.title"
+                }
+              ],
+              attrs: { type: "text", placeholder: "Title" },
+              domProps: { value: _vm.item.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.item, "title", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("form", { attrs: { action: "" } }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.item.body,
+                expression: "item.body"
+              }
+            ],
+            attrs: { type: "text", placeholder: "Body" },
+            domProps: { value: _vm.item.body },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.item, "body", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "max-w-3xl bg-white rounded-lg mx-auto my-16 p-16",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Save")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.items, function(item) {
+        return _c("div", { key: item.id }, [
+          _c("div", { staticClass: "px-4" }, [
+            _c(
+              "div",
+              {
+                staticClass: "max-w-3xl bg-white rounded-lg mx-auto my-16 p-16"
+              },
+              [
+                _c("h1", { staticClass: "text-2xl font-medium mb-2" }, [
+                  _vm._v(_vm._s(item.title))
+                ]),
+                _vm._v(" "),
+                _c("h2", {
+                  staticClass:
+                    "font-medium text-sm text-indigo-400 mb-4 uppercase tracking-wide"
+                }),
+                _vm._v("\n     " + _vm._s(item.body) + "\n     "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteItem(item.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ]
+            )
           ])
         ])
-      ])
-    ])
-  }
-]
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
