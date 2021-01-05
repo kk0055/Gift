@@ -39,6 +39,15 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
+
+        $item->id = $request->input('item_id');
+        $item->title = $request->input('title');
+        $item->body = $request->input('body');
+        $item->image = $request->input('image');
+
+        if($item->save()) {
+            return new ItemResource($item);
+        }
     }
 
     /**
@@ -49,7 +58,11 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        //一つのItemを返す
+        return new ItemResource($item);
+
     }
 
     /**
@@ -83,6 +96,10 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        if($item->delete()) {
+            return new ItemResource($item);
+        }  
     }
 }
