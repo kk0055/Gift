@@ -10,16 +10,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only(['store', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        $items = Item::orderBy('created_at', 'desc')->paginate(5);
-
-        return view('main')->with('items' ,$items);
+        // dd( auth()->user()->name);
+       
+        $user = auth()->user();
+        $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
+    //   dd($user);
+        return view('main', [
+            'user' => $user,
+            'items' => $items
+        ]);
         // return ItemResource::collection($items);
     }
 
@@ -67,7 +79,7 @@ class ItemController extends Controller
             'image' => $request->image,
        ]);
 
-       return back()->with('message', 'Successful');
+       return back();
     }
 
     /**
@@ -85,41 +97,13 @@ class ItemController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function destroy(Item $Item)
     {
-        //
+        $this->authorize('delete', $Item);
+
+        $Item->delete();
+
+        return back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $item = Item::findOrFail($id);
-
-        if($item->delete()) {
-            return new ItemResource($item);
-        }  
-    }
 }

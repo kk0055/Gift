@@ -82,7 +82,7 @@ class RegisterController extends Controller
     
      
       
-    return redirect()->back();
+    return redirect()->route('main');
   
     }
 }

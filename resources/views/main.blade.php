@@ -40,12 +40,12 @@
               </div>
               @enderror       
                 <div class="col-span-6">
-                  <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                  <label for="title" class="block text-sm font-medium text-gray-700">タイトル</label>
                   <input type="text" name="title" id="title"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
   
                 {{-- Body --}}
-                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                <div class="col-span-6 sm:col-span-6 lg:">
                   <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
                   <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                 </div>
@@ -57,6 +57,7 @@
   
               </div>
             </div>
+   
             <div class="px-4 py-3 bg-white text-right sm:px-6">
               <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Save
@@ -70,16 +71,38 @@
       
       @foreach ($items as $item)
       <div class="px-4">
-        <div class="max-w-3xl bg-white rounded-lg mx-auto my-5 p-5">
+        <div class="max-w-3xl bg-white rounded-lg mx-auto my-2 p-2">
           <h2 class="text-2xl font-medium mb-2">{{ $item->title }}</h2>
           <p class="font-medium text-sm  mb-4 uppercase tracking-wide">  {{ $item->body }}</p>
-        
+
+          <p>{{$item->user->name }}</p>
+          
+              
+             {{-- Delete Button --}}
+        @if ($item->user->id === Auth::user()->id)
+                   
+          <form action="{{ route('item.destroy', $item) }}" method="post" class="mr-1">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-blue-500">削除</button>
+          </form>
+          @endif
+          {{--End Delete Button --}}
+      
+
+          <div class="px-4  bg-white text-right sm:px-6">
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              欲しい
+            </button>
+          </div>
         </div>
+      
       </div>
       @endforeach
-      
-  
+      <div class="mb-3">
+      {{ $items->links() }}
+    </div>
   </div>
-  <script src="{{ asset('js/app.js') }}"></script>
+  {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>
 </html>
