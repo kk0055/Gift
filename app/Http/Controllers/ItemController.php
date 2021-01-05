@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use App\Http\Resources\Item as ItemResource;
 
 class ItemController extends Controller
 {
@@ -13,7 +15,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::orderBy('created_at', 'desc')->paginate(5);
+
+        return ItemResource::collection($items);
     }
 
     /**
@@ -34,7 +38,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
     }
 
     /**
