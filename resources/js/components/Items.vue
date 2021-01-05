@@ -1,18 +1,24 @@
 <template>
    <div>
      <h2>Items</h2>
-     <form action="" @submit.prevent="addItem" >
-       <div class="form-group">
-      <input type="text" placeholder="Title" v-model="item.title">
-        </div>
-     </form>
+    <form @submit.prevent="addItem" class="mb-3">
+      
+      <div class="form-group">
+        <input type="text" class="  w-full p-2 rounded-lg" placeholder="Title" v-model="item.title">
+      </div>
 
-       <form action="">
-       <div class="form-group">
-      <textarea type="text" placeholder="Body" v-model="item.body"></textarea>
-        </div>
-        <button type="submit" class="max-w-3xl bg-white rounded-lg mx-auto my-16 p-16">Save</button>
-     </form>
+      <div class="form-group">
+        <textarea placeholder="Body" row="5" class="border-1 w-full p-4 rounded-lg"  v-model="item.body"></textarea>
+      </div>
+
+        <div class="form-group">
+        <input type="file">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Save</button>
+    </form>
+
+  <!--  -->
+
 
      <div v-for="item in items" :key="item.id">
          <div class="px-4">
@@ -20,7 +26,7 @@
         <h1 class="text-2xl font-medium mb-2">{{item.title}}</h1>
         <h2 class="font-medium text-sm text-indigo-400 mb-4 uppercase tracking-wide"></h2>
         {{item.body}}
-        <button @click="deleteItem(item.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >Delete</button>
+        <button @click="deleteItem(item.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 pull-right rounded">Delete</button>
       </div>
       
     </div>
@@ -33,10 +39,12 @@
       data() {
        return {
          items: [],
-         items: {
+         item: {
            id: '',
+           user_id: '',
            title: '',
-           body: ''
+           body: '',
+           image:''
          },item_id: '',
          pagination: {},
          edit:false
@@ -54,12 +62,21 @@
           fetch( page_url)
           .then(res => res.json())
           .then(res => {
-            this.items = this.data;
+            this.items = res.data;
             vm.makePagination(res.meta, res.links);
             console.log(res.data)
           })
           .catch(err => console.log(err));
         },
+           makePagination(meta, links) {
+         let pagination = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        prev_page_url: links.prev
+      };
+      this.pagination = pagination;
+    },
         deleteItem(id){
            if (confirm('Are you sure?')) {
              fetch(`api/item/${id}` , {

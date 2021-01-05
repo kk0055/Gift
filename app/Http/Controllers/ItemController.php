@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\User;
 use App\Http\Resources\Item as ItemResource;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -40,13 +42,16 @@ class ItemController extends Controller
     {
         $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
 
-        $item->id = $request->input('item_id');
+        // $item->id = $request->input('item_id');
+        $item->user_id = $item->user()->id;
         $item->title = $request->input('title');
         $item->body = $request->input('body');
         $item->image = $request->input('image');
 
         if($item->save()) {
             return new ItemResource($item);
+        }else{
+            return 'Error';
         }
     }
 

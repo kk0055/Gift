@@ -1941,8 +1941,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1975,15 +1979,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
-      items: []
-    }, _defineProperty(_ref, "items", {
-      id: '',
-      title: '',
-      body: ''
-    }), _defineProperty(_ref, "item_id", ''), _defineProperty(_ref, "pagination", {}), _defineProperty(_ref, "edit", false), _ref;
+    return {
+      items: [],
+      item: {
+        id: '',
+        user_id: '',
+        title: '',
+        body: '',
+        image: ''
+      },
+      item_id: '',
+      pagination: {},
+      edit: false
+    };
   },
   created: function created() {
     this.fetchItems();
@@ -1997,12 +2005,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       fetch(page_url).then(function (res) {
         return res.json();
       }).then(function (res) {
-        _this.items = _this.data;
+        _this.items = res.data;
         vm.makePagination(res.meta, res.links);
         console.log(res.data);
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    makePagination: function makePagination(meta, links) {
+      var pagination = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        prev_page_url: links.prev
+      };
+      this.pagination = pagination;
     },
     deleteItem: function deleteItem(id) {
       var _this2 = this;
@@ -37725,7 +37742,7 @@ var render = function() {
       _c(
         "form",
         {
-          attrs: { action: "" },
+          staticClass: "mb-3",
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -37744,6 +37761,7 @@ var render = function() {
                   expression: "item.title"
                 }
               ],
+              staticClass: "  w-full p-2 rounded-lg",
               attrs: { type: "text", placeholder: "Title" },
               domProps: { value: _vm.item.title },
               on: {
@@ -37755,43 +37773,44 @@ var render = function() {
                 }
               }
             })
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.item.body,
+                  expression: "item.body"
+                }
+              ],
+              staticClass: "border-1 w-full p-4 rounded-lg",
+              attrs: { placeholder: "Body", row: "5" },
+              domProps: { value: _vm.item.body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.item, "body", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-block",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("Save")]
+          )
         ]
       ),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "" } }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.item.body,
-                expression: "item.body"
-              }
-            ],
-            attrs: { type: "text", placeholder: "Body" },
-            domProps: { value: _vm.item.body },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.item, "body", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "max-w-3xl bg-white rounded-lg mx-auto my-16 p-16",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Save")]
-        )
-      ]),
       _vm._v(" "),
       _vm._l(_vm.items, function(item) {
         return _c("div", { key: item.id }, [
@@ -37810,12 +37829,12 @@ var render = function() {
                   staticClass:
                     "font-medium text-sm text-indigo-400 mb-4 uppercase tracking-wide"
                 }),
-                _vm._v("\n     " + _vm._s(item.body) + "\n     "),
+                _vm._v("\n      " + _vm._s(item.body) + "\n      "),
                 _c(
                   "button",
                   {
                     staticClass:
-                      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+                      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 pull-right rounded",
                     on: {
                       click: function($event) {
                         return _vm.deleteItem(item.id)
@@ -37833,7 +37852,16 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", { attrs: { type: "file" } })
+    ])
+  }
+]
 render._withStripped = true
 
 

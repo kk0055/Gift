@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //List items
-Route::get('/item', [ItemController::class, 'index']);
+Route::get('/items', [ItemController::class, 'index']);
 
 //List Single item
 Route::get('/item/{id}', [ItemController::class, 'show']);
