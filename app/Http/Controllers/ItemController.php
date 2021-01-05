@@ -19,7 +19,7 @@ class ItemController extends Controller
     {
         $items = Item::orderBy('created_at', 'desc')->paginate(5);
 
-        return ItemResource::collection($items);
+        return view('main')->with('items' ,$items);
     }
 
     /**

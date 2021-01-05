@@ -2,17 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ItemController;
 
 
 
+Route::get('/', [ItemController::class, 'index']);
 
-Route::get('/', function () {
-    return view('main');
-});
 
-Route::get('/login', function () {
-    return view('main');
-});
 
 Auth::routes();
 
