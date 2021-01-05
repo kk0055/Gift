@@ -20,6 +20,7 @@ class ItemController extends Controller
         $items = Item::orderBy('created_at', 'desc')->paginate(5);
 
         return view('main')->with('items' ,$items);
+        // return ItemResource::collection($items);
     }
 
     /**
@@ -40,19 +41,33 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
+        // $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
 
-        // $item->id = $request->input('item_id');
-        $item->user_id = $item->user()->id;
-        $item->title = $request->input('title');
-        $item->body = $request->input('body');
-        $item->image = $request->input('image');
+        // // $item->id = $request->input('item_id');
+        // $item->user_id = $item->user()->id;
+        // $item->title = $request->input('title');
+        // $item->body = $request->input('body');
+        // $item->image = $request->input('image');
 
-        if($item->save()) {
-            return new ItemResource($item);
-        }else{
-            return 'Error';
-        }
+        // if($item->save()) {
+        //     return new ItemResource($item);
+        // }else{
+        //     return 'Error';
+        // }
+
+        $this->validate($request, [
+           'title' => 'required',
+           'body' => 'required'
+        ]);
+        
+
+       $request->user()->items()->create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'image' => $request->image,
+       ]);
+
+       return back()->with('message', 'Successful');
     }
 
     /**
