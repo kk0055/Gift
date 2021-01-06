@@ -9,7 +9,12 @@
  
     {{--  チャットルーム  --}}
     <div id="room">
-        @foreach($messages as $key => $message)
+      {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
+          
+    
+        @foreach($messages as  $message)
+
+       
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
                 <div class="send" style="text-align: right">
@@ -19,23 +24,23 @@
             @endif
  
             {{--   受信したメッセージ  --}}
-            @if($message->recieve == \Illuminate\Support\Facades\Auth::id())
-                <div class="recieve" style="text-align: left">
+            @if($message->receive == \Illuminate\Support\Facades\Auth::id())
+                <div class="receive" style="text-align: left">
                     <p>{{$message->message}}</p>
                 </div>
             @endif
         @endforeach
+        {{-- @endif --}}
     </div>
  
-    {{-- method="post" action="{{ route('chatSend') }}" --}}
-    <form  method="POST" >
+    <form  >
       @csrf
-        <textarea name="message" style="width:100%"></textarea>
-        <button type="button" id="btn_send">送信</button>
+        <textarea name="message" style="width:100%" class="focus:outline-none "></textarea>
+        <button type="button" id="btn_send" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">送信</button>
     </form>
  
     <input type="hidden" name="send" value="{{$param['send']}}">
-    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+    <input type="hidden" name="receive" value="{{$param['receive']}}">
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
  
 </div>

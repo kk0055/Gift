@@ -1,6 +1,7 @@
 2021/1/6
 作る理由。。技術の証明。
 
+欲しいボタンを押したときに投稿者に連絡ができるようにしたい。
 
 ******************************/
 ツイッターのアカウントを使ってモノをやり取りできるWEBアプリ
@@ -48,3 +49,27 @@ want
 
 将来的に。。。
 item category
+
+*********************************/
+
+pusher
+
+route/channel.php
+<?php
+Broadcast::channel('chat', function (){
+    return true;
+});
+
+php artisan make:event Event名でEvent作成
+
+    public function broadcastOn()
+    {
+        return new Channel('chat_event())');
+    }
+
+//購読するチャンネルを指定
+var pusherChannel = pusher.subscribe('chat');
+
+//イベントを受信したら、下記処理
+pusherChannel.bind('chat_event', function(data) {
+    }

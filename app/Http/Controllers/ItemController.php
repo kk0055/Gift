@@ -20,14 +20,14 @@ class ItemController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
-    public function index(User $user)
+    public function index(User $user )
     {
-        // dd( auth()->user()->name);
-       
+      
         $user = auth()->user();
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
-    //   dd($user);
+        
         return view('main', [
             'user' => $user,
             'items' => $items

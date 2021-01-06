@@ -43,11 +43,16 @@ class User extends Authenticatable
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class,);
     }
 
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function getItems()
+    {
+        return $this->find(1)->items()->get();
     }
 }

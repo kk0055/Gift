@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\User;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\SampleNotification;
-use App\Events\ChatMessageRecieved;
+use App\Events\ChatMessagereceived;
 use Illuminate\Support\Facades\Mail;
 
 class ChatsController extends Controller
@@ -17,39 +18,52 @@ class ChatsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+
+    // 使わない可能性あり
+    public function index(User $user)
     {
- 
+        $create =  Item::all();
+
+        // dd($create );
+
         $user = Auth::user();
  
         // ログイン者以外のユーザを取得する
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
-        return view('chats.chat_user_select' , compact('users'));
+        return view('chats.chat_user_select' , [
+            'users' => $users,
+            'create' => $create
+        ]);
     }
 
 
  
-    public function sendChat(Request $request , $recieve)
+    public function sendChat(Request $request , $receive)
     {
+
+        
         // チャットの画面
         $loginId = Auth::id();
  
         $param = [
           'send' => $loginId,
-          'recieve' => $recieve,
+          'receive' => $receive,
         ];
  
         // 送信 / 受信のメッセージを取得する
-        $query = Message::where('send' , $loginId)->where('recieve' , $recieve);;
-        $query->orWhere(function($query) use($loginId , $recieve){
-            $query->where('send' , $recieve);
-            $query->where('recieve' , $loginId);
+        $query = Message::where('send' , $loginId)->where('receive' , $receive);;
+        $query->orWhere(function($query) use($loginId , $receive){
+            $query->where('send' , $receive);
+            $query->where('receive' , $loginId);
  
         });
- 
+        
+       
         $messages = $query->get();
- 
+
+        $users = Message::with('user')->get() ;
+        // dd($create);
         return view('chats.index' , compact('param' , 'messages'));
     }
  
@@ -62,7 +76,7 @@ class ChatsController extends Controller
         // リクエストパラメータ取得
         $insertParam = [
             'send' => $request->input('send'),
-            'recieve' => $request->input('recieve'),
+            'receive' => $request->input('receive'),
             'message' => $request->input('message'),
         ];
  
@@ -77,10 +91,10 @@ class ChatsController extends Controller
  
  
         // イベント発火
-        event(new ChatMessageRecieved($request->all()));
+        event(new ChatMessagereceived($request->all()));
  
         // メール送信
-        // $mailSendUser = User::where('id' , $request->input('recieve'))->first();
+        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
         // $to = $mailSendUser->email;
         // Mail::to($to)->send(new SampleNotification());
  

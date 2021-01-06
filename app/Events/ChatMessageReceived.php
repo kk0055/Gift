@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ChatMessageRecieved implements ShouldBroadcast
+class ChatMessagereceived implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     
@@ -48,7 +48,7 @@ class ChatMessageRecieved implements ShouldBroadcast
         return [
             'message' => $this->request['message'],
             'send' => $this->request['send'],
-            'recieve' => $this->request['recieve'],
+            'receive' => $this->request['receive'],
         ];
     }
 

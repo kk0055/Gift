@@ -30,18 +30,15 @@ Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, '
 
 
 
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
-
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'logOut']);
 
 //Chats
-Route::get('chats', [ChatsController::class, 'index'])->name('chats');
-Route::get('/chat/{recieve}' ,[ChatsController::class, 'sendChat'])->name('sendChat');
+Route::get('chats/{items}', [ChatsController::class, 'sendChat'])->name('chats');
+// Route::get('/chat/{recieve}' ,[ChatsController::class, 'sendChat'])->name('sendChat');
 
-Route::post('/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
+Route::post('chat/send' , [ChatsController::class, 'store'])->name('chatSend');
 
-Route::get('messages', [ChatsController::class, 'fetchMessages']);
-Route::post('messages', [ChatsController::class, 'sendMessage']);
+
