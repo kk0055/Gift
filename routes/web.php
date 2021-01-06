@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\ChatsController;
 
 
 
@@ -35,3 +36,8 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'logOut']);
+
+//Chats
+Route::get('chats', [ChatsController::class, 'index'])->name('chats');
+Route::get('messages',[ChatsController::class, 'fetchMessages']);
+Route::post('messages',[ChatsController::class, 'sendMessage']);

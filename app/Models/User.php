@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Item::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Models\Message');
+    }
 }
