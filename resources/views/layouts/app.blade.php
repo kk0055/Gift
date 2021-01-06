@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  
+  <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,7 +21,10 @@
     #menu-toggle:checked + #menu {
       display: block;
     }
-
+    .list-group{
+      overflow-y: auto;
+      height:200px;
+    }
 </style>
 </head>
 <body class=" bg-gray-200 ">
@@ -61,12 +64,16 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"href="{{ route('logout') }}"
+                              >
+                                Logout
+                             </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                       
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -81,9 +88,86 @@
         </nav>
 
         <main class="py-4">
+
             @yield('content')
+
+
         </main>
     </div>
-  <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
+    <script type="text/javascript">
+ 
+        //ログを有効にする
+        Pusher.logToConsole = true;
+  
+        var pusher = new Pusher('f215ae5857618ed02fd0', {
+            cluster  : 'ap3',
+            encrypted: true
+        });
+  
+        //購読するチャンネルを指定
+        var pusherChannel = pusher.subscribe('chat');
+  
+        //イベントを受信したら、下記処理
+        pusherChannel.bind('chat_event', function(data) {
+  
+            let appendText;
+            let login = $('input[name="login"]').val();
+  
+            if(data.send === login){
+                appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
+            }else if(data.recieve === login){
+                appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + '</p></div> ';
+            }else{
+                return false;
+            }
+  
+            // メッセージを表示
+            $("#room").append(appendText);
+  
+            if(data.recieve === login){
+                // ブラウザへプッシュ通知
+                Push.create("新着メッセージ",
+                    {
+                        body: data.message,
+                        timeout: 8000,
+                        onClick: function () {
+                            window.focus();
+                            this.close();
+                        }
+                    })
+  
+            }
+  
+  
+        });
+  
+  
+         $.ajaxSetup({
+             headers : {
+                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
+             }});
+  
+  
+         // メッセージ送信
+         $('#btn_send').on('click' , function(){
+             $.ajax({
+                 type : 'POST',
+                 url : '/chat/send',
+                 data : {
+                     message : $('textarea[name="message"]').val(),
+                     send : $('input[name="send"]').val(),
+                     recieve : $('input[name="recieve"]').val(),
+                 }
+             }).done(function(result){
+                 $('textarea[name="message"]').val('');
+             }).fail(function(result){
+  
+             });
+         });
+     </script>
+    
+  {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>
 </html>

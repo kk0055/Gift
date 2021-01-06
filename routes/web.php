@@ -39,5 +39,9 @@ Route::get('/logout', [LoginController::class, 'logOut']);
 
 //Chats
 Route::get('chats', [ChatsController::class, 'index'])->name('chats');
-Route::get('messages',[ChatsController::class, 'fetchMessages']);
-Route::post('messages',[ChatsController::class, 'sendMessage']);
+Route::get('/chat/{recieve}' ,[ChatsController::class, 'sendChat'])->name('sendChat');
+
+Route::post('/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
+
+Route::get('messages', [ChatsController::class, 'fetchMessages']);
+Route::post('messages', [ChatsController::class, 'sendMessage']);
