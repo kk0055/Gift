@@ -12,16 +12,18 @@
     #menu-toggle:checked + #menu {
       display: block;
     }
+
 </style>
 </head>
-<body class=" bg-gray-200">
+<body class=" bg-gray-200 ">
   <div id="app">
     <div class="justify-center">
-                
+      
       {{-- Form --}}
     {{-- </items></items> --}}
 
-      <div class="mt-1 md:mt-0 md:col-span-2 mx-auto my-16 p-16">
+      <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto my-16 p-16">
+       
         <form action="{{ route('item.store') }}" method="POST">
           @csrf
           <div class="shadow overflow-hidden sm:rounded-md">
@@ -33,21 +35,23 @@
                   {{ $message }}
                 </div>
                 @enderror   
-
-              @error('body')
-              <div class="text-red-500 mt-2 text-sm">
-                {{ $message }}
-              </div>
-              @enderror       
+               
                 <div class="col-span-6">
-                  <label for="title" class="block text-sm font-medium text-gray-700">タイトル</label>
+                  
+                  <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
                   <input type="text" name="title" id="title"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
   
                 {{-- Body --}}
+                @error('body')
+                <div class="text-red-500 mt-2 text-sm">
+                  {{ $message }}
+                </div>
+                @enderror    
+
                 <div class="col-span-6 sm:col-span-6 lg:">
                   <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
-                  <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                  <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:outline-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                 </div>
                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                   <label for="body" class="block text-sm font-medium text-gray-700"></label>
@@ -72,31 +76,32 @@
       @foreach ($items as $item)
       <div class="px-4">
         <div class="max-w-3xl bg-white rounded-lg mx-auto my-2 p-2">
-          <h2 class="text-2xl font-medium mb-2">{{ $item->title }}</h2>
-          <p class="font-medium text-sm  mb-4 uppercase tracking-wide">  {{ $item->body }}</p>
+          <h2 class="text-2xl font-medium mb-2">{{$item->user->name }}</h2>
+          <p class="font-medium mb-2 text-2xl ">{{ $item->title }}</p>
+          <p class="font-medium  mb-4 text-md">  {{ $item->body }}</p>
 
-          <p>{{$item->user->name }}</p>
           
-              
+          
              {{-- Delete Button --}}
         @if ($item->user->id === Auth::user()->id)
-                   
+        <div class="flex justify-between">
           <form action="{{ route('item.destroy', $item) }}" method="post" class="mr-1">
             @csrf
             @method('DELETE')
-            <button type="submit" class="text-blue-500">削除</button>
+            
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
           </form>
           @endif
           {{--End Delete Button --}}
       
-
+        {{-- 欲しい Button --}}
           <div class="px-4  bg-white text-right sm:px-6">
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              欲しい
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">欲しい
             </button>
           </div>
         </div>
-      
+        {{--End 欲しい Button --}}
+      </div>
       </div>
       @endforeach
       <div class="mb-3">
