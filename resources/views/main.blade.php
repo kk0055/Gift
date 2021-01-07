@@ -9,7 +9,7 @@
 
     <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
      
-      <form action="{{ route('item.store') }}" method="POST">
+      <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
@@ -21,6 +21,11 @@
               </div>
               @enderror   
              
+              @error('image')
+              <div class="text-red-500 mt-2 text-sm">
+                {{ $message }}
+              </div>
+              @enderror   
               <div class="col-span-6">
                 
                 <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
@@ -39,8 +44,8 @@
                 <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:outline-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
               </div>
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                <label for="body" class="block text-sm font-medium text-gray-700"></label>
-                <input type="file" >
+                <label for="image" class="block text-sm font-medium text-gray-700"></label>
+                <input type="file" name="image" >
               </div>
             {{-- End of Body --}}
 
@@ -65,6 +70,8 @@
         <h2 class="text-2xl font-medium mb-2">{{$item->user->name }}</h2>
         <p class="font-medium mb-2  ">{{ $item->title }}</p>
         <p class="font-medium  mb-4 text-md">  {{ $item->body }}</p>
+        <img src="/storage/image/{{ $item->image }}" alt="" class="" width="100px" height="100px" style="border-radius:50%;">
+
 
         
         
@@ -81,12 +88,15 @@
         @endif
        
         {{--End Delete Button --}}
-    
+        <div class="px-4  bg-white text-right sm:px-6">
+          <a href="{{ route('item.show',['itemId'=> $item->id]) }}" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500">見たい
+          </a>
+        </div>
       {{-- 欲しい Button --}}
        
       @if ($item->user->id !== Auth::user()->id)
         <div class="px-4  bg-white text-right sm:px-6">
-          <a href="{{ route('chats', $item->user_id) }}" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">欲しい
+          <a href="{{ route('chats', $item->user_id) }}" type="submit" class="inline-flex justify-center py-2 mt-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500">欲しい
           </a>
         </div>
       </div>
@@ -96,7 +106,7 @@
     </div>
   </div>
     @endforeach
- 
+  
     <div class="mb-3">
     {{ $items->links() }}
   </div>

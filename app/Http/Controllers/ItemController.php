@@ -27,7 +27,7 @@ class ItemController extends Controller
       
         $user = auth()->user();
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
-        
+       
         return view('main', [
             'user' => $user,
             'items' => $items
@@ -53,31 +53,34 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        // $item = $request->isMethod('put') ? Item::findOrFail($request->item_id) : new Item;
-
-        // // $item->id = $request->input('item_id');
-        // $item->user_id = $item->user()->id;
-        // $item->title = $request->input('title');
-        // $item->body = $request->input('body');
-        // $item->image = $request->input('image');
-
-        // if($item->save()) {
-        //     return new ItemResource($item);
-        // }else{
-        //     return 'Error';
-        // }
-
+    
         $this->validate($request, [
            'title' => 'required',
            'body' => 'required'
         ]);
         
 
-       $request->user()->items()->create([
+    //    $request->user()->items()->create([
+    //         'title' => $request->title,
+    //         'body' => $request->body,
+    //         'image' => $request->image,
+    //    ]);
+
+        if($request->hasFile('image')){
+        $filenameWithExt = $request->file('image')->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileNameToStore = $filename . '_'. time(). '.'.$extension;
+        $path = $request->file('image')->storeAs('public/image',  $fileNameToStore);
+        }else {
+        $fileNameToStore = 'noimage.jpg';
+        }
+
+        $request->user()->items()->create([
             'title' => $request->title,
             'body' => $request->body,
-            'image' => $request->image,
-       ]);
+            'image' =>  $fileNameToStore,
+        ]);
 
        return back();
     }
@@ -88,12 +91,14 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($itemId)
     {
-        $item = Item::findOrFail($id);
-
+        $item = Item::findOrFail($itemId);
+    // dd($item);
         //一つのItemを返す
-        return new ItemResource($item);
+        return view('show',[
+            'item' =>$item
+        ]);
 
     }
 

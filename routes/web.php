@@ -15,6 +15,7 @@ use App\Http\Controllers\ChatsController;
 Auth::routes();
 
 Route::get('/', [ItemController::class, 'index'])->name('main');
+Route::get('/item/{itemId}', [ItemController::class, 'show'])->name('item.show');
 
 Route::post('/', [ItemController::class, 'store'])->name('item.store');
 
