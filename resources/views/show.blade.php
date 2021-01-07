@@ -4,7 +4,9 @@
 <div id="app">
   <div class="justify-center col-start-1 col-end-7 ">
       <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
-     
+        {{-- Image --}}
+        <img src="/storage/image/{{ $item->image }}" alt="" class="" width="100px" height="100px" style="">
+ {{--End  Image --}}
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
               {{-- Body --}}            

@@ -61,9 +61,9 @@ class ChatsController extends Controller
         
        
         $messages = $query->get();
-
-        $users = Message::with('user')->get() ;
-        // dd($create);
+  
+        $users = Message::where('send' , $receive)->with('user')->get() ;
+        // dd($users);
         return view('chats.index' , compact('param' , 'messages'));
     }
  
@@ -78,6 +78,7 @@ class ChatsController extends Controller
             'send' => $request->input('send'),
             'receive' => $request->input('receive'),
             'message' => $request->input('message'),
+            'user_id' => Auth::user()->id
         ];
  
  

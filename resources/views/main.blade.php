@@ -29,7 +29,7 @@
               <div class="col-span-6">
                 
                 <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
-                <input type="text" name="title" id="title"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="title" id="title"  class="mt-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               {{-- Body --}}
@@ -41,11 +41,11 @@
 
               <div class="col-span-6 sm:col-span-6 lg:">
                 <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
-                <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:outline-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:outline-none  focus:outline-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
               </div>
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                 <label for="image" class="block text-sm font-medium text-gray-700"></label>
-                <input type="file" name="image" >
+                <input type="file" name="image" class="focus:outline-none ">
               </div>
             {{-- End of Body --}}
 

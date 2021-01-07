@@ -27,6 +27,7 @@
             @if($message->receive == \Illuminate\Support\Facades\Auth::id())
                 <div class="receive" style="text-align: left">
                     <p>{{$message->message}}</p>
+                   
                 </div>
             @endif
         @endforeach
