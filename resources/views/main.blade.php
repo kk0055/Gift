@@ -29,7 +29,7 @@
               <div class="col-span-6">
                 
                 <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
-                <input type="text" name="title" id="title"  class="mt-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" >
               </div>
 
               {{-- Body --}}
@@ -41,11 +41,12 @@
 
               <div class="col-span-6 sm:col-span-6 lg:">
                 <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
-                <textarea type="text" name="body" id="body" class="mt-1 p-3 focus:outline-none  focus:outline-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                <textarea type="text" name="body" id="body" class="mt-1 w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder="例 : 詳細をご記入ください"></textarea>
               </div>
+              {{-- image --}}
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                 <label for="image" class="block text-sm font-medium text-gray-700"></label>
-                <input type="file" name="image" class="focus:outline-none ">
+                <input type="file" name="image" class="focus:outline-none" >
               </div>
             {{-- End of Body --}}
 
@@ -67,12 +68,14 @@
     <div class="justify-center col-start-1 col-end-7 ">
   
       <div class="max-w-3xl  bg-white rounded-lg mx-auto my-2 p-2">
+            
+          <img src="/storage/image/{{ $item->image }}" alt="" class="" width="100px" height="100px" >
+       
         <h2 class="text-2xl font-medium mb-2">{{$item->user->name }}</h2>
-        <p class="font-medium mb-2  ">{{ $item->title }}</p>
-        <p class="font-medium  mb-4 text-md">  {{ $item->body }}</p>
-        <img src="/storage/image/{{ $item->image }}" alt="" class="" width="100px" height="100px" style="border-radius:50%;">
-
-
+        <p class="">{{ $item->title }}</p>
+        <hr>
+        <p class=""> {{ $item->body }}</p>
+       
         
         
            {{-- Delete Button --}}

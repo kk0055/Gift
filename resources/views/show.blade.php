@@ -3,15 +3,16 @@
 @section('content')
 
 <div class="m-auto px-4 py-8 max-w-xl">
-  <div class="bg-white shadow-2xl" >
+  <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
       <div class="">
        @if($item->image && !str_contains($item->image, 'noimage') )
           <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
         @endif
       </div>
       <div class="px-4 py-2 mt-2 bg-white">
+        <p class="">  {{ $item->user->name }}</p>
           <p class="">  {{ $item->title }}</p>
-              <p class="  ">
+              <p class="">
                 {{ $item->body }}
               </p>
       </div>
