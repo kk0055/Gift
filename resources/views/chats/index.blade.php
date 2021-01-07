@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-start-2 col-span-4 ">
         </div>
     </div>
  
@@ -17,7 +17,7 @@
        
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                <div class="send " style="text-align: right">
+                <div class="send mr-2 " style="text-align: right">
                     <p>{{$message->message}}</p>
                 </div>
  
