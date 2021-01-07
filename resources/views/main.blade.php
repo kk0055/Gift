@@ -2,12 +2,12 @@
 
 @section('content')
 <div id="app">
-  <div class="justify-center">
+  <div class="justify-center col-start-1 col-end-7 ">
     
     {{-- Form --}}
   {{-- </items></items> --}}
 
-    <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto my-16 p-16">
+    <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
      
       <form action="{{ route('item.store') }}" method="POST">
         @csrf
@@ -59,10 +59,11 @@
     <!--  -->
     
     @foreach ($items as $item)
-    <div class="px-4">
-      <div class="max-w-3xl bg-white rounded-lg mx-auto my-2 p-2">
+    <div class="justify-center col-start-1 col-end-7 ">
+  
+      <div class="max-w-3xl  bg-white rounded-lg mx-auto my-2 p-2">
         <h2 class="text-2xl font-medium mb-2">{{$item->user->name }}</h2>
-        <p class="font-medium mb-2 text-2xl ">{{ $item->title }}</p>
+        <p class="font-medium mb-2  ">{{ $item->title }}</p>
         <p class="font-medium  mb-4 text-md">  {{ $item->body }}</p>
 
         
@@ -78,10 +79,11 @@
           <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
         </form>
         @endif
-        @endauth
+       
         {{--End Delete Button --}}
     
       {{-- 欲しい Button --}}
+       
       @if ($item->user->id !== Auth::user()->id)
         <div class="px-4  bg-white text-right sm:px-6">
           <a href="{{ route('chats', $item->user_id) }}" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">欲しい
@@ -89,10 +91,12 @@
         </div>
       </div>
       @endif
+      @endauth
       {{--End 欲しい Button --}}
     </div>
-    </div>
+  </div>
     @endforeach
+ 
     <div class="mb-3">
     {{ $items->links() }}
   </div>

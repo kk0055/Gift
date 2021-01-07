@@ -22,8 +22,6 @@ Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.de
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');

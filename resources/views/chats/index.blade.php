@@ -17,7 +17,7 @@
        
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                <div class="send" style="text-align: right">
+                <div class="send " style="text-align: right">
                     <p>{{$message->message}}</p>
                 </div>
  
@@ -49,3 +49,6 @@
 
  
  
+{{-- Chatts --}}
+
+
