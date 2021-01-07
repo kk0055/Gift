@@ -33,7 +33,7 @@
 <body class=" bg-gray-200 ">
     <div id="app">
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
             @auth
            <span class="caret">{{ Auth::user()->name }}</span>
             @endauth
@@ -118,10 +118,7 @@
                             this.close();
                         }
                     })
-  
             }
-  
-  
         });
   
   

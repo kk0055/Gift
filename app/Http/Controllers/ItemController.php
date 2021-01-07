@@ -73,7 +73,7 @@ class ItemController extends Controller
         $fileNameToStore = $filename . '_'. time(). '.'.$extension;
         $path = $request->file('image')->storeAs('public/image',  $fileNameToStore);
         }else {
-        $fileNameToStore = 'noimage.jpg';
+        $fileNameToStore = null;
         }
 
         $request->user()->items()->create([

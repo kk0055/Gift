@@ -11,14 +11,14 @@
     <div id="room">
       {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
           
-    
+  
         @foreach($messages as  $message)
-
-       
+              
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
                 <div class="send mr-2 " style="text-align: right">
                     <p>{{$message->message}}</p>
+                   
                 </div>
  
             @endif
