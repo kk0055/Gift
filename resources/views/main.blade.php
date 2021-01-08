@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="app">
+
+
   <div class="justify-center col-start-1 col-end-7 ">
     
     {{-- Form --}}
@@ -113,6 +114,6 @@
     <div class="mb-3">
     {{ $items->links() }}
   </div>
-</div>
+
 @endsection
 

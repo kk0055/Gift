@@ -1,7 +1,7 @@
 @extends('layouts.app')
  
 @section('content')
-<div class="m-auto px-4 py-5 max-w-xl">
+<div class="m-auto px-4 py-5 max-w-xl bg-white rounded-lg">
     <div class="row">
         <div class="col-start-2 col-span-4 ">
        
@@ -14,7 +14,15 @@
       {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
       {{-- {{ $toSend }} --}}
      
-      {{ $toSend[0]->user->name }}
+      <h1 class="text-lg mb-2">
+        <a class="no-underline hover:underline text-black" href="#">
+        
+
+            {{ $toSend[0]->user->name }}
+            
+        </a>
+    </h1>
+      <hr>
 
      
     
@@ -43,7 +51,7 @@
     <form  >
       @csrf
      
-        <textarea name="message" style="width:100%" class="focus:outline-none rounded-xl "></textarea>
+        <textarea name="message" style="width:100%" class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm border border-indigo-600 rounded-xl"></textarea>
        
         <button type="button" id="btn_send" class="inline-flex justify-center py-2 px-8 mt-1 border border-transparent shadow-sm text-sm font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " style="float: right" >
         <svg

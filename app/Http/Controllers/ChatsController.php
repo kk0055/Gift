@@ -39,7 +39,7 @@ class ChatsController extends Controller
 
 
  
-    public function sendChat(Request $request , $receive)
+    public function sendChat(Request $request , $receive )
     {
 
         
@@ -59,24 +59,12 @@ class ChatsController extends Controller
  
         });
 
-        // $sender = User::find(1)->messages;
-        // dd($sender);
-       
         $messages = $query->get();
+        
+        //Itemを投稿した人にメッセージを送る
+        $toSend = Message::where('user_id' , $receive)->with('user')->get() ;
+        //  dd($toSend);
 
-        // foreach( $messages as  $message ){
-        //    $toSend = $message->user;
-        //    dd($toSend);
-        // }
-
-        $toSend = Item::with('user')->get();
-
-        // $a =  $toSend->user->name;
-        // dd($a);
-
-
-        $users = Message::where('send' , $receive)->with('user')->get() ;
-        //  dd($messages);
         return view('chats.index' , compact('param' , 'messages','toSend'));
     }
  
