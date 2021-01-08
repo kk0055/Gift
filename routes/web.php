@@ -40,4 +40,7 @@ Route::get('chats/{items}', [ChatsController::class, 'sendChat'])->name('chats')
 
 Route::post('chat/send' , [ChatsController::class, 'store'])->name('chatSend');
 
+//Twitter Login
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
