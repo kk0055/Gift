@@ -58,12 +58,14 @@ class ChatsController extends Controller
             $query->where('receive' , $loginId);
  
         });
-        
+
+        // $sender = User::find(1)->messages;
+        // dd($sender);
        
         $messages = $query->get();
   
         $users = Message::where('send' , $receive)->with('user')->get() ;
-        // dd($users);
+        //  dd($messages);
         return view('chats.index' , compact('param' , 'messages'));
     }
  
