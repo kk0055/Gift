@@ -16,9 +16,15 @@
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="#">
-        
 
-            {{ $toSend[0]->user->name }}
+         
+            @foreach ($toSend as $item)
+            {{-- @if($item->user_id == auth()->user()->id) --}}
+            {{ $item->user->name }}
+            {{-- @endif --}}
+            @endforeach
+          
+            
             
         </a>
     </h1>

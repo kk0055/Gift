@@ -27,6 +27,7 @@ class ItemController extends Controller
       
         $user = auth()->user();
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
+
        
         return view('main', [
             'user' => $user,

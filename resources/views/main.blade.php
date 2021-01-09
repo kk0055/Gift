@@ -5,8 +5,42 @@
 
   <div class="justify-center col-start-1 col-end-7 ">
     
+{{-- head --}}
+    <div
+    class="top-0  relative pt-16  pb-32 flex content-center items-center justify-center bg-white"
+    style="min-height: 75vh;"
+  >
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover 
+      " 
+      style='background-image: url("https://images.unsplash.com/photo-1557282229-36aedcdbccab?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTMxfHxnYXJiYWdlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");background-size: 120vh;  background-repeat: no-repeat;'
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-75 bg-black"
+      ></span>
+    </div>
+    <div class="container relative mx-auto" data-aos="fade-in">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full  px-4 ml-auto mr-auto text-center">
+          <div >
+            <h1 class="text-white font-bold text-5xl">
+            必要なものを <span class="text-orange-500 uppercase"> 必要な人へ</span> 
+            </h1>
+            <p class="mt-4 text-lg text-gray-300 text-4xl font-bold">
+             あなたのいらないが誰かの役に立つ
+               
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{{--End head --}}
+
     {{-- Form --}}
-  {{-- </items></items> --}}
+ 
 
     <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
      

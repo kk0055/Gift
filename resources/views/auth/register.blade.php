@@ -64,13 +64,13 @@
                         </div>
                     </form>
                    {{-- Twitter --}}
-                    <div class="form-group row"> <div class="col-md-6">
-                        <a href="https://www.mercari.com/jp/signup/registration/?after_save_callback=/jp/" class="btn-default btn-mail bg-fray-500">
+                    <div class="form-group row d-flex justify-content-center"> 
+                        <div class="">
+                        <a href="{{ route('twitter.login',['provider' => 'twitter']) }}" class="btn-default btn-mail bg-fray-500">
                             <i class="fab fa-twitter "></i>
                             Twitterで登録する</a>                        
                         </div>
                     </div>
-
                    
 {{-- Twitter --}}
                 </div>

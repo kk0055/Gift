@@ -1,75 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<div class="flex items-center justify-center ">
+    <div class="lg:w-1/2 xl:max-w-screen-sm bg-white">
+     
+        <div class=" sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+            <P class="text-center text-gray-700 font-display lg:text-left xl:text-5xl
+            xl:text-bold">ログイン</P>
+            <div class="mt-12">
+        
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        @if (session('oauth_error'))
-                        {{ session('oauth_error') }}
-                        @endif
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    @if (session('oauth_error'))
+                    {{ session('oauth_error') }}
+                    @endif
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="wayne@test.com" required autocomplete="email" autofocus>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <div>
+                        <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="taylor@test.com" >
+                    </div>
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <div class="mt-8">
+
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">
+                                パスワード
                             </div>
+                            
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" value="12345">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} >
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="12345" name="password">
+                    </div>
+                    <div class="mt-10">
+                        <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                        font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                        shadow-lg">
+                        ログイン
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-2 text-sm font-display font-semibold text-gray-700 text-center">
+                    Don't have an account ? <a class="cursor-pointer text-indigo-600 hover:text-indigo-800" href="{{ 'register' }}">Sign up</a>
+                </div>
+                <div class=" space-y-3 w-full mt-3 mb-4">
+                    <a
+                      class="block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-white transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" href="{{ route('twitter.login',['provider' => 'twitter']) }}"
+                    >
+                    <i class="fab fa-twitter mr-2"></i>
+                        Twitterで登録する   
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
