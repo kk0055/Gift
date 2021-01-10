@@ -31,15 +31,16 @@ class ChatsController extends Controller
         // ログイン者以外のユーザを取得する
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
-        return view('chats.chat_user_select' , [
+        return view('chats.index' , [
             'users' => $users,
             'create' => $create
+           
         ]);
     }
 
 
  
-    public function sendChat(Request $request , $receive, User $user )
+    public function sendChat(Request $request , $receive ,User $user)
     {
 
         
@@ -61,15 +62,17 @@ class ChatsController extends Controller
 
         $messages = $query->get();
         
-        // $toSend = Item::select('user_id')->get();
-        $toSend = Item::get();
-        $toSend = Item::find('id');
+
+        $toSend = $user->items;
+        // $toSend = $request->all();
+        // $toSend = Item::find($itemId);
 
         
-         dd( $toSend);
+        //  dd( $toSend);
+        //  dd( $user);
    
 
-        return view('chats.index' , compact('param' , 'messages','toSend'));
+        return view('chats.index' , compact('param' , 'messages','toSend' ,'user'));
     }
  
     /**

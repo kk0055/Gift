@@ -17,7 +17,7 @@
 
           {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
       {{-- {{ $toSend }} --}}
-      {{-- {{ $item->user->name }} --}}
+      {{ $user->name }}
             {{-- @foreach ($toSend as $item) --}}
             {{-- @if(!$item->user_id == $item->user->id) --}}
             {{-- {{ $item->user->name }} --}}
