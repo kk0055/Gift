@@ -63,10 +63,10 @@ class ChatsController extends Controller
         
         // $toSend = Item::select('user_id')->get();
         $toSend = Item::get();
-        
+        $toSend = Item::find('id');
 
         
-        //  dd( $messages);
+         dd( $toSend);
    
 
         return view('chats.index' , compact('param' , 'messages','toSend'));

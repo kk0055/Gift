@@ -11,18 +11,18 @@
  
     {{--  チャットルーム  --}}
     <div id="room" class="justify-items-stretch">
-      {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
-      {{-- {{ $toSend }} --}}
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="#">
 
-         
-            @foreach ($toSend as $item)
-            {{-- @if($item->user_id == auth()->user()->id) --}}
-            {{ $item->user->name }}
+          {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
+      {{-- {{ $toSend }} --}}
+      {{-- {{ $item->user->name }} --}}
+            {{-- @foreach ($toSend as $item) --}}
+            {{-- @if(!$item->user_id == $item->user->id) --}}
+            {{-- {{ $item->user->name }} --}}
             {{-- @endif --}}
-            @endforeach
+            {{-- @endforeach --}}
           
             
             

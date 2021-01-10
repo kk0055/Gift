@@ -82,7 +82,7 @@ class RegisterController extends Controller
     
      
       
-    return redirect()->route('main');
+        return redirect()->route('main')->with('info','Your account has been created');
   
     }
 }

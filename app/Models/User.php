@@ -55,4 +55,6 @@ class User extends Authenticatable
     {
         return $this->find(1)->items()->get();
     }
+
+  
 }
