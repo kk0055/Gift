@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white ">
   @auth
  <span class="caret">{{ Auth::user()->name }}</span>
   @endauth

@@ -1,7 +1,8 @@
 @extends('layouts.app')
  
 @section('content')
-<div class="m-auto px-4 py-5 max-w-xl bg-white rounded-lg">
+<div class="mt-4">
+<div class="m-auto  px-4 py-5 mt-2 max-w-xl bg-white rounded-lg  " >
     <div class="row">
         <div class="col-start-2 col-span-4 ">
        
@@ -89,7 +90,7 @@
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
  
 </div>
- 
+</div>
 @endsection
 
  
