@@ -14,18 +14,18 @@
       </li>
       @guest
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('register') }}">{{ __('register') }}</a>
+      <a class="nav-link" href="{{ route('register') }}">会員登録</a>
   </li>
     @else
     {{-- <li class="nav-item">
       <a class="nav-link" href="#">  {{ Auth::user()->name }} </a>
   </li> --}}
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('logout') }}">    {{ __('Logout') }} <span class="caret"></span></a>
+    <a class="nav-link" href="{{ route('logout') }}"> ログアウト <span class="caret"></span></a>
 </li>
 @endguest
     </ul>
