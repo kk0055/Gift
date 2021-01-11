@@ -20,9 +20,6 @@ class Item extends Model
        return $this->belongsTo(User::class,);
     }
 
-    public function itemBy(User $user)
-    {
-        return $user->id === $this->user_id;
-    }
+  
   
 }

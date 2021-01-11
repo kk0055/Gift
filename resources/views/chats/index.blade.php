@@ -17,7 +17,7 @@
 
           {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
       {{-- {{ $toSend }} --}}
-      {{ $user->name }}
+      {{-- {{ $user->name }} --}}
             {{-- @foreach ($toSend as $item) --}}
             {{-- @if(!$item->user_id == $item->user->id) --}}
             {{-- {{ $item->user->name }} --}}
@@ -36,18 +36,21 @@
 
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
-         
-                <div class="send mr-2 " style="text-align: right">
+         <div class="flex items-end justify-end">
+                <div class="send mr-2 bg-green-300 mx-1 my-1 p-1 rounded-lg" style="text-align: right">
                     <p>{{$message->message}}</p>
                     {{-- {{ $message->user->name }} --}}
                 </div>
+              </div>
             @endif
  
             {{--   受信したメッセージ  --}}
             @if($message->receive == \Illuminate\Support\Facades\Auth::id())
-                <div class="receive" style="text-align: left">
+            <div class="flex items-start justify-start">
+                <div class="receive mr-2 bg-gray-300 mx-1 my-1 p-1 rounded-lg" style="text-align: left">
                     <p>{{$message->message}}</p>
                     {{-- {{ $message->user->name }} --}}
+                </div>
                 </div>
             @endif
         @endforeach

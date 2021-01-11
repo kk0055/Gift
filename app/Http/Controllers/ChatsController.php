@@ -26,8 +26,8 @@ class ChatsController extends Controller
 
         // dd($create );
 
-        $user = Auth::user();
- 
+        $user = find($user);
+    //    dd($user);
         // ログイン者以外のユーザを取得する
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
@@ -40,7 +40,7 @@ class ChatsController extends Controller
 
 
  
-    public function sendChat(Request $request , $receive ,User $user)
+    public function sendChat(User $user , $receive )
     {
 
         
@@ -62,8 +62,8 @@ class ChatsController extends Controller
 
         $messages = $query->get();
         
-
-        $toSend = $user->items;
+        $toSend =  User::find($user);
+        // $toSend = $user->items;
         // $toSend = $request->all();
         // $toSend = Item::find($itemId);
 
