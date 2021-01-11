@@ -71,9 +71,9 @@ style="min-height: 75vh;"
               {{-- Body --}}
              
 
-              <div class="col-span-6 sm:col-span-6 lg:">
+              <div class="col-span-6 mt-3 sm:col-span-6 lg:">
                 <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
-                <textarea type="text" name="body" id="body" class="mt-1 w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder="例 : 詳細をご記入ください"></textarea>
+                <textarea type="text" name="body" id="body" class=" w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder=" 詳細をご記入ください"></textarea>
               </div>
               @error('body')
               <div class="text-red-500 mt-2 text-sm">

@@ -7,9 +7,9 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\SampleNotification;
 use App\Events\ChatMessagereceived;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ChatReceived;
 
 class ChatsController extends Controller
 {
@@ -105,9 +105,9 @@ class ChatsController extends Controller
         event(new ChatMessagereceived($request->all()));
  
         // メール送信
-        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
-        // $to = $mailSendUser->email;
-        // Mail::to($to)->send(new SampleNotification());
+        $mailSendUser = User::where('id' , $request->input('receive'))->first();
+        $to = $mailSendUser->email;
+        Mail::to($to)->send(new ChatReceived());
  
         return true;
  
