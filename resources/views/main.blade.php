@@ -44,18 +44,15 @@
    
     <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
       @include('components.alert')
+ 
       <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
-            <div class="grid grid-cols-6 gap-6">
+            <div class="">
             
-              @error('title')
-              <div class="text-red-500 mt-2 text-sm">
-                {{ $message }}
-              </div>
-              @enderror   
              
+       
               @error('image')
               <div class="text-red-500 mt-2 text-sm">
                 {{ $message }}
@@ -66,18 +63,24 @@
                 <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
                 <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" >
               </div>
-
-              {{-- Body --}}
-              @error('body')
+              @error('title')
               <div class="text-red-500 mt-2 text-sm">
                 {{ $message }}
               </div>
-              @enderror    
+              @enderror
+              {{-- Body --}}
+             
 
               <div class="col-span-6 sm:col-span-6 lg:">
                 <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
                 <textarea type="text" name="body" id="body" class="mt-1 w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder="例 : 詳細をご記入ください"></textarea>
               </div>
+              @error('body')
+              <div class="text-red-500 mt-2 text-sm">
+                {{ $message }}
+              </div>
+              @enderror 
+              
               {{-- image --}}
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                 <label for="image" class="block text-sm font-medium text-gray-700"></label>

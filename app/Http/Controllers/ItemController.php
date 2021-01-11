@@ -58,7 +58,12 @@ class ItemController extends Controller
         $this->validate($request, [
            'title' => 'required',
            'body' => 'required'
-        ]);
+        ],
+           [
+                  'title.required' => 'タイトルは必須項目です。',
+                  'body.required'  => '詳細は必須項目です。',
+                
+           ]);
         
 
     //    $request->user()->items()->create([
