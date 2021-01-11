@@ -1,82 +1,91 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card ">
-                <div class="card-header">登録 </div>
+
+<div class="flex items-center justify-center ">
+    
+    <div class="lg:w-1/2 xl:max-w-screen-sm bg-white">
+       
+        <div class=" sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+           
+            <P class="text-center text-gray-700 font-display lg:text-left xl:text-5xl
+           
+            xl:text-bold">登録</P>
+           
+            <div class="mt-12">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    @if (session('oauth_error'))
+                    {{ session('oauth_error') }}
+                    @endif
                 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">ニックネーム </label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">メールアドレス</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="brad@test.com" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">パスワード </label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" value="12345" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="text-red-500 mt-2 text-sm" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                   {{-- Twitter --}}
-                    <div class="form-group row d-flex justify-content-center"> 
-                        <div class="">
-                        <a href="{{ route('twitter.login',['provider' => 'twitter']) }}" class="btn-default btn-mail bg-fray-500">
-                            <i class="fab fa-twitter "></i>
-                            Twitterで登録する</a>                        
-                        </div>
+                      <div class="">
+                        <div class="text-sm font-bold text-gray-700 tracking-wide">ニックネーム</div>
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="" >
                     </div>
-                   
-{{-- Twitter --}}
+                    @error('name')
+                    <span class="text-red-500 mt-2 text-sm" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <div class="mt-2">
+                        <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="" >
+                    </div>
+                    @error('email')
+                    <span class="text-red-500 mt-2 text-sm" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                 
+                    {{-- @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                   @endforeach --}}
+
+                    <div class="mt-2">
+
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">
+                                パスワード
+                            </div>
+
+                        </div>
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="12345" name="password">
+                    </div>
+
+                    @error('password')
+                    <span class="text-red-500 mt-2 text-sm" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <div class="mt-10">
+                        <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                        font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                        shadow-lg">
+                        登録
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-2 text-sm font-display font-semibold text-gray-700 text-center">
+                    <a class="cursor-pointer text-indigo-600 hover:text-indigo-800" href="{{ 'login' }}">ログイン</a>
+                </div>
+                <div class=" space-y-3 w-full mt-3 mb-4">
+                    <a
+                      class="block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-white transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" href="{{ route('twitter.login',['provider' => 'twitter']) }}"
+                    >
+                    <i class="fab fa-twitter mr-2"></i>
+                        Twitterで登録する   
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
 

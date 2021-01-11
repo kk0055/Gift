@@ -67,6 +67,12 @@ class RegisterController extends Controller
          'name' => 'required|max:255',
          'email' => 'required|email|max:255|unique:users',
          'password' => 'required|min:5'
+      ],
+      [
+             'name.required' => 'ニックネームは必須項目です。',
+             'email.required'  => 'メールアドレスは必須項目です。',
+             'password.required'  => 'パスワードは必須項目です。',
+             'password.min'  => 'パスワードは5文字以上で入力してください。',
       ]);
   
     
@@ -80,8 +86,6 @@ class RegisterController extends Controller
         
         $user->save();
     
-     
-      
         return redirect()->route('main')->with('info','Your account has been created');
   
     }
