@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\UserItemController;
 
 
 
@@ -48,3 +49,5 @@ Route::get('/login/{provider}',
 Route::get('/login/{provider}/callback',
 [LoginController::class, 'handleProviderCallback']);
 
+
+Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('uesrs.items');
