@@ -107,12 +107,25 @@ style="min-height: 75vh;"
   
       <div class="max-w-3xl  bg-white rounded-lg mx-auto my-2 p-2">
             
-          <img src="/storage/image/{{ $item->image }}" alt="" class="" width="100px" height="100px" >
+       
        
         <h2 class="text-2xl font-medium mb-2">{{$item->user->name }}</h2>
         <p class="">{{ $item->title }}</p>
         <hr>
+      
+        {{-- Image --}}
+        @if ($item->image != null)
+        <div class="flex">
+          <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
+          <img src="/storage/image/{{ $item->image }}" alt="" class="" width="120px" height="120px" ></a>
+          <p class="ml-2"> {{ $item->body }}</p>
+        </div> 
+        @else
         <p class=""> {{ $item->body }}</p>
+        @endif
+         {{--End Image --}}
+
+       
        
         
         
