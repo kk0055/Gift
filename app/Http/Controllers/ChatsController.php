@@ -62,14 +62,16 @@ class ChatsController extends Controller
 
         $messages = $query->get();
         
-        $toSend =  User::find($user);
+        // $user =  User::all();
+        $toSend = Item::with('user')->get();
+        
         // $toSend = $user->items;
         // $toSend = $request->all();
         // $toSend = Item::find($itemId);
 
         
         //  dd( $toSend);
-        //  dd( $user);
+        //  dd( $toSend);
    
 
         return view('chats.index' , compact('param' , 'messages','toSend' ,'user'));

@@ -14,7 +14,10 @@
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="#">
-
+          {{-- @foreach($messages as  $key => $message)
+          @if ($key == 0 )
+          <p class=" ">{{ $message->user->name }}</p>
+          @endif --}}
           {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
       {{-- {{ $toSend }} --}}
       {{-- {{ $user->name }} --}}
@@ -23,7 +26,7 @@
             {{-- {{ $item->user->name }} --}}
             {{-- @endif --}}
             {{-- @endforeach --}}
-          
+            {{-- @endforeach --}}
             
             
         </a>
@@ -47,11 +50,12 @@
             {{--   受信したメッセージ  --}}
             @if($message->receive == \Illuminate\Support\Facades\Auth::id())
             <div class="flex items-start justify-start">
-                <div class="receive mr-2 bg-gray-300 mx-1 my-1 p-1 rounded-lg" style="text-align: left">
-                    <p>{{$message->message}}</p>
-                    {{-- {{ $message->user->name }} --}}
+                <div class="receive mr-2 bg-gray-300 mx-1 my-1 px-1 rounded-lg" style="text-align: left">
+                    <p >{{$message->message}}</p>
+                    
                 </div>
                 </div>
+                <p class="text-xs ">{{ $message->user->name }}</p>
             @endif
         @endforeach
         {{-- @endif --}}
