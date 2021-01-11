@@ -83,7 +83,7 @@ class ItemController extends Controller
             'image' =>  $fileNameToStore,
         ]);
 
-       return back()->with('info','投稿が完了しました');
+       return back()->with('info','投稿が完了しました。');
     }
 
     /**

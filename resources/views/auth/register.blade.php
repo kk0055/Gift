@@ -46,7 +46,7 @@
                                 <input id="password" type="password" value="12345" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-red-500 mt-2 text-sm" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

@@ -48,7 +48,7 @@ class LoginController extends Controller
 
         if (! auth()->attempt($request->only('email','password'),$request->remember))
         {
-            return back()->with('status', 'invalid login details');
+            return back()->with('info', 'メールアドレスもしくはパスワードが正しくありません。');
         }
         ;
         return redirect()->route('main');
