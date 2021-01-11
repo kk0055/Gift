@@ -50,4 +50,4 @@ Route::get('/login/{provider}/callback',
 [LoginController::class, 'handleProviderCallback']);
 
 
-Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('uesrs.items');
+Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('users.items');

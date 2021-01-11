@@ -9,6 +9,12 @@ class UserItemController extends Controller
 {
     public function index(User $user)
     {
-        dd($user);
+        $items = $user->items()->with('user')->get();
+        // dd($items);
+        return view('users.index',[
+            'user' => $user,
+            'items' => $items 
+        ]);
+        // dd($user);
     }
 }
