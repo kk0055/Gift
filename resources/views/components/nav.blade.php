@@ -10,13 +10,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item ">
-        <a class="nav-link" href="{{ route('main') }}"> <span class="">ホーム</span></a>
+      
+        <a class="nav-link " href="{{ route('main') }}"> <span class="">ホーム</span></a>     
+       
+       
       </li>
       @guest
       <li class="nav-item">
         <a class="nav-link" href="{{ route('login') }}">ログイン</a>
     </li>
-
+ 
     <li class="nav-item">
       <a class="nav-link" href="{{ route('register') }}">会員登録</a>
   </li>

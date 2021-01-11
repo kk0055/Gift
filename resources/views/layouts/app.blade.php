@@ -21,7 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+    {{-- sweetalert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
   
 </style>
@@ -109,8 +110,14 @@
   
              });
          });
+
+       
      </script>
-     
+     <script>
+        function loginAlert() {
+            alert("ごめんなさい。ログインしてください(T_T)");
+        }
+        </script>
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>
 </html>
