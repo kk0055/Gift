@@ -20,7 +20,7 @@
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                  @enderror
+                      @enderror
 
                     <div>
                         <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
@@ -32,6 +32,9 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                   @endforeach
 
                     <div class="mt-8">
 

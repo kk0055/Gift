@@ -41,9 +41,9 @@
 
     {{-- Form --}}
  
-
+   
     <div class="mt-1 md:mt-0 md:col-span-2 max-w-3xl mx-auto  p-16">
-     
+      @include('components.alert')
       <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="shadow overflow-hidden sm:rounded-md">
@@ -62,7 +62,7 @@
               </div>
               @enderror   
               <div class="col-span-6">
-                
+            
                 <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
                 <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" >
               </div>
