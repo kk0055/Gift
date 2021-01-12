@@ -24,7 +24,7 @@
     {{-- sweetalert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
-  
+
 </style>
 </head>
 

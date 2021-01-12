@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
   @auth
- <span class="text-2xl font-medium mb-2 mr-3">{{ Auth::user()->name }}</span>
+ <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
   @endauth
   <button class="navbar-toggler focus:outline-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

@@ -34,7 +34,7 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'logOut']);
 
 //Chats
-// Route::get('chats/{user}', [ChatsController::class, 'index']);
+Route::get('chats/{user}/select', [ChatsController::class, 'index'])->name('chat.index');
 Route::get('chats/{id}/', [ChatsController::class, 'sendChat'])->name('chats');
 
 Route::post('chat/send' , [ChatsController::class, 'store'])->name('chatSend');

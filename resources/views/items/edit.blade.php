@@ -20,7 +20,6 @@
           @enderror   
           <div class="col-span-6">
              <P class="text-center text-gray-700 font-display lg:text-left 
-           
           xl:text-bold">編集</P>
             <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
             <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" value="{{ $item->title }}" >

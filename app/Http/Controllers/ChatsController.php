@@ -22,18 +22,15 @@ class ChatsController extends Controller
     // 使わない可能性あり
     public function index(User $user)
     {
-        $create =  Item::all();
-
-        // dd($create );
-
-        $user = find($user);
-    //    dd($user);
+        $items =  Item::all();
+          
+      
         // ログイン者以外のユーザを取得する
-        $users = User::where('id' ,'<>' , $user->id)->get();
+        $users = User::where('id' ,'<>' , $user->id)->with('messages')->get();
         // チャットユーザ選択画面を表示
-        return view('chats.index' , [
+        return view('chats.chat_user_select' , [
             'users' => $users,
-            'create' => $create
+            'items' => $items
            
         ]);
     }
@@ -105,9 +102,9 @@ class ChatsController extends Controller
         event(new ChatMessagereceived($request->all()));
  
         // メール送信
-        $mailSendUser = User::where('id' , $request->input('receive'))->first();
-        $to = $mailSendUser->email;
-        Mail::to($to)->send(new ChatReceived());
+        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
+        // $to = $mailSendUser->email;
+        // Mail::to($to)->send(new ChatReceived());
  
         return true;
  

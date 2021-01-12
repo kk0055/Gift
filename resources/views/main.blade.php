@@ -84,22 +84,35 @@ style="min-height: 75vh;"
               {{-- image --}}
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                 <label for="image" class="block text-sm font-medium text-gray-700"></label>
-                <input type="file" name="image" class="focus:outline-none" >
+                <input type="file" name="image" id="filename" class="focus:outline-none" >
               </div>
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+               
                 <label for="image2" class="block text-sm font-medium text-gray-700"></label>
-                <input type="file" name="image2" class="focus:outline-none" >
+                <input type="file" name="image2" id="filename" class="focus:outline-none" >
+            
               </div>
-            {{-- End of Body --}}
 
+            {{-- End of Body --}}
+        
             </div>
           </div>
- 
+        {{-- ログインしていないとき --}}
+        @guest
+        <div class="px-4 py-3 bg-white text-right sm:px-6">
+          <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="loginAlert()" >
+            投稿
+          </button>
+        </div>
+       @endguest
+        {{-- ログインしていないとき --}}
+        @auth
           <div class="px-4 py-3 bg-white text-right sm:px-6">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >
               投稿
             </button>
           </div>
+          @endauth
         </div>
       </form>
     </div>
@@ -138,7 +151,7 @@ style="min-height: 75vh;"
          {{--End Image --}}
 
        {{-- ログインしていないとき --}}
-       @guest
+        @guest
          <div class="px-4  bg-white text-right sm:px-6" id="" >
           <a href="{{ route('chats', $item->user->id) }}" type="submit" class="inline-flex justify-center py-2 mt-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500" onclick="loginAlert()">欲しい
           </a>    

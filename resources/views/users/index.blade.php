@@ -4,6 +4,7 @@
 
 <div class="text-2xl  text-black ml-3 my-2" > {{$user->name }}</div>
 
+<a href="{{ route('chat.index',[$user->id]) }}">chat</a>
 @foreach ($items as $item)
 <div class="justify-center col-start-1 col-end-7 ">
 
@@ -44,15 +45,19 @@
       @csrf
       @method('DELETE')
       
-      <button type="submit" class="inline-flex justify-center py-2 px-4 mt-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
+      <button type="submit" class="inline-flex justify-center py-2 px-2 mt-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
+      <a  href="{{ route('item.edit',[$item->id]) }}" class="inline-flex mb-2 mr-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">編集</a>
     </form>
+   
     @endif
    
     {{--End Delete Button --}}
+   
     <div class="px-4  bg-white text-right sm:px-6">
       <a href="{{ route('item.show',['itemId'=> $item->id]) }}" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500">見たい
       </a>
     </div>
+    
   {{-- 欲しい Button --}}
    
   @if ($item->user->id !== Auth::user()->id)
