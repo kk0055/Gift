@@ -37,7 +37,7 @@ class ChatsController extends Controller
 
 
  
-    public function sendChat(User $user , $receive )
+    public function sendChat(Request $request, $receive )
     {
 
         
@@ -59,8 +59,7 @@ class ChatsController extends Controller
 
         $messages = $query->get();
         
-        // $user =  User::all();
-        $toSend = Item::with('user')->get();
+      
         
         // $toSend = $user->items;
         // $toSend = $request->all();
@@ -71,7 +70,7 @@ class ChatsController extends Controller
         //  dd( $toSend);
    
 
-        return view('chats.index' , compact('param' , 'messages','toSend' ,'user'));
+        return view('chats.index' , compact('param' , 'messages'));
     }
  
     /**

@@ -22,9 +22,10 @@
         <tr>
             <th>{{$loop->iteration}}</th>
             <td>{{$user->name}}</td>
-            <td><a href="{{ route('chats', $user->id) }}"><button type="button" class="btn btn-primary">Chat</button></a>  
+            <td><a href="{{ route('chats.user', $user->id) }}"><button type="button" class="btn btn-primary">Chat</button></a>  
+                {{-- @if($user->messages->count())
                 {{ $user->messages->count() }}</td>
-          
+                @endif --}}
         </tr>
         @endforeach
         </tbody>

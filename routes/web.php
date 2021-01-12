@@ -10,9 +10,7 @@ use App\Http\Controllers\UserItemController;
 
 
 
-// Route::get('/', function () {
-//     return view('main');
-// });
+
 Auth::routes();
 
 //Items
@@ -35,7 +33,7 @@ Route::get('/logout', [LoginController::class, 'logOut']);
 
 //Chats
 Route::get('chats/{user}/select', [ChatsController::class, 'index'])->name('chat.index');
-Route::get('chats/{id}/', [ChatsController::class, 'sendChat'])->name('chats');
+Route::get('/chats/{user}/send', [ChatsController::class, 'sendChat'])->name('chats.user');
 
 Route::post('chat/send' , [ChatsController::class, 'store'])->name('chatSend');
 
@@ -48,5 +46,3 @@ Route::get('/login/{provider}/callback',
 
 
 Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('users.items');
-
-
