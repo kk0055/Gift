@@ -86,13 +86,17 @@ style="min-height: 75vh;"
                 <label for="image" class="block text-sm font-medium text-gray-700"></label>
                 <input type="file" name="image" class="focus:outline-none" >
               </div>
+              <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                <label for="image2" class="block text-sm font-medium text-gray-700"></label>
+                <input type="file" name="image2" class="focus:outline-none" >
+              </div>
             {{-- End of Body --}}
 
             </div>
           </div>
  
           <div class="px-4 py-3 bg-white text-right sm:px-6">
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="loginAlert()">
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >
               投稿
             </button>
           </div>
@@ -116,10 +120,17 @@ style="min-height: 75vh;"
         {{-- Image --}}
         @if ($item->image != null)
         <div class="flex">
+          <div>
           <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
-          <img src="/storage/image/{{ $item->image }}" alt="" class="" width="120px" height="120px" ></a>
-          <p class="ml-2"> {{ $item->body }}</p>
+          <img src="/storage/image/{{ $item->image }}" alt="" class="" width="120px" height="120px" ></div></a>
+          {{-- <div>
+          <img src="/storage/image/{{ $item->image2 }}" alt="" class="" width="120px" height="120px" >
+        </div> --}}
+        <p class="ml-2"> {{ $item->body }}</p>
+        
+      
         </div> 
+      
         @else
         <p class=""> {{ $item->body }}</p>
         @endif

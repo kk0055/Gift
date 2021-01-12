@@ -13,6 +13,7 @@ class Item extends Model
         'title',
         'body',
         'image',
+        'image2',
     ];
 
     public function user()

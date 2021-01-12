@@ -82,12 +82,23 @@ class ItemController extends Controller
         $fileNameToStore = null;
         }
 
+        if($request->hasFile('image2')){
+            $filenameWithExt = $request->file('image2')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
+            $extension = $request->file('image2')->getClientOriginalExtension();
+            $fileNameToStore2 = $filename . '_'. time(). '.'.$extension;
+            $path = $request->file('image2')->storeAs('public/image',  $fileNameToStore2);
+            }else {
+            $fileNameToStore2 = null;
+            }
+
         $request->user()->items()->create([
             'title' => $request->title,
             'body' => $request->body,
             'image' =>  $fileNameToStore,
+            'image2' =>  $fileNameToStore2,
         ]);
-
+    //    dd($request);
        return back()->with('info','投稿が完了しました。');
     }
 
