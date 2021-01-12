@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="text-2xl  text-black ml-3 my-2" > {{$user->name }}</div>
+
 @foreach ($items as $item)
 <div class="justify-center col-start-1 col-end-7 ">
 
@@ -9,7 +11,7 @@
         
    
    
-    <a class="text-2xl font-medium mb-2 text-black" href="{{ route('users.items',$item->user->id) }}"> {{$item->user->name }}</a>
+    {{-- <div class="text-2xl mb-2 text-black" href="{{ route('users.items',$item->user->id) }}"> {{$item->user->name }}</div> --}}
     <p class="">{{ $item->title }}</p>
     <hr>
   

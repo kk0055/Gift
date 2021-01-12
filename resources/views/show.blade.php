@@ -12,6 +12,7 @@
       <div class="px-4 py-2 mt-2 bg-white">
         <p class="">  {{ $item->user->name }}</p>
           <p class="">  {{ $item->title }}</p>
+          <hr>
               <p class="">
                 {{ $item->body }}
               </p>
