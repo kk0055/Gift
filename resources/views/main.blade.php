@@ -123,16 +123,17 @@ style="min-height: 75vh;"
           <div>
           <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
           <img src="/storage/image/{{ $item->image }}" alt="" class="" width="120px" height="120px" ></div></a>
+         
           {{-- <div>
           <img src="/storage/image/{{ $item->image2 }}" alt="" class="" width="120px" height="120px" >
         </div> --}}
         <p class="ml-2"> {{ $item->body }}</p>
         
-      
         </div> 
       
         @else
-        <p class=""> {{ $item->body }}</p>
+        <p class="ml-2"> {{ $item->body }}</p>
+      
         @endif
          {{--End Image --}}
 

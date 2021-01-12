@@ -66,12 +66,6 @@ class ItemController extends Controller
            ]);
         
 
-    //    $request->user()->items()->create([
-    //         'title' => $request->title,
-    //         'body' => $request->body,
-    //         'image' => $request->image,
-    //    ]);
-
         if($request->hasFile('image')){
         $filenameWithExt = $request->file('image')->getClientOriginalName();
         $filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
@@ -113,12 +107,71 @@ class ItemController extends Controller
         $item = Item::findOrFail($itemId);
     // dd($item);
         //一つのItemを返す
-        return view('show',[
+        return view('items.show',[
             'item' =>$item
         ]);
-
     }
+        public function edit($itemId)
+        {
+            $item = Item::findOrFail($itemId);
+        // dd($item);
+            //一つのItemを返す
 
+            // dd($item);
+            return view('items.edit',[
+                'item' =>$item
+            ]);
+
+      }
+
+
+public function update(Request $request, $itemId)
+{
+
+$this->validate($request, [
+'title' => 'required',
+'body' => 'required'
+],
+[
+    'title.required' => 'タイトルは必須項目です。',
+    'body.required'  => '詳細は必須項目です。',
+    
+]);
+$item = Item::findOrFail($itemId);
+
+if($request->hasFile('image')){
+$filenameWithExt = $request->file('image')->getClientOriginalName();
+$filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
+$extension = $request->file('image')->getClientOriginalExtension();
+$fileNameToStore = $filename . '_'. time(). '.'.$extension;
+$path = $request->file('image')->storeAs('public/image',  $fileNameToStore);
+}else {
+$fileNameToStore = $item->image;
+}
+
+if($request->hasFile('image2')){
+$filenameWithExt = $request->file('image2')->getClientOriginalName();
+$filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
+$extension = $request->file('image2')->getClientOriginalExtension();
+$fileNameToStore2 = $filename . '_'. time(). '.'.$extension;
+$path = $request->file('image2')->storeAs('public/image',  $fileNameToStore2);
+}else {
+$fileNameToStore2 = $item->image2;
+}
+
+
+$item->update([
+'title' => $request->title,
+'body' => $request->body,
+'image' =>  $fileNameToStore,
+'image2' =>  $fileNameToStore2,
+]);
+
+//    dd($request);
+return redirect()->route('item.show',['itemId'=> $item->id])->with('info','編集が完了しました。');
+}
+
+      
     public function destroy(Item $Item)
     {
         // $this->authorize('delete', $Item);

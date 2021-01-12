@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="m-auto px-4 py-8 max-w-xl">
-  <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
+  @include('components.alert')
+  <div class="bg-white overflow-hidden rounded-lg shadow-lg" > 
       <div class="">
        @if($item->image && !str_contains($item->image, 'noimage') )
           <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
@@ -27,6 +28,7 @@
             
             <button type="submit" class="inline-flex mb-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
           </form>
+          <a  href="{{ route('item.edit',[$item->id]) }}" class="inline-flex mb-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">編集</a>
           @endif
         
           {{--End Delete Button --}}
