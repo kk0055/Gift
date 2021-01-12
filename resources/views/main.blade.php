@@ -109,7 +109,7 @@ style="min-height: 75vh;"
             
        
        
-        <a class="text-2xl font-medium mb-2" href="{{ route('users.items',$item->user->id) }}"> {{$item->user->name }}</a>
+        <a class="text-2xl font-medium mb-2 text-black" href="{{ route('users.items',$item->user->id) }}"> {{$item->user->name }}</a>
         <p class="">{{ $item->title }}</p>
         <hr>
       
