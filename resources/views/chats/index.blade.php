@@ -15,7 +15,7 @@
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="#">
-          {{-- {{ $user->user->name }} --}}
+          {{ $user[0]->name }}
          
           {{-- @foreach($messages as  $key => $message)
           @if ($key == 0 )

@@ -24,23 +24,36 @@ class ChatsController extends Controller
     {
         $items =  Item::all();
           
-      
+        $messages = Message::where('status',0)->where('send',$user->id)->get();
+
+        // dd($messages);
         // ログイン者以外のユーザを取得する
         $users = User::where('id' ,'<>' , $user->id)->with('messages')->get();
         // チャットユーザ選択画面を表示
         return view('chats.chat_user_select' , [
             'users' => $users,
-            'items' => $items
-           
+            'items' => $items,
+            'messages' =>$messages
         ]);
     }
+ 
+    // public function status(User $user)
+    // {
+    //     $message = Message::where('status',0);
 
+    //     if($message == 0) {
+    //         $message->update(['status' => 1]);
+    //     }
+
+    //     dd($message);
+    //     return;
+    // }
 
  
-    public function sendChat(Request $request, $receive )
+    public function sendChat(Request $request,  $receive )
     {
-
         
+        // dd($user);
         // チャットの画面
         $loginId = Auth::id();
  
@@ -50,7 +63,7 @@ class ChatsController extends Controller
         ];
  
         // 送信 / 受信のメッセージを取得する
-        $query = Message::where('send' , $loginId)->where('receive' , $receive);;
+        $query = Message::where('send' , $loginId)->where('receive' , $receive);
         $query->orWhere(function($query) use($loginId , $receive){
             $query->where('send' , $receive);
             $query->where('receive' , $loginId);
@@ -65,20 +78,11 @@ class ChatsController extends Controller
         //    $user =  $item;
         // }
 
-        // $user = Item::where('id', $receive)->first();
-
+        $user = User::where('id', $param['receive'])->get();
        
-        
-        // $toSend = $user->items;
-        // $toSend = $request->all();
-        // $toSend = Item::find($itemId);
+        // dd($user );
 
-        
-        //  dd( $toSend);
-      
-   
-
-        return view('chats.index' , compact('param' , 'messages'));
+        return view('chats.index' , compact('param' , 'messages','user'));
     }
  
     /**
