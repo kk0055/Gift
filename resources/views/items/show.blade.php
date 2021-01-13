@@ -4,9 +4,9 @@
 
 <div class="m-auto px-4 py-8 max-w-xl">
   @include('components.alert')
-  <div class="bg-white overflow-hidden rounded-lg shadow-lg" > 
+  <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
+    @if( null !== $item->image || $item->image2  ) 
       <div class="image-container">
-       @if($item->image && !str_contains($item->image, 'noimage') )
        <div class="panel active">
           <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
        </div>

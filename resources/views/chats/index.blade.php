@@ -14,10 +14,9 @@
     <div id="room" class="justify-items-stretch">
      
       <h1 class="text-lg mb-2">
-        <a class="no-underline hover:underline text-black" href="#">
+        <a class="no-underline hover:underline text-black" href="{{ route('users.items',[$user[0]->id]) }}">
           {{ $user[0]->name }}
-         
- 
+          {{ $item->title }}
         </a>
     </h1>
       <hr>
@@ -29,7 +28,7 @@
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
          <div class="flex items-end justify-end">
-                <div class="send mr-2 bg-green-300 mx-1 my-1 p-1 rounded-lg" style="text-align: right">
+                <div class="send mr-2 bg-green-300 mx-1 my-1  px-1 rounded-lg" style="text-align: right">
                     <p>{{$message->message}}</p>
                     {{-- {{ $message->user->name }} --}}
                 </div>

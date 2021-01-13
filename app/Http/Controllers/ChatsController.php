@@ -50,7 +50,7 @@ class ChatsController extends Controller
     // }
 
  
-    public function sendChat(Request $request,  $receive )
+    public function sendChat(Request $request,  $receive ,$itemId )
     {
         
         // チャットの画面
@@ -72,10 +72,10 @@ class ChatsController extends Controller
         $messages = $query->get();
 
         $user = User::where('id', $param['receive'])->get();
-       
-        // dd($user );
+        $item = Item::findOrFail($itemId);
+        // dd($item );
 
-        return view('chats.index' , compact('param' , 'messages','user'));
+        return view('chats.index' , compact('param' , 'messages','user','item'));
     }
  
     /**
