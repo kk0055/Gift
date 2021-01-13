@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
   @auth
  <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
+
+ <div class="text-2xl  text-black ml-3 my-2" > {{Auth::user()->name  }}
+  <a href="{{ route('chat.index',[Auth::user()->id]) }}"><i class="far fa-comment-dots"></i></a>
+</div>
   @endauth
   <button class="navbar-toggler focus:outline-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

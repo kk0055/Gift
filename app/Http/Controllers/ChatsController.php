@@ -59,7 +59,15 @@ class ChatsController extends Controller
 
         $messages = $query->get();
         
-      
+        // $items = Item::all();
+        // foreach($items as $item)
+        // {
+        //    $user =  $item;
+        // }
+
+        // $user = Item::where('id', $receive)->first();
+
+       
         
         // $toSend = $user->items;
         // $toSend = $request->all();
@@ -67,7 +75,7 @@ class ChatsController extends Controller
 
         
         //  dd( $toSend);
-        //  dd( $toSend);
+      
    
 
         return view('chats.index' , compact('param' , 'messages'));

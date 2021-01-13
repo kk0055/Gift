@@ -15,7 +15,7 @@
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="#">
-          {{-- {{ $user->name }} --}}
+          {{-- {{ $user->user->name }} --}}
          
           {{-- @foreach($messages as  $key => $message)
           @if ($key == 0 )
@@ -45,7 +45,7 @@
          <div class="flex items-end justify-end">
                 <div class="send mr-2 bg-green-300 mx-1 my-1 p-1 rounded-lg" style="text-align: right">
                     <p>{{$message->message}}</p>
-                    {{ $message->user->name }}
+                    {{-- {{ $message->user->name }} --}}
                 </div>
               </div>
             @endif
