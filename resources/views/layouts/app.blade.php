@@ -24,7 +24,27 @@
     {{-- sweetalert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
+.image-container {
+  display: flex;
+  width: 90vh;
+  height: 90vh;
+}
 
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  -webkit-transition: all 700ms ease-in;
+}
+
+.panel.active {
+  flex: 5;
+}
 </style>
 </head>
 
@@ -117,6 +137,21 @@
         function loginAlert() {
             alert("ごめんなさい。ログインしてください(T_T)");
         }
+
+ const panels = document.querySelectorAll('.panel')
+
+panels.forEach(panel => {
+    panel.addEventListener('click', () => {
+        removeActiveClasses()
+        panel.classList.add('active')
+    })
+})
+
+function removeActiveClasses() {
+    panels.forEach(panel => {
+        panel.classList.remove('active')
+    })
+}
         </script>
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>

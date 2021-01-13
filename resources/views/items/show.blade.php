@@ -5,12 +5,17 @@
 <div class="m-auto px-4 py-8 max-w-xl">
   @include('components.alert')
   <div class="bg-white overflow-hidden rounded-lg shadow-lg" > 
-      <div class="">
+      <div class="image-container">
        @if($item->image && !str_contains($item->image, 'noimage') )
+       <div class="panel active">
           <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
+       </div>
+       <div class="panel">
+        <img src="/storage/image/{{ $item->image2 }}" class="block h-auto w-full"  >
+     </div>
         @endif
       </div>
-      <div class="px-4 py-2 mt-2 bg-white">
+      <div class="px-4 py-2 mt-2 bg-white ">
         <p class="">  {{ $item->user->name }}</p>
           <p class="">  {{ $item->title }}</p>
           <hr>
