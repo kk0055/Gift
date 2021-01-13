@@ -17,21 +17,7 @@
         <a class="no-underline hover:underline text-black" href="#">
           {{ $user[0]->name }}
          
-          {{-- @foreach($messages as  $key => $message)
-          @if ($key == 0 )
-          <p class=" ">{{ $message->user->name }}</p>
-          @endif --}}
-          {{-- @if ($messages->send === auth()->id && $messages->receive === auth()->id ) --}}
-      {{-- {{ $toSend }} --}}
-      {{-- {{ $user->name }} --}}
-            {{-- @foreach ($toSend as $item) --}}
-            {{-- @if(!$item->user_id == $item->user->id) --}}
-            {{-- {{ $item->user->name }} --}}
-            {{-- @endif --}}
-            {{-- @endforeach --}}
-            {{-- @endforeach --}}
-            
-            
+ 
         </a>
     </h1>
       <hr>

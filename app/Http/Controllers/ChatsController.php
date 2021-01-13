@@ -53,7 +53,6 @@ class ChatsController extends Controller
     public function sendChat(Request $request,  $receive )
     {
         
-        // dd($user);
         // チャットの画面
         $loginId = Auth::id();
  
@@ -71,12 +70,6 @@ class ChatsController extends Controller
         });
 
         $messages = $query->get();
-        
-        // $items = Item::all();
-        // foreach($items as $item)
-        // {
-        //    $user =  $item;
-        // }
 
         $user = User::where('id', $param['receive'])->get();
        

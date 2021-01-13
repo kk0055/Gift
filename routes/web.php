@@ -33,7 +33,7 @@ Route::get('/logout', [LoginController::class, 'logOut']);
 
 //Chats
 Route::get('chats/{user}/select', [ChatsController::class, 'index'])->name('chat.index');
-Route::get('/chats/{user}/send', [ChatsController::class, 'sendChat'])->name('chats.users');
+Route::get('/chats/{receive}/send', [ChatsController::class, 'sendChat'])->name('chats.users');
 
 // Route::post('/chats/{id}/send', [ChatsController::class, 'status'])->name('chats.users');
 
