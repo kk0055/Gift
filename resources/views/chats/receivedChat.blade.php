@@ -15,15 +15,26 @@
      
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="{{ route('users.items',[$user[0]->id]) }}">
-          {{ $user[0]->name }}
-          {{ $item->title }}
-        </a>
+          {{ $user[0]->name }}</a> さんへ 
+          {{-- {{ $item->title }} について --}}
+       
     </h1>
       <hr>
 
      
     
         @foreach($messages as  $message)
+
+               {{--   受信したメッセージ  --}}
+               @if($message->receive == \Illuminate\Support\Facades\Auth::id())
+               <div class="flex items-start justify-start">
+                   <div class="receive mr-2 bg-gray-300 mx-1 my-1 px-1 rounded-lg" style="text-align: left">
+                       <p >{{$message->message}}</p>
+                    
+                   </div>
+                   </div>
+                   {{-- <p class="text-xs ">{{ $message->where('receive',$message->receive)->name }}</p> --}}
+               @endif
 
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
@@ -35,16 +46,7 @@
               </div>
             @endif
  
-            {{--   受信したメッセージ  --}}
-            @if($message->receive == \Illuminate\Support\Facades\Auth::id())
-            <div class="flex items-start justify-start">
-                <div class="receive mr-2 bg-gray-300 mx-1 my-1 px-1 rounded-lg" style="text-align: left">
-                    <p >{{$message->message}}</p>
-                    
-                </div>
-                </div>
-                <p class="text-xs ">{{ $message->user->name }}</p>
-            @endif
+     
         @endforeach
         {{-- @endif --}}
     </div>

@@ -19,17 +19,20 @@
         </thead>
         <tbody>
         @foreach($users as $key => $user)
+    
         <tr>
             <th>{{$loop->iteration}}</th>
             <td>{{$user->name}}</td>
                      <td>
-                <a href="{{ route('chats.users', $user->id) }}"><button type="button" class="btn btn-primary">Chat</button></a> 
+                <a href="{{ route('chats.received', ['receive' => Auth::user()->id ,'itemId' => $item->user->id]) }}">
+                    <button type="button" class="btn btn-primary">Chat</button></a> 
                
                 <input type="hidden" name="status">
                 <button type="submit"> Chat</button>
-             {{ $user->messages->count()   }} </td>
+             {{ $user->messages->where('receive',Auth::user()->id)->where('status',0)->count()   }} </td>
           
            
+     
         @endforeach
         </tbody>
     </table>

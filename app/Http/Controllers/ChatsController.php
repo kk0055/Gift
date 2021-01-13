@@ -22,18 +22,21 @@ class ChatsController extends Controller
     // 使わない可能性あり
     public function index(User $user)
     {
-        $items =  Item::all();
-          
+       
+        $user = auth()->user();
+        $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20); 
         $messages = Message::where('status',0)->where('send',$user->id)->get();
-
+       
         // dd($messages);
         // ログイン者以外のユーザを取得する
-        $users = User::where('id' ,'<>' , $user->id)->with('messages')->get();
+        $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
+        // dd($items );
         return view('chats.chat_user_select' , [
             'users' => $users,
-            'items' => $items,
-            'messages' =>$messages
+            'messages' =>$messages,
+            'items' => $items
+          
         ]);
     }
  
@@ -52,10 +55,12 @@ class ChatsController extends Controller
  
     public function sendChat(Request $request,  $receive ,$itemId )
     {
-        
+         //$receive == item->user-id
+
+        // dd($receive);
         // チャットの画面
         $loginId = Auth::id();
- 
+      
         $param = [
           'send' => $loginId,
           'receive' => $receive,
@@ -75,9 +80,40 @@ class ChatsController extends Controller
         $item = Item::findOrFail($itemId);
         // dd($item );
 
-        return view('chats.index' , compact('param' , 'messages','user','item'));
+        return view('chats.sendChat' , compact('param' , 'messages','user','item'));
     }
  
+     /**
+     * AUthユーザーが受け取ったチャットの画面
+     */
+    public function receivedChat(Request $request,  $receive, $itemId )
+    {
+        //$receive == ログインしてるユーザーになってる
+        //itemId ==  item->user-id
+        dd($itemId);
+            // チャットの画面
+            $loginId = Auth::id();
+            $param = [
+              'send' => $loginId,
+              'receive' => $receive,
+            ];
+     
+            // 送信 / 受信のメッセージを取得する
+            $query = Message::where('send' , $loginId)->where('receive' , $receive);
+            $query->orWhere(function($query) use($loginId , $receive){
+                $query->where('send' , $receive);
+                $query->where('receive' , $loginId);
+     
+            });
+    
+            $messages = $query->get();
+    
+            $user = User::where('id', $param['receive'])->get();
+            $item = Item::findOrFail($itemId);
+            // dd($item );
+    
+            return view('chats.receivedChat' , compact('param' , 'messages','user',' item'));
+    }
     /**
      * メッセージの保存をする
      */
