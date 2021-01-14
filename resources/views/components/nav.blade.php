@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
   @auth
- <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
 
- <div class="text-2xl  text-black ml-3 my-2" > {{Auth::user()->name  }}
+  
+    @if (url()->current() !== url('/'))
+      <a class="nav-link " href="{{ route('main') }}"> <span class=""><i class="fas fa-home-lg-alt text-black"></i></span></a>     
+      @endif
+     
+  
+ <div class="text-2xl  text-black ml-3 my-2" >  <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
   <a href="{{ route('chat.index',[Auth::user()->id]) }}"><i class="far fa-comment-dots"></i></a>
 </div>
   @endauth
