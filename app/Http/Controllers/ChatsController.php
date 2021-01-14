@@ -113,9 +113,10 @@ class ChatsController extends Controller
             'send' => $request->input('send'),
             'receive' => $request->input('receive'),
             'message' => $request->input('message'),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            
         ];
- 
+    
  
         // メッセージデータ保存
         try{

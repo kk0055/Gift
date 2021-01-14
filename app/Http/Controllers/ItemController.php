@@ -25,13 +25,22 @@ class ItemController extends Controller
      */
     public function index(User $user )
     {
-       
+        $users = User::pluck('id');
+
+       foreach ($users as $user) {
+           $tosend = $user;
+        }
+        $send = Message::where('send',$tosend)->get();
+
+        dd($send);
+
         $user = auth()->user();
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
 
         return view('main', [
             'user' => $user,
-            'items' => $items
+            'items' => $items,
+            'send' => $send
         ]);
         // return ItemResource::collection($items);
     }
