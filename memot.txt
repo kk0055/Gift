@@ -10,6 +10,35 @@ $item->idが欲しい
 
 messageとitemでリレーションが必要？
 
+**************************************/
+ <a href="{{ route('chats.users',['receive' => $item->user->id ,'itemId'=> $item->id ] ) }}" 
+
+http://127.0.0.1:8000/chats/1/send/3
+Login Brad  taylor さんへ Taylor1 について
+表示される
+
+
+欲しい
+http://127.0.0.1:8000/chats/2/send/2
+Login Brad brad さんへ Brad1 について
+表示されない
+http://127.0.0.1:8000/chats/1/send/2 表示される OK
+
+
+http://127.0.0.1:8000/chats/1/send/3    
+Login Taylor　taylor さんへ Taylor1 について
+表示されない
+→http://127.0.0.1:8000/chats/2/send/3  表示される OK
+
+
+欲しい
+http://127.0.0.1:8000/chats/2/send/2
+Login Taylor brad さんへ Brad1 について
+表示される
+
+
+確認ボタンだと何も表示されない。自分宛てのメッセージが見れない
+自分でないuserIdだと表示される
 **********************************************/
 2021/1/13
 バインディングでずっと詰まってた。
