@@ -41,7 +41,7 @@
          <div class="flex items-end justify-end">
                 <div class="send mr-2 bg-green-300 mx-1 my-1  px-1 rounded-lg" style="text-align: right">
                     <p>{{$message->message}}</p>
-                    {{-- {{ $message->user->name }} --}}
+                    {{ $message->user->name }}
                 </div>
               </div>
             @endif
