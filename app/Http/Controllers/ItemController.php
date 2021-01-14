@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Message;
 use App\Http\Resources\Item as ItemResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,11 +25,10 @@ class ItemController extends Controller
      */
     public function index(User $user )
     {
-      
+       
         $user = auth()->user();
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
 
-       
         return view('main', [
             'user' => $user,
             'items' => $items

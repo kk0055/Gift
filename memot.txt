@@ -5,6 +5,11 @@ URLが同じなら同じ画面が見れる
 これにメッセージ管理画面からアクセスしたい。
 <a href="{{ route('chats.users',['receive' => $item->user->id ,'itemId'=> $item->id ] ) }}" 
 
+receiveは受信だからauth::user()->id
+$item->idが欲しい
+
+messageとitemでリレーションが必要？
+
 **********************************************/
 2021/1/13
 バインディングでずっと詰まってた。

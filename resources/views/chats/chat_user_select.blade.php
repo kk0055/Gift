@@ -30,7 +30,7 @@
             {{-- @endif --}}
            
                      <td>
-                <a href="{{ route('chats.users', ['receive' => $user->id ,'itemId' => $user->id]) }}">
+                <a href="{{ route('chats.users', ['receive' => Auth::user()->id ,'itemId' => $user->id]) }}">
                       {{-- <a href="{{ route('chats.users',['receive' => $item->user->id ,'itemId'=> $item->id ] ) }}"  --}}
                     <button type="button" class="btn btn-primary">Chat</button></a> 
                

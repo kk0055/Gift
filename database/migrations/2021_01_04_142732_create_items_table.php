@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->string('image')->nullable();
+            $table->string('image2')->nullable();
             $table->timestamps();
         });
     }
