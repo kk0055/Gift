@@ -21,7 +21,7 @@
               <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" >
             </div>
             @error('title')
-            <div class="text-red-500 mt-2 text-sm">
+            <div class="text-red-500 mb-2 text-sm">
               {{ $message }}
             </div>
             @enderror
@@ -29,17 +29,32 @@
            
 
             <div class="col-span-6 mt-3 sm:col-span-6 lg:">
-              <label for="body" class="block text-sm font-medium text-gray-700">詳細</label>
+              <label for="body" class="block text-sm font-medium text-gray-700 ">詳細</label>
               <textarea type="text" name="body" id="body" class=" w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder=" 詳細をご記入ください"></textarea>
             </div>
             @error('body')
-            <div class="text-red-500 mt-2 text-sm">
+            <div class="text-red-500 mb-2 text-sm">
               {{ $message }}
             </div>
             @enderror 
             
+           
+              <label>カテゴリー</label>
+              <select class="form-control" name="category">
+                <option value="" selected>-----------------</option>
+                  @foreach ($category_list as $category)
+                    
+                      <option value="{{ $category->id }}" name="category">{{ $category->name }}</option>
+                  @endforeach
+              </select>
+       
+          @error('category')
+          <div class="text-red-500 mb-2 text-sm">
+            {{ $message }}
+          </div>
+          @enderror 
             {{-- image --}}
-            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+            <div class="col-span-6 sm:col-span-6 lg:col-span-2 mt-3">
               <label for="image" class="block text-sm font-medium text-gray-700"></label>
               <input type="file" name="image" id="filename" class="focus:outline-none " >
             </div>

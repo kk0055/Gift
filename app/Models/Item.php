@@ -14,6 +14,7 @@ class Item extends Model
         'body',
         'image',
         'image2',
+        'category_id'
     ];
 
     public function user()

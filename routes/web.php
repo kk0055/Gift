@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\UserItemController;
+use App\Http\Controllers\CategoryController;
 
 
 
@@ -50,3 +51,9 @@ Route::get('/login/{provider}/callback',
 
 
 Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('users.items');
+
+
+Route::get('category', [CategoryController::class, 'category'])->name('admin_category');
+Route::post('category', [CategoryController::class, 'store'])->name('create_category');
+Route::get('category/edit', [CategoryController::class, 'editCategory'])->name('admin_category_edit');
+Route::get('category/delete', [CategoryController::class, 'deleteCategory'])->name('admin_category_delete');

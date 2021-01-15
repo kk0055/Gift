@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Message;
 use App\Http\Resources\Item as ItemResource;
 use Illuminate\Support\Facades\Auth;
@@ -35,13 +36,13 @@ class ItemController extends Controller
 
         // dd($receive);
        
-
+        $category_list = Category::all();
         $items = Item::orderBy('created_at','desc')->with(['user','messages'])->paginate(20);
         // dump($items);
         return view('main', [
             'user' => $user,
             'items' => $items,
-       
+            'category_list' =>$category_list
         ]);
         // return ItemResource::collection($items);
     }
@@ -67,11 +68,13 @@ class ItemController extends Controller
     
         $this->validate($request, [
            'title' => 'required',
-           'body' => 'required'
+           'body' => 'required',
+           'category' => 'required'
         ],
            [
                   'title.required' => 'タイトルは必須項目です。',
                   'body.required'  => '詳細は必須項目です。',
+                  'category.required'  => 'カテゴリーは必須項目です。',
                 
            ]);
         
@@ -99,6 +102,7 @@ class ItemController extends Controller
         $request->user()->items()->create([
             'title' => $request->title,
             'body' => $request->body,
+            'category_id' => $request->category,
             'image' =>  $fileNameToStore,
             'image2' =>  $fileNameToStore2,
         ]);
