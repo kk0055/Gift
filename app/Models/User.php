@@ -51,10 +51,7 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function getItems()
-    {
-        return $this->find(1)->items()->get();
-    }
+   
 
    
   

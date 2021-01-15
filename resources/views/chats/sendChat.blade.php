@@ -71,12 +71,13 @@
         ></path>
       </svg></button>
     
+   
     </form>
- 
     <input type="hidden" name="send" value="{{$param['send']}}">
     <input type="hidden" name="receive" value="{{$param['receive']}}">
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
- 
+    <input type="hidden" name="item_id" value="{{$item->id}}">
+
 </div>
 </div>
 @endsection

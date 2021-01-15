@@ -18,9 +18,7 @@
     <div class="justify-center col-start-1 col-end-7 ">
   
       <div class="max-w-3xl  bg-white rounded-lg mx-auto my-2 p-2">
-            
-       
-       
+    
         <a class="text-2xl mb-2 text-black" href="{{ route('users.items',$item->user->id) }}"> {{$item->user->name }}</a>
         <p class="mt-2">{{ $item->title }}</p>
         <hr>

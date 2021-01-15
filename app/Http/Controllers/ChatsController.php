@@ -31,7 +31,7 @@ class ChatsController extends Controller
         // ログイン者以外のユーザを取得する
         $users = User::where('id' ,'<>' , $user->id)->get();
         // チャットユーザ選択画面を表示
-        // dd($users );
+        // dd($messages );
         return view('chats.chat_user_select' , [
             'users' => $users,
             'messages' =>$messages,
@@ -63,7 +63,7 @@ class ChatsController extends Controller
         });
 
         $messages = $query->get();
-
+    //   dd($messages );
         $user = User::where('id', $param['receive'])->get();
         $item = Item::findOrFail($itemId);
         // dd($item );
@@ -71,7 +71,48 @@ class ChatsController extends Controller
         return view('chats.sendChat' , compact('param' , 'messages','user','item'));
     }
  
-     /**
+
+    /**
+     * メッセージの保存をする
+     */
+    public function store(Request $request)
+    {
+        // dd($request);  
+        // リクエストパラメータ取得
+        $insertParam = [
+            'send' => $request->input('send'),
+            'receive' => $request->input('receive'),
+            'message' => $request->input('message'),
+            'user_id' => Auth::user()->id,
+            'item_id' => $request->input('item_id')
+        ];
+
+        
+       
+ 
+        // メッセージデータ保存
+        try{
+            Message::insert($insertParam);
+        }catch (\Exception $e){
+            return false;
+          
+        }
+ 
+ 
+        // イベント発火
+        event(new ChatMessagereceived($request->all()));
+ 
+        // メール送信
+        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
+        // $to = $mailSendUser->email;
+        // Mail::to($to)->send(new ChatReceived());
+ 
+
+        return true;
+ 
+    }
+
+         /**
      * AUthユーザーが受け取ったチャットの画面
      */
     public function receivedChat(Request $request,  $receive, $itemId )
@@ -98,46 +139,9 @@ class ChatsController extends Controller
             // dd($messages);
             $user = User::where('id', $param['send'])->get();
             $item = Item::findOrFail($itemId);
-            // dd($item );
+            dd($item );
     
             return view('chats.receivedChat' , compact('param' , 'messages','user','item','loginId'));
     }
-    /**
-     * メッセージの保存をする
-     */
-    public function store(Request $request)
-    {
- 
-        // リクエストパラメータ取得
-        $insertParam = [
-            'send' => $request->input('send'),
-            'receive' => $request->input('receive'),
-            'message' => $request->input('message'),
-            'user_id' => Auth::user()->id,
-            
-        ];
-    
- 
-        // メッセージデータ保存
-        try{
-            Message::insert($insertParam);
-        }catch (\Exception $e){
-            return false;
-          
-        }
- 
- 
-        // イベント発火
-        event(new ChatMessagereceived($request->all()));
- 
-        // メール送信
-        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
-        // $to = $mailSendUser->email;
-        // Mail::to($to)->send(new ChatReceived());
- 
-        return true;
- 
-    }
-
 
 }

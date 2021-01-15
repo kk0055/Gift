@@ -126,6 +126,7 @@
                      message : $('textarea[name="message"]').val(),
                      send : $('input[name="send"]').val(),
                      receive : $('input[name="receive"]').val(),
+                     item_id : $('input[name="item_id"]').val(),
                  }
              }).done(function(result){
                  $('textarea[name="message"]').val('');
