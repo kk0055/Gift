@@ -27,8 +27,8 @@ class ItemFactory extends Factory
         // factory(Item::class,30)->create();
         return [
             'user_id' => User::factory(),
-            'title' => Str::random(10),
-            'body' => Str::random(10),
+            'title' => Str::random(5),
+            'body' => Str::random(5),
         ];
     }
 }

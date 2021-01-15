@@ -31,7 +31,7 @@ class ItemController extends Controller
 
         $user = auth()->user();
 
-        $receive = Message::where('receive',$user->id)->get();
+        
 
         // dd($receive);
        

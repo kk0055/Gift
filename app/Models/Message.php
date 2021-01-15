@@ -10,7 +10,7 @@ class Message extends Model
     use HasFactory;
 
     public $timestamps = true;
-    protected $fillable = ['message','user_id','status','item_id'];
+    protected $fillable = ['message','user_id','is_read','item_id','send','receive'];
  
     public function user()
     {

@@ -23,7 +23,7 @@
 
                       <div class="">
                         <div class="text-sm font-bold text-gray-700 tracking-wide">ニックネーム</div>
-                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="" >
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="taylor" >
                     </div>
                     @error('name')
                     <span class="text-red-500 mt-2 text-sm" role="alert">
@@ -33,7 +33,7 @@
 
                     <div class="mt-2">
                         <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
-                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="" >
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="taylor@test.com" >
                     </div>
                     @error('email')
                     <span class="text-red-500 mt-2 text-sm" role="alert">

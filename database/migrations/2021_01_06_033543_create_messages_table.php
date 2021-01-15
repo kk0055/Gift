@@ -16,8 +16,8 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->bigInteger('from')->comment('送信者');
-            $table->bigInteger('to')->comment('受信者');
+            $table->bigInteger('send')->comment('送信者');
+            $table->bigInteger('receive')->comment('受信者');
             $table->text('message');
             $table->tinyInteger('is_read');
           
