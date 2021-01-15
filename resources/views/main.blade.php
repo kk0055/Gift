@@ -11,7 +11,7 @@
    <div class="flex justify-center mt-2 ">
    @foreach ($category_list as $item)
    <div class="ml-3" > 
-    <a href="">
+    <a href="{{ route('category.show' , $item->id ) }}">
     {{ $item->name }} </a> </div> 
    @endforeach
   </div>

@@ -26,6 +26,20 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function show($category)
+    {
+        // dd($category);
+         
+        // $categories_products = Category::where('id',$category )->get();
+        $categories_products =  Item::where('category_id',$category )->get();
+        // $pruducts = $categories_products->items;
+        // dd($categories_products);
+            //一つのItemを返す
+            return view('category.category',[
+                'categories_products' => $categories_products 
+            ]);
+    }
+
     public function store(Request $request)
     {
     

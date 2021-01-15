@@ -13,7 +13,7 @@ class Category extends Model
     protected $fillable = ['name', 'slug'];
 
 
-    public function posts()
+    public function items()
     {
         // カテゴリは複数のポストを持つ
         return $this->hasMany(Item::class,);

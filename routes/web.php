@@ -54,4 +54,5 @@ Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('u
 //Category
 Route::get('category', [CategoryController::class, 'category'])->name('admin_category');
 Route::post('category', [CategoryController::class, 'store'])->name('create_category');
+Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
