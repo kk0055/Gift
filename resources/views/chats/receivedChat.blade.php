@@ -16,7 +16,7 @@
       <h1 class="text-lg mb-2">
         <a class="no-underline hover:underline text-black" href="{{ route('users.items',[$user[0]->id]) }}">
           {{ $user[0]->name }}</a> さんへ 
-          {{-- {{ $item->title }} について --}}
+          {{ $item->title }} について
        
     </h1>
       <hr>
@@ -25,30 +25,31 @@
     
         @foreach($messages as  $message)
 
-               {{--   受信したメッセージ  --}}
-               @if($message->receive == \Illuminate\Support\Facades\Auth::id())
-               <div class="flex items-start justify-start">
-                   <div class="receive mr-2 bg-gray-300 mx-1 my-1 px-1 rounded-lg" style="text-align: left">
-                       <p >{{$message->message}}</p>
-                    
-                   </div>
-                   </div>
-                   {{-- <p class="text-xs ">{{ $message->where('receive',$message->receive)->name }}</p> --}}
-               @endif
-
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
          <div class="flex items-end justify-end">
                 <div class="send mr-2 bg-green-300 mx-1 my-1  px-1 rounded-lg" style="text-align: right">
                     <p>{{$message->message}}</p>
-                    {{ $message->user->name }}
                 </div>
+                
               </div>
+              <p class="text-xs " style="text-align: right">{{ $message->user->name }}</p>
             @endif
  
-     
+            {{--   受信したメッセージ  --}}
+            @if($message->receive == \Illuminate\Support\Facades\Auth::id())
+            <div class="flex items-start justify-start">
+                <div class="receive mr-2 bg-gray-300 mx-1 my-1 px-1 rounded-lg" style="text-align: left">
+                    <p >{{$message->message}}</p>
+                    
+                </div>
+                </div>
+                <p class="text-xs ">{{ $message->user->name }}</p>
+            @endif
+
+          
         @endforeach
-        {{-- @endif --}}
+       
     </div>
  
     <form  >
@@ -72,12 +73,13 @@
         ></path>
       </svg></button>
     
+   
     </form>
- 
     <input type="hidden" name="send" value="{{$param['send']}}">
     <input type="hidden" name="receive" value="{{$param['receive']}}">
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
- 
+    <input type="hidden" name="item_id" value="{{$item->id}}">
+
 </div>
 </div>
 @endsection
@@ -85,5 +87,3 @@
  
  
 {{-- Chatts --}}
-
-

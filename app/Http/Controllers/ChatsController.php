@@ -24,6 +24,9 @@ class ChatsController extends Controller
     {
     //    dd($user);
         // $user = auth()->user();
+
+  
+
         $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20); 
         $messages = Message::where('receive',$user->id)->get();
        
@@ -48,7 +51,7 @@ class ChatsController extends Controller
         // dd($receive);
         // チャットの画面
         $loginId = Auth::id();
-      
+        // dd($receive);
         $param = [
           'send' => $loginId,
           'receive' => $receive,
@@ -87,8 +90,6 @@ class ChatsController extends Controller
             'item_id' => $request->input('item_id')
         ];
 
-        
-       
  
         // メッセージデータ保存
         try{
@@ -128,7 +129,7 @@ class ChatsController extends Controller
             ];
      
             // 送信 / 受信のメッセージを取得する
-            $query = Message::where('send' , $loginId)->where('receive' , $itemId);
+            $query = Message::where('send' , $receive)->where('receive' , $loginId);
             $query->orWhere(function($query) use($loginId , $itemId){
                 $query->where('send' , $itemId);
                 $query->where('receive' , $loginId);
@@ -139,7 +140,7 @@ class ChatsController extends Controller
             // dd($messages);
             $user = User::where('id', $param['send'])->get();
             $item = Item::findOrFail($itemId);
-            dd($item );
+            // dd($item );
     
             return view('chats.receivedChat' , compact('param' , 'messages','user','item','loginId'));
     }

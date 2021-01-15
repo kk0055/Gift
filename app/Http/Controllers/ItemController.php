@@ -25,14 +25,19 @@ class ItemController extends Controller
      */
     public function index(User $user )
     {
-        $users = User::pluck('id');
-
-
+       
+        // Message receiveが欲しい
         // dd($send);
 
         $user = auth()->user();
-        $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20);
 
+        $receive = Message::where('receive',$user->id)->get();
+
+        // dd($receive);
+       
+
+        $items = Item::orderBy('created_at','desc')->with(['user','messages'])->paginate(20);
+        // dump($items);
         return view('main', [
             'user' => $user,
             'items' => $items,

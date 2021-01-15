@@ -46,8 +46,10 @@
                 </div>
                 <p class="text-xs ">{{ $message->user->name }}</p>
             @endif
+
+          
         @endforeach
-        {{-- @endif --}}
+       
     </div>
  
     <form  >
