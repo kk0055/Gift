@@ -29,6 +29,7 @@ class ItemFactory extends Factory
             'user_id' => User::factory(),
             'title' => Str::random(5),
             'body' => Str::random(5),
+            'category_id' => 2,
         ];
     }
 }

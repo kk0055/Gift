@@ -25,5 +25,11 @@ class Item extends Model
     {
        return $this->hasMany(Message::class,);
     }
+
+    public function category()
+    {
+        // 投稿は1つのカテゴリーに属する
+        return $this->belongsTo(Category::class);
+    }
    
 }
