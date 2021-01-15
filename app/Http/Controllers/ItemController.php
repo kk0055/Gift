@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Message;
 use App\Http\Resources\Item as ItemResource;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SaveImagesServices;
 
 class ItemController extends Controller
 {
@@ -31,9 +32,6 @@ class ItemController extends Controller
         // dd($send);
 
         $user = auth()->user();
-
-        
-
         // dd($receive);
        
         $category_list = Category::all();
@@ -45,16 +43,6 @@ class ItemController extends Controller
             'category_list' =>$category_list
         ]);
         // return ItemResource::collection($items);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -72,32 +60,26 @@ class ItemController extends Controller
            'category' => 'required'
         ],
            [
-                  'title.required' => 'タイトルは必須項目です。',
-                  'body.required'  => '詳細は必須項目です。',
-                  'category.required'  => 'カテゴリーは必須項目です。',
+            'title.required' => 'タイトルは必須項目です。',
+            'body.required'  => '詳細は必須項目です。',
+            'category.required'  => 'カテゴリーは必須項目です。',
                 
            ]);
         
 
-        if($request->hasFile('image')){
-        $filenameWithExt = $request->file('image')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $fileNameToStore = $filename . '_'. time(). '.'.$extension;
-        $path = $request->file('image')->storeAs('public/image',  $fileNameToStore);
-        }else {
-        $fileNameToStore = null;
-        }
+           if (!empty($request->image)){
+            $image = SaveImagesServices::saveImages($request, 'image');
+           $fileNameToStore  = $image;
+          }  else {
+          $fileNameToStore = null;
+          }
 
-        if($request->hasFile('image2')){
-            $filenameWithExt = $request->file('image2')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt ,PATHINFO_FILENAME);
-            $extension = $request->file('image2')->getClientOriginalExtension();
-            $fileNameToStore2 = $filename . '_'. time(). '.'.$extension;
-            $path = $request->file('image2')->storeAs('public/image',  $fileNameToStore2);
-            }else {
-            $fileNameToStore2 = null;
-            }
+          if (!empty($request->image2)){
+             $image2 = SaveImagesServices::saveImages($request, 'image2');
+            $fileNameToStore2  = $image2;
+           }  else {
+           $fileNameToStore2 = null;
+           } 
 
         $request->user()->items()->create([
             'title' => $request->title,
@@ -125,6 +107,8 @@ class ItemController extends Controller
             'item' =>$item
         ]);
     }
+
+    
         public function edit($itemId)
         {
             $item = Item::findOrFail($itemId);

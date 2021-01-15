@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="m-auto px-4 py-8 max-w-xl">
+<div class="m-auto px-4 py-8 max-w-xl ">
   @include('components.alert')
   <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
     @if( null !== $item->image || $item->image2  ) 

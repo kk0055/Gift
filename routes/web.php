@@ -35,7 +35,6 @@ Route::get('/logout', [LoginController::class, 'logOut']);
 //Chats
 Route::get('chats/{user}/select/', [ChatsController::class, 'index'])->name('chat.index');
 Route::get('/chats/{receive}/send/{itemId}', [ChatsController::class, 'sendChat'])->name('chats.users');
-
 Route::get('/chats/{receive}/received/{itemId}', [ChatsController::class, 'receivedChat'])->name('chats.received');
 
 // Route::post('/chats/{id}/send', [ChatsController::class, 'status'])->name('chats.users');
@@ -48,12 +47,11 @@ Route::get('/login/{provider}',
 Route::get('/login/{provider}/callback',
 [LoginController::class, 'handleProviderCallback']);
 
-
-
+//User Item
 Route::get('/users/{user}/items', [UserItemController::class, 'index'])->name('users.items');
 
 
+//Category
 Route::get('category', [CategoryController::class, 'category'])->name('admin_category');
 Route::post('category', [CategoryController::class, 'store'])->name('create_category');
-Route::get('category/edit', [CategoryController::class, 'editCategory'])->name('admin_category_edit');
-Route::get('category/delete', [CategoryController::class, 'deleteCategory'])->name('admin_category_delete');
+

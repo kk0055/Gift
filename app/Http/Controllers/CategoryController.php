@@ -44,36 +44,5 @@ class CategoryController extends Controller
        return back()->with('info','作成が完了しました。');
     }
 
-        /**
-     * カテゴリ編集・新規作成API
-     *
-     * @param AdminBlogRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function editCategory(Request $request)
-    {
-        $input = $request->input();
-        $category_id = $request->input('category_id');
 
-        $category = $this->category->updateOrCreate(compact('category_id'), $input);
-
-        // APIなので json のレスポンスを返す
-        return response()->json($category);
-    }
-
-    
-    /**
-     * カテゴリ削除API
-     *
-     * @param AdminBlogRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function deleteCategory(Request $request)
-    {
-        $category_id = $request->input('category_id');
-        $this->category->destroy($category_id);
-
-        // APIなので json のレスポンスを返す
-        return response()->json();
-    }
 }

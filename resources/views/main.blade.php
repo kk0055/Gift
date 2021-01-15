@@ -8,11 +8,18 @@
     {{-- Head --}}
     @include('head')
    {{--End Head --}}
+   <div class="flex justify-center mt-2 ">
+   @foreach ($category_list as $item)
+   <div class="ml-3" > 
+    <a href="">
+    {{ $item->name }} </a> </div> 
+   @endforeach
+  </div>
     {{-- Form --}}
     @include('saveItem')
    {{--End Form --}}
 
- 
+
     
     @foreach ($items as $item)
     <div class="justify-center col-start-1 col-end-7 ">
