@@ -20,7 +20,6 @@ class CreateMessagesTable extends Migration
             $table->bigInteger('receive')->comment('受信者');
             $table->text('message');
             $table->tinyInteger('is_read')->default(0);
-          
             $table->timestamps();
            
         });
