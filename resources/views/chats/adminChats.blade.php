@@ -7,13 +7,14 @@
             <div class="col-md-4">
                 <div class="user-wrapper">
                     <ul class="users">
+                    
                       
                         @foreach($users as $user)
-                        {{-- @if(!empty($user->unread )) --}}
+                    
                             <li class="user" id="{{ $user->id }}">
                                 {{--will show unread count notification--}}
-                                @if($user->unread)
-                                    <span class="pending">{{ $user->unread }}</span>
+                                @if($user->is_read)
+                                    <span class="pending">{{ count($user->is_read) }}</span>
                                 @endif
 
                                 <div class="media">
@@ -27,9 +28,10 @@
                                     </div>
                                 </div>
                             </li>
-                            {{-- @endif --}}
+                          
                         @endforeach
-                        
+                       
+                       
                     </ul>
                 </div>
             </div>
