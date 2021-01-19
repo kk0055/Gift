@@ -7,7 +7,9 @@
             <div class="col-md-4">
                 <div class="user-wrapper">
                     <ul class="users">
+                      
                         @foreach($users as $user)
+                        {{-- @if(!empty($user->unread )) --}}
                             <li class="user" id="{{ $user->id }}">
                                 {{--will show unread count notification--}}
                                 @if($user->unread)
@@ -21,11 +23,13 @@
 
                                     <div class="media-body">
                                         <p class="name">{{ $user->name }}</p>
-                                        <p class="email">{{ $user->email }}</p>
+                                
                                     </div>
                                 </div>
                             </li>
+                            {{-- @endif --}}
                         @endforeach
+                        
                     </ul>
                 </div>
             </div>

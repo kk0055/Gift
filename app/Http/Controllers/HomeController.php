@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\User;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,14 +30,23 @@ class HomeController extends Controller
     public function index()
     {
         // select all users except logged in user
-        // $users = User::where('id', '!=', Auth::id())->get();
+        
 
         // count how many message are unread from the selected user
-        $users = DB::select("select users.id, users.name, users.email, count(is_read) as unread 
-        from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive = " . Auth::id() . "
-        where users.id != " . Auth::id() . " 
-        group by users.id, users.name,  users.email");
+        
+        // $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
+        // from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive  = " . Auth::id() . "
+        // where users.id != " . Auth::id() . " 
+       
+        // group by users.id, users.name,  users.email
+        // ");
+    //   order by 'messages' desc  and  messages.created_at 
+       // ログイン者以外のユーザを取得する
+    //    $users = User::where('id' ,'<>' , Auth::user()->id)->with('messages')->get();
 
+     
+        $users = User::where('id' ,'!=', Auth::id())->with('messages')->orderBy('created_at','desc')->get();
+        // dd($users );
         return view('chats.adminChats', ['users' => $users]);
     }
 
@@ -54,22 +64,23 @@ class HomeController extends Controller
             $query->where('send', $my_id)->where('receive', $user_id);
         })->get();
 
+        // dd($messages);
         return view('chats.mainChats', ['messages' => $messages]);
     }
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $request )
     {
         $send = Auth::id();
         $receive = $request->receiver_id;
         $message = $request->message;
-      
-
+        
         $data = new Message();
+       
         $data->send = $send;
         $data->receive = $receive;
         $data->message = $message;
         $data->is_read = 0; // message will be unread when sending message
-        $data->item_id = 0;
+        $data->item_id = $request->input('item_id');
         $data->user_id = Auth::user()->id;
         $data->save();
 

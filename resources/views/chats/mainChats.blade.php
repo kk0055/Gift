@@ -15,5 +15,5 @@
 <div class="input-text">
   <input type="text" name="message" class="submit">
 
-  {{-- <input type="hidden" name="item_id" value="{{$item->id}}"> --}}
+  <input type="hidden" name="item_id" value="{{$message->item_id}}">
 </div>
