@@ -13,8 +13,8 @@
                     
                             <li class="user" id="{{ $user->id }}">
                                 {{--will show unread count notification--}}
-                                @if($user->is_read)
-                                    <span class="pending">{{ count($user->is_read) }}</span>
+                                @if($user->unread)
+                                    <span class="pending">{{ $user->unread }}</span>
                                 @endif
 
                                 <div class="media">

@@ -34,6 +34,7 @@ class AdminChatController extends Controller
 
         // count how many message are unread from the selected user
         
+        //正しいやつ
         // $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
         // from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive  = " . Auth::id() . "
         // where users.id != " . Auth::id() . " 
@@ -41,13 +42,21 @@ class AdminChatController extends Controller
         // order by messages.is_read desc
         // ");
 
-        $users = User::whereExists(function($q){
+        $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
+        from users LEFT  JOIN  messages ON messages.user_id = users.id 
+        where messages.user_id = users.id AND  users.id != " . Auth::id() . " 
+        group by users.id, users.name,  users.email
+        order by messages.is_read desc
+        ");
 
-            $q->from('messages')
-                ->whereRaw('messages.user_id = users.id')
-                ->where('users.id' ,'!=', Auth::id());
+          //正しいやつ
+        // $users = User::whereExists(function($q){
+
+        //     $q->from('messages')
+        //         ->whereRaw('messages.user_id = users.id')
+        //         ->where('users.id' ,'!=', Auth::id());
                 
-        })->get();
+        // })->get();
 
     
         // $messages = Message::get();
@@ -57,7 +66,7 @@ class AdminChatController extends Controller
 
      
         // $users = User::where('id' ,'!=', Auth::id())->with('messages')->orderBy('created_at','desc')->get();
-        dd($users );
+        // dd($users );
         return view('chats.adminChats', [
             'users' => $users,
             // 'messages' => $messages
