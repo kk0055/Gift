@@ -239,15 +239,22 @@
                 });
             });
             $(document).on('keyup', '.input-text input', function (e) {
-                var message = $(this).val();
+                var messages = $(this).val();
+                console.log($('input[name="message"]').val())
                 // check if enter key is pressed and message is not null also receiver is selected
-                if (e.keyCode == 13 && message != '' && receiver_id != '') {
+                if (e.keyCode == 13 && messages != '' && receiver_id != '') {
                     $(this).val(''); // while pressed enter text box will be empty
-                    var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                    // var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                    
                     $.ajax({
                         type: "post",
                         url: "message", // need to create this post route
-                        data: datastr,
+                        data:  {
+                        message : messages,
+                        send : $('input[name="send"]').val(),
+                        receive :   receiver_id,
+                        item_id : $('input[name="item_id"]').val(),
+                         },
                         cache: false,
                         success: function (data) {
                         },

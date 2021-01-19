@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Pusher\Pusher;
 
-class HomeController extends Controller
+class AdminChatController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -34,18 +34,18 @@ class HomeController extends Controller
 
         // count how many message are unread from the selected user
         
-        // $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
-        // from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive  = " . Auth::id() . "
-        // where users.id != " . Auth::id() . " 
-       
-        // group by users.id, users.name,  users.email
-        // ");
+        $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
+        from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive  = " . Auth::id() . "
+        where users.id != " . Auth::id() . " 
+        group by users.id, users.name,  users.email
+        order by messages.is_read desc
+        ");
     //   order by 'messages' desc  and  messages.created_at 
        // ログイン者以外のユーザを取得する
     //    $users = User::where('id' ,'<>' , Auth::user()->id)->with('messages')->get();
 
      
-        $users = User::where('id' ,'!=', Auth::id())->with('messages')->orderBy('created_at','desc')->get();
+        // $users = User::where('id' ,'!=', Auth::id())->with('messages')->orderBy('created_at','desc')->get();
         // dd($users );
         return view('chats.adminChats', ['users' => $users]);
     }
@@ -70,17 +70,19 @@ class HomeController extends Controller
 
     public function sendMessage(Request $request )
     {
+       
         $send = Auth::id();
-        $receive = $request->receiver_id;
-        $message = $request->message;
-        
+        $receive = $request->input('receive');
+        $message = $request->input('message');
+        $item = $request->item_id;
+       
         $data = new Message();
        
         $data->send = $send;
         $data->receive = $receive;
         $data->message = $message;
         $data->is_read = 0; // message will be unread when sending message
-        $data->item_id = $request->input('item_id');
+        $data->item_id = $item;
         $data->user_id = Auth::user()->id;
         $data->save();
 
