@@ -42,8 +42,8 @@ class AdminChatController extends Controller
         // order by messages.is_read desc
         // ");
 
-        $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
-        from users LEFT  JOIN  messages ON messages.user_id = users.id 
+        $users = DB::select("select users.id, users.name, users.email,  count( case is_read when '0' then 1 else null end ) as unread 
+        from users LEFT  JOIN  messages ON users.id = messages.send  and messages.receive  = " . Auth::id() . "
         where messages.user_id = users.id AND  users.id != " . Auth::id() . " 
         group by users.id, users.name,  users.email
         order by messages.is_read desc
@@ -69,7 +69,7 @@ class AdminChatController extends Controller
         // dd($users );
         return view('chats.adminChats', [
             'users' => $users,
-            // 'messages' => $messages
+         
             ]);
     }
 
