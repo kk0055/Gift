@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\UserItemController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -56,3 +57,8 @@ Route::get('category', [CategoryController::class, 'category'])->name('admin_cat
 Route::post('category', [CategoryController::class, 'store'])->name('create_category');
 Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
+
+//Chat
+Route::get('/home', [HomeController::class, 'index'])->name('chat.admin');
+Route::get('/message/{id}', [HomeController::class, 'getMessage'])->name('message');
+Route::post('message',  [HomeController::class, 'sendMessage']);

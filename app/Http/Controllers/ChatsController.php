@@ -93,7 +93,7 @@ class ChatsController extends Controller
  
         // メッセージデータ保存
         try{
-            Message::insert($insertParam);
+            Message::create($insertParam);
         }catch (\Exception $e){
             return false;
           

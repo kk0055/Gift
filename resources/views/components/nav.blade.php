@@ -8,7 +8,7 @@
      
   
  <div class="text-2xl  text-black ml-3 my-2" >  <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
-  <a href="{{ route('chat.index',[Auth::user()->id]) }}"><i class="far fa-comment-dots"></i></a>
+  <a href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a>
 </div>
   @endauth
   <button class="navbar-toggler focus:outline-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +19,9 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item ">
-      @if (url()->current() !== url('/'))
+      {{-- @if (url()->current() !== url('/'))
         <a class="nav-link " href="{{ route('main') }}"> <span class=""><i class="fas fa-home-lg-alt"></i></span></a>     
-        @endif
+        @endif --}}
        
       </li>
       @guest
