@@ -2,6 +2,17 @@
 20201//20
 pusherにデータがsendされてない
 
+間違い
+   $options = array(
+            'cluster' => 'ap2',
+            'useTLS' => true
+        );
+正しい
+   $options = array(
+            'cluster' => 'ap3',
+            'useTLS' => true
+        );
+
 Message receiveが欲しい
 receiveのアドレスに飛べば同じ画面が見れるはず
  $table->integer('category_id');

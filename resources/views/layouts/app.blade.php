@@ -23,147 +23,9 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     {{-- sweetalert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <style>
-
-  /* imgae画面 */  
-.image-container {
-  display: flex;
-  width: 90vh;
-  height: 90vh;
-}
-
-.panel {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
-  cursor: pointer;
-  flex: 0.5;
-  margin: 10px;
-  position: relative;
-  -webkit-transition: all 700ms ease-in;
-}
-
-.panel.active {
-  flex: 5;
-}
-
-
-
-/* チャット画面 */
-        /* width */
-        ::-webkit-scrollbar {
-            width: 7px;
-        }
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #a7a7a7;
-        }
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #929292;
-        }
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-        li {
-            list-style: none;
-        }
-        .user-wrapper, .message-wrapper {
-            border: 1px solid #dddddd;
-            overflow-y: auto;
-        }
-        .user-wrapper {
-            height: 600px;
-        }
-        .user {
-            cursor: pointer;
-            padding: 5px 0;
-            position: relative;
-        }
-        .user:hover {
-            background: #eeeeee;
-        }
-        .user:last-child {
-            margin-bottom: 0;
-        }
-        .pending {
-            position: absolute;
-            left: 13px;
-            top: 9px;
-            background: #b600ff;
-            margin: 0;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            line-height: 18px;
-            padding-left: 5px;
-            color: #ffffff;
-            font-size: 12px;
-        }
-        .media-left {
-            margin: 0 10px;
-        }
-        .media-left img {
-            width: 64px;
-            border-radius: 64px;
-        }
-        .media-body p {
-            margin: 6px 0;
-        }
-        .message-wrapper {
-            padding: 10px;
-            height: 536px;
-            background: #eeeeee;
-        }
-        .messages .message {
-            margin-bottom: 15px;
-        }
-        .messages .message:last-child {
-            margin-bottom: 0;
-        }
-        .received, .sent {
-            width: 45%;
-            padding: 3px 10px;
-            border-radius: 10px;
-        }
-        .received {
-            background: #ffffff;
-        }
-        .sent {
-            background: #3bebff;
-            float: right;
-            text-align: right;
-        }
-        .message p {
-            margin: 5px 0;
-        }
-        .date {
-            color: #777777;
-            font-size: 12px;
-        }
-        .active {
-            background: #eeeeee;
-        }
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 15px 0 0 0;
-            display: inline-block;
-            border-radius: 4px;
-            box-sizing: border-box;
-            outline: none;
-            border: 1px solid #cccccc;
-        }
-        input[type=text]:focus {
-            border: 1px solid #aaaaaa;
-        }
-
 </style>
 </head>
 
@@ -207,12 +69,11 @@
               channel.bind('chat_event', function (data) {
                 // alert(JSON.stringify(data));
                 if (my_id == data.send) {
-                    // appendText = '<div class="flex items-end justify-end"> <div class="send  bg-green-300 mx-1 my-1 p-1 rounded-lg " style="text-align:right"><p>' + data.message + '</p></div></div> ';
+                  
                     $('#' + data.receive).click();
                 } else if (my_id == data.receive) {
                     if (receiver_id == data.send) {
                         
-                        // appendText = '<div class="flex items-end justify-end"> <div class="send  bg-green-300 mx-1 my-1 p-1 rounded-lg " style="text-align:right"><p>' + data.message + '</p></div></div> ';
                         $('#' + data.send).click();
                     } else {
                         // if receiver is not seleted, add notification for that user
