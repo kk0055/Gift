@@ -32,11 +32,13 @@ class CategoryController extends Controller
          
         // $categories_products = Category::where('id',$category )->get();
         $categories_products =  Item::where('category_id',$category )->get();
+        $category = Category::find($category);
         // $pruducts = $categories_products->items;
-        // dd($categories_products);
+        // dd($category);
             //一つのItemを返す
             return view('category.category',[
-                'categories_products' => $categories_products 
+                'categories_products' => $categories_products ,
+                'category' => $category
             ]);
     }
 

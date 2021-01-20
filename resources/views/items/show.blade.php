@@ -5,14 +5,17 @@
 <div class="m-auto px-4 py-8 max-w-xl ">
   @include('components.alert')
   <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
-    @if( null !== $item->image || $item->image2  ) 
+    @if( null !== $item->image ||  null !==$item->image2  ) 
       <div class="image-container">
        <div class="panel active">
-          <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
+          <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full bg-white"  >
        </div>
+       @if ($item->image2  != null)
+           
        <div class="panel">
-        <img src="/storage/image/{{ $item->image2 }}" class="block h-auto w-full"  >
+        <img src="/storage/image/{{ $item->image2 }}" class="block h-auto w-full bg-white"  >
      </div>
+     @endif
         @endif
       </div>
       <div class="px-4 py-2 mt-2 bg-white ">
@@ -50,7 +53,7 @@
         @endif
         @endauth
         {{--End 欲しい Button --}}
-</div>
+  </div>
       </div>
 
 @endsection

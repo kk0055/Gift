@@ -1,60 +1,38 @@
 @extends('layouts.app')
 
+
+
 @section('content')
-
-@foreach ($categories_products as $item) 
-<div class="m-auto px-4 py-8 max-w-xl ">
+    <div class="container mx-auto px-4 pt-16">
+        <div class="popular-movies">
+            <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">{{ $category->name }}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              @foreach ($categories_products as $item) 
+                <div class="mt-8">
+                  <a href="#">
+                    @if ($item->image)
+                      <img src="/storage/image/{{ $item->image }}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
+                      @else
+                      <img class="no-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="hover:opacity-75 transition ease-in-out duration-150">  
+                      @endif
+                  </a>
+                  <div class="mt-2">
+                      <a href="" class="text-lg mt-2 hover:text-gray-300"> {{ $item->user->name }}</a>
+                      <div class="flex items-center text-gray-400 text-sm mt-1">
+                      
+                          <span class="ml-1">{{ $item->title }}</span>
+                          <span class="mx-2">|</span>
+                          <span> {{ $item->body }}</span>
   
-  @include('components.alert')
-  <div class="bg-white overflow-hidden rounded-lg shadow-lg" >
-    @if( null !== $item->image || $item->image2  ) 
-      <div class="image-container">
-       <div class="panel active">
-          <img src="/storage/image/{{ $item->image }}" class="block h-auto w-full"  >
-       </div>
-       <div class="panel">
-        <img src="/storage/image/{{ $item->image2 }}" class="block h-auto w-full"  >
-     </div>
-        @endif
-      </div>
-      <div class="px-4 py-2 mt-2 bg-white ">
-        <p class="">  {{ $item->user->name }}</p>
-          <p class="">  {{ $item->title }}</p>
-          <hr>
-              <p class="">
-                {{ $item->body }}
-              </p>
-      </div>
-        {{-- Delete Button --}}
-        @auth
-        @if ($item->user->id === Auth::user()->id)
-        <div class="flex justify-end ">
-          <form action="{{ route('item.destroy', $item) }}" method="post" class="mr-1">
-            @csrf
-            @method('DELETE')
-            
-            <button type="submit" class="inline-flex mb-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</button>
-          </form>
-          <a  href="{{ route('item.edit',[$item->id]) }}" class="inline-flex mb-2 mr-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">編集</a>
-          @endif
-        
-          {{--End Delete Button --}}
-  
-        {{-- 欲しい Button --}}
-        
-        @if ($item->user->id !== Auth::user()->id)
-          <div class="px-4  bg-white text-right sm:px-6">
-            <a href="{{ route('chats.users',['receive' => $item->user->id ,'itemId'=> $item->id ] ) }}" 
-              type="submit" class="inline-flex justify-center py-2 mt-2 mb-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500">欲しい
-            </a>
-          </div>
-        </div>
-        @endif
-        @endauth
-        {{--End 欲しい Button --}}
-</div>
+                      </div>
+                 
+                  </div>
+              </div>
+                @endforeach
 
-      </div> 
-      @endforeach
-   
+            </div>
+        </div> <!-- end pouplar-movies -->
+
+    
+    </div>
 @endsection

@@ -22,12 +22,7 @@ class ChatsController extends Controller
     // 使わない可能性あり
     public function index(User $user)
     {
-    //    dd($user);
-        // $user = auth()->user();
-
-  
-
-        $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20); 
+           $items = Item::orderBy('created_at','desc')->with(['user'])->paginate(20); 
         $messages = Message::where('receive',$user->id)->get();
        
         
@@ -113,36 +108,5 @@ class ChatsController extends Controller
  
     }
 
-         /**
-     * AUthユーザーが受け取ったチャットの画面
-     */
-    public function receivedChat(Request $request,  $receive, $itemId )
-    {
-        //$receive == ログインしてるユーザーになってる
-        //itemId ==  item->user-id
-        // dd($itemId);
-            // チャットの画面
-            $loginId = Auth::id();
-            $param = [
-              'send' => $loginId,
-              'receive' => $receive,
-            ];
-     
-            // 送信 / 受信のメッセージを取得する
-            $query = Message::where('send' , $receive)->where('receive' , $loginId);
-            $query->orWhere(function($query) use($loginId , $itemId){
-                $query->where('send' , $itemId);
-                $query->where('receive' , $loginId);
-     
-            });
-    
-            $messages = $query->get();
-            // dd($messages);
-            $user = User::where('id', $param['send'])->get();
-            $item = Item::findOrFail($itemId);
-            // dd($item );
-    
-            return view('chats.receivedChat' , compact('param' , 'messages','user','item','loginId'));
-    }
 
 }
