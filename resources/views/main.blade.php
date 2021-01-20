@@ -28,7 +28,7 @@
                       @endif
                   </a>
                   <div class="mt-2">
-                      <a href="" class="text-lg mt-2 "> {{ $item->user->name }}</a>
+                    <span> <a href="" class="text-lg mt-2 "> {{ $item->user->name }}</a></span> 
                       <div class="flex items-start flex-col text-sm mt-1">
                       
                           <span class="">{{ $item->title }}</span>

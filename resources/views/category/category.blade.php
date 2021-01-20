@@ -18,13 +18,13 @@
                   </a>
                   <div class="mt-2">
                       <a href="" class="text-lg mt-2 hover:text-gray-300"> {{ $item->user->name }}</a>
-                      <div class="flex items-center text-gray-400 text-sm mt-1">
+                      <div class="flex items-start flex-col text-sm mt-1">
                       
-                          <span class="ml-1">{{ $item->title }}</span>
-                          <span class="mx-2">|</span>
-                          <span> {{ $item->body }}</span>
-  
-                      </div>
+                        <span class="">{{ $item->title }}</span>
+                       
+                        <span> {{ $item->body }}</span>
+
+                    </div>
                  
                   </div>
               </div>

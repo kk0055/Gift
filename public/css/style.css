@@ -154,6 +154,17 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  
+ 
+}
+span {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis ;
+  white-space: nowrap;
+}
+p {
+  overflow-wrap: break-word;
 }
 header
 {
