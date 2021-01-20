@@ -26,10 +26,232 @@
    {{-- CSS --}}
  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <style>
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+header
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo
+{
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.toggle
+{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: url(https://i.ibb.co/HrfVRcx/menu.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  cursor: pointer;
+}
+.toggle.active
+{
+  background: url(https://i.ibb.co/rt3HybH/close.png);
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  cursor: pointer;
+}
+.showcase
+{
+  position: relative;
+  right: 0;
+  width: 100%;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 2;
+}
+.showcase.active
+{
+  right: 300px;
+}
+
+.showcase img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity:1.2;
+}
+.overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #03a9f4;
+  mix-blend-mode: overlay;
+}
+.text
+{
+  position: relative;
+  z-index: 10;
+}
+
+.text h2
+{
+  font-size: 5em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text h3
+{
+  font-size: 4em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  
+}
+
+/* .text a
+{
+  display: inline-block;
+  font-size: 1em;
+  background: #fff;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: 0.2s;
+  
+}
+.text a:hover
+{
+  letter-spacing: 6px;
+  background: #fff;
+} */
+
+.menu
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu ul
+{
+  position: relative;
+}
+.menu ul li
+{
+  list-style: none;
+}
+.menu ul li a
+{
+  text-decoration: none;
+  font-size: 24px;
+  color: #111;
+}
+.menu ul li a:hover
+{
+  color: gray; 
+}
+
+.hbtn {
+      position: relative;
+      box-sizing: border-box;
+      display: inline-block;
+      overflow: hidden;
+      padding: 8px 20px;
+      margin: 0px 3px 6px;
+      text-align: center;
+      border: 2px solid rgb(255, 255, 255);
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      white-space: nowrap;
+      z-index: 0;
+      font-weight: 500;
+       margin-top: 10px;
+} 
+ 
+
+.hbtn i {
+      padding-right: 8px;
+} 
+ 
+
+.hb-fill-on::before {
+      position: absolute;
+      content: "";
+      background: rgb(255, 255, 255);
+      transition-duration: 0.3s;
+      z-index: -1;
+      inset: 0px auto auto 0px;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+} 
+ 
+
+.hb-fill-on:hover::before {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+} 
+ 
+
+.hb-fill-on:hover {
+      color: rgb(0, 0, 0);
+      background: rgb(255, 255, 255);
+      transition: color 0.3s ease 0s, background 0s ease 0.3s;
+} 
+
+@media (max-width: 991px)
+{
+  .showcase,
+  .showcase header
+  {
+    padding: 40px;
+  }
+  .text h2
+  {
+    font-size: 3em;
+  }
+  .text h3
+  {
+    font-size: 2em;
+  }
+}
+
+
 </style>
 </head>
 
-<body class=" bg-gray-100 ">
+<body class=" bg-gray-200 ">
     <div id="app">
         
       @include('components.nav')
@@ -243,6 +465,13 @@ function removeActiveClasses() {
         panel.classList.remove('active')
     })
 }
+const menuToggle = document.querySelector('.toggle');
+      const showcase = document.querySelector('.showcase');
+
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        showcase.classList.toggle('active');
+      })
         </script>
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>

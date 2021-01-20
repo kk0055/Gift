@@ -25,7 +25,7 @@
               <p class="">
                 {{ $item->body }}
               </p>
-      </div>
+     
         {{-- Delete Button --}}
         @auth
         @if ($item->user->id === Auth::user()->id)
@@ -55,6 +55,6 @@
         {{--End 欲しい Button --}}
   </div>
       </div>
-
+    </div>
 @endsection
 

@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-
-
 @section('content')
 
 <div class="justify-center col-start-1 col-end-7 ">
@@ -31,11 +28,11 @@
                       @endif
                   </a>
                   <div class="mt-2">
-                      <a href="" class="text-lg mt-2 hover:text-gray-300"> {{ $item->user->name }}</a>
-                      <div class="flex items-center text-gray-400 text-sm mt-1">
+                      <a href="" class="text-lg mt-2 "> {{ $item->user->name }}</a>
+                      <div class="flex items-start flex-col text-sm mt-1">
                       
-                          <span class="ml-1">{{ $item->title }}</span>
-                          <span class="mx-2">|</span>
+                          <span class="">{{ $item->title }}</span>
+                         
                           <span> {{ $item->body }}</span>
   
                       </div>

@@ -1,3 +1,4 @@
+@if (url()->current() !== url('/'))
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
   @auth
 
@@ -47,3 +48,4 @@
     </ul>
   </div>
 </nav>
+@endif
