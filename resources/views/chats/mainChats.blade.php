@@ -15,6 +15,6 @@
   </ul>
 </div>
 
-<div class="input-text">
+<div class="input-text mb-3">
   <input type="text" name="message" class="submit">
 </div>

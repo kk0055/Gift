@@ -31,7 +31,7 @@
                 @endforeach
 
             </div>
-        </div> <!-- end pouplar-movies -->
+        </div> 
 
     
     </div>
