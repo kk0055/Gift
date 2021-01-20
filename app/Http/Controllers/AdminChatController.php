@@ -29,10 +29,8 @@ class AdminChatController extends Controller
      */
     public function index()
     {
-        // select all users except logged in user
+      
         
-
-        // count how many message are unread from the selected user
         
         //正しいやつ
         // $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
@@ -59,14 +57,6 @@ class AdminChatController extends Controller
         // })->get();
 
     
-        // $messages = Message::get();
-    //   order by 'messages' desc  and  messages.created_at 
-       // ログイン者以外のユーザを取得する
-    //    $users = User::where('id' ,'<>' , Auth::user()->id)->with('messages')->get();
-
-     
-        // $users = User::where('id' ,'!=', Auth::id())->with('messages')->orderBy('created_at','desc')->get();
-        // dd($users );
         return view('chats.adminChats', [
             'users' => $users,
          
