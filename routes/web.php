@@ -17,12 +17,18 @@ Auth::routes();
 
 //Items
 Route::get('/', [ItemController::class, 'index'])->name('main');
+Route::get('/item/create-form', [ItemController::class, 'create'])->name('item.create');
 Route::get('/item/{itemId}', [ItemController::class, 'show'])->name('item.show');
+
 Route::post('/', [ItemController::class, 'store'])->name('item.store');
 Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.destroy');
 Route::get('/item/{item}/edit', [ItemController::class, 'edit'])->name('item.edit');
 Route::post('/item/{item}/edit', [ItemController::class, 'update'])->name('item.update');
 
+
+// Route::get('/item/create', function () {
+//   return view('create');
+// });
 
 //Register
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');

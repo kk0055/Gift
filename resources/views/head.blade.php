@@ -14,7 +14,7 @@
     <h3>We make a living by what we get.</h3>
     <h3>But we make a life by what we give.</h3>
    
-    <a href="#" class="hbtn hb-fill-on mt-5 ">投稿する</a>
+    <a href="{{ route('item.create') }}" class="hbtn hb-fill-on mt-5 ">投稿する</a>
    
   </div>
  

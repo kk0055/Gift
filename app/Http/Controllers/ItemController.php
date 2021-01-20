@@ -89,7 +89,7 @@ class ItemController extends Controller
             'image2' =>  $fileNameToStore2,
         ]);
     //    dd($request);
-       return back()->with('info','投稿が完了しました。');
+       return redirect()->route('main')->with('info','投稿が完了しました。');
     }
 
     /**
@@ -177,6 +177,16 @@ return redirect()->route('item.show',['itemId'=> $item->id])->with('info','編�
         $Item->delete();
 
         return back();
+    }
+
+    public function create()
+    {
+        $category_list = Category::all();
+
+
+        return view('items.item_form',[
+            'category_list' => $category_list 
+        ]);
     }
 
 }
