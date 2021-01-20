@@ -1,4 +1,13 @@
-  /* imgae画面 */  
+ a{
+    color: black;
+ }
+ 
+ a:hover{
+    color: gray;
+ }
+ 
+ 
+ /* imgae画面 */  
   .image-container {
     display: flex;
     width: 90vh;

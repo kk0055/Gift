@@ -9,7 +9,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
               @foreach ($categories_products as $item) 
                 <div class="mt-8">
-                  <a href="#">
+                  <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
                     @if ($item->image)
                       <img src="/storage/image/{{ $item->image }}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
                       @else

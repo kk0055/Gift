@@ -59,6 +59,6 @@ Route::get('category/{category}', [CategoryController::class, 'show'])->name('ca
 
 
 //Chat
-Route::get('/home', [AdminChatController::class, 'index'])->name('chat.admin');
+Route::get('/chat-admin', [AdminChatController::class, 'index'])->name('chat.admin');
 Route::get('/message/{id}', [AdminChatController::class, 'getMessage'])->name('message');
 Route::post('message',  [AdminChatController::class, 'sendMessage']);
