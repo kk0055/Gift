@@ -1,4 +1,7 @@
 
+20201//20
+pusherにデータがsendされてない
+
 Message receiveが欲しい
 receiveのアドレスに飛べば同じ画面が見れるはず
  $table->integer('category_id');

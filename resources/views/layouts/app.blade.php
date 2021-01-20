@@ -199,17 +199,20 @@
                   cluster  : 'ap3',
                   encrypted: true
               });
-      
+          
             //購読するチャンネルを指定
-              var Channel = pusher.subscribe('chat');
-      
-              Channel.bind('chat_event', function (data) {
+            
+              var channel = pusher.subscribe('chat');
+              let appendText;
+              channel.bind('chat_event', function (data) {
                 // alert(JSON.stringify(data));
                 if (my_id == data.send) {
+                    // appendText = '<div class="flex items-end justify-end"> <div class="send  bg-green-300 mx-1 my-1 p-1 rounded-lg " style="text-align:right"><p>' + data.message + '</p></div></div> ';
                     $('#' + data.receive).click();
                 } else if (my_id == data.receive) {
                     if (receiver_id == data.send) {
-                        // if receiver is selected, reload the selected user ...
+                        
+                        // appendText = '<div class="flex items-end justify-end"> <div class="send  bg-green-300 mx-1 my-1 p-1 rounded-lg " style="text-align:right"><p>' + data.message + '</p></div></div> ';
                         $('#' + data.send).click();
                     } else {
                         // if receiver is not seleted, add notification for that user
@@ -220,8 +223,13 @@
                             $('#' + data.send).append('<span class="pending">1</span>');
                         }
                     }
+             
                 }
+                        // メッセージを表示
+              $("#admin").append(appendText);
             });
+          
+            
             $('.user').click(function () {
                 $('.user').removeClass('active');
                 $(this).addClass('active');
@@ -229,7 +237,7 @@
                 receiver_id = $(this).attr('id');
                 $.ajax({
                     type: "get",
-                    url: "message/" + receiver_id, // need to create this route
+                    url: "message/" + receiver_id, 
                     data: "",
                     cache: false,
                     success: function (data) {
@@ -238,6 +246,8 @@
                     }
                 });
             });
+
+            
             $(document).on('keyup', '.input-text input', function (e) {
                 var messages = $(this).val();
                 console.log($('input[name="message"]').val())
@@ -257,7 +267,8 @@
                          },
                         cache: false,
                         success: function (data) {
-                        },
+                          
+                                                  },
                         error: function (jqXHR, status, err) {
                         },
                         complete: function () {
@@ -305,13 +316,6 @@ appendText = '<div class="receive bg-gray-300 w-3/4 mx-4 my-2 p-2 rounded-lg cle
 return false;
 }
 
-// if(data.send === receive){
-// appendText = '<div class="flex items-end justify-end"> <div class="send  bg-green-300 mx-1 my-1 p-1 rounded-lg " style="text-align:right"><p>' + data.message + '</p></div></div> ';
-// }else if(data.receive === receive){
-// appendText = '<div class="receive bg-gray-300 w-3/4 mx-4 my-2 p-2 rounded-lg clearfix" style="text-align:left"><p>' + data.message + '</p></div> ';
-// }else {
-// return false;
-// }
 
 // メッセージを表示
 $("#room").append(appendText);

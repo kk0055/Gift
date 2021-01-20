@@ -1,5 +1,5 @@
-<div class="message-wrapper">
-  <ul class="messages">
+<div class="message-wrapper" id="admin">
+  <ul class="messages" >
       @foreach($messages as $message)
           <li class="message clearfix">
               {{--if message from id is equal to auth id then it is sent by logged in user --}}

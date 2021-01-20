@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Pusher\Pusher;
+use App\Events\ChatMessagereceived;
 
 class AdminChatController extends Controller
 {
@@ -101,7 +102,7 @@ class AdminChatController extends Controller
 
         // pusher
         $options = array(
-            'cluster' => 'ap2',
+            'cluster' => 'ap3',
             'useTLS' => true
         );
 
@@ -112,7 +113,7 @@ class AdminChatController extends Controller
             $options
         );
 
-        $data = ['send' => $send, 'receive' => $receive]; // sending from and to user id when pressed enter
+        $data = ['send' => $send, 'receive' => $receive]; 
         $pusher->trigger('chat', 'chat_event', $data);
     }
 }
