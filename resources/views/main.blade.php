@@ -6,11 +6,11 @@
     @include('head')
    {{--End Head --}}
    
-<div class="flex justify-center mt-2 	md:text-sm">
+<div class="mt-4 container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 	">
   @foreach ($category_list as $item)
-  <div class="ml-3" > 
+  <div class=" " > 
    <a href="{{ route('category.show' , $item->id ) }}">
-   {{ $item->name }} </a> </div> 
+   {{ $item->name }}</a> </div> 
   @endforeach
  </div>
 
