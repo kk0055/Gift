@@ -109,6 +109,7 @@
           .media-body p {
               margin: 6px 0;
           }
+          
           .message-wrapper {
               padding: 10px;
               height: 536px;
@@ -361,6 +362,13 @@ header .logo
   {
     font-size: 2em;
   }
+
+  .user-wrapper {
+    height: 300px;
+    position:sticky;
 }
+
+}
+
 
 /*End  Head page */

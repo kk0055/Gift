@@ -1,6 +1,7 @@
 <div class="message-wrapper" id="admin">
   <ul class="messages" >
       @foreach($messages as $message)
+     
           <li class="message clearfix">
               {{--if message from id is equal to auth id then it is sent by logged in user --}}
               <div class="{{ ($message->send == Auth::id()) ? 'sent' : 'received' }}">
