@@ -191,6 +191,17 @@ header .logo
   text-transform: uppercase;
   cursor: pointer;
 }
+
+header .logo-image {
+  background-image: url("/storage/image/kasih-removebg-preview.png");
+  background-repeat: no-repeat;
+  /* background-size: ; */
+  padding: 10px;
+  margin: 0px;
+  width: 150px;
+  height: 100px;
+}
+
 .toggle
 {
   position: relative;
@@ -269,6 +280,7 @@ header .logo
   line-height: 1em;
   
 }
+
 
 .menu
 {
