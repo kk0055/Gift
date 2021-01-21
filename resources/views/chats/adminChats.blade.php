@@ -4,9 +4,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <div class="user-wrapper" >
-                    <ul class="users">
+            <div class="col-md-4 ">
+                <div class="user-wrapper " >
+                    <ul class="users ">
                     
                       
                         @foreach($users as $user)
@@ -14,7 +14,7 @@
                             <li class="user" id="{{ $user->id }}">
                                 {{--will show unread count notification--}}
                                 @if($user->unread)
-                                    <span class="pending">{{ $user->unread }}</span>
+                                    <span class="pending ">{{ $user->unread }}</span>
                                 @endif
 
                                 <div class="media">
@@ -23,7 +23,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <p class="name">{{ $user->name }}</p>
+                                        <p class="name ml-3">{{ $user->name }}</p>
                                 
                                     </div>
                                 </div>
