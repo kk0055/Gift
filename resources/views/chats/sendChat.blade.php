@@ -21,7 +21,7 @@
     </h1>
       <hr>
 
-     
+     <div class="message-wrapper">
     
         @foreach($messages as  $message)
 
@@ -51,7 +51,7 @@
         @endforeach
        
     </div>
- 
+  </div>
     <form  >
       @csrf
      

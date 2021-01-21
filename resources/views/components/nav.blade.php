@@ -7,8 +7,8 @@
     <img src="/storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
 
   @endif
-  <a href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
-  <a  href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a>
+  <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
+  <a  href="{{ route('chat.admin') }}" class="mt-3"><i class="far fa-comment-dots"></i></a>
   @endauth
   @guest
   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
@@ -19,7 +19,7 @@
 
   @endif
   @else   <li>
-  <a href="{{ route('logout') }}" class="right" > ログアウト </a></li>
+  <a href="{{ route('logout') }}" class="right mt-3" > ログアウト </a></li>
   @endguest
   @auth
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
