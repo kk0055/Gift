@@ -43,13 +43,14 @@
                 @endforeach
         
             </div>
-            <div class="mt-5">
+            <div class="mt-5 mb-4">
           {{ $items->links() }}
         </div>
         </div> 
         </div> 
      
     </div>
+  
 @endsection
 
 {{-- @section('scripts')

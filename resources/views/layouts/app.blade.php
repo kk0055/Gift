@@ -27,9 +27,62 @@
  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <style>
 
+/* Navbar */
+.topnav {
+  background-color: black;
+  overflow: hidden;
+  height:80px
+}
 
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+ a.right{
+    float: right;
+    font-size: 15px;
+    padding: 14px 16px;
+}
 
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  /* .topnav a:not(:first-child) {display: none;} */
+   a.right{display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
 </style>
 </head>
 
@@ -42,7 +95,7 @@
 
             @yield('content')
 
-          @include('components.footer')
+          
         </main>
     </div>
      
@@ -257,7 +310,14 @@ const menuToggle = document.querySelector('.toggle');
         menuToggle.classList.toggle('active');
         showcase.classList.toggle('active');
       })
-      
+      function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
         </script>
        
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}

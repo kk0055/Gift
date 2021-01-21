@@ -9,9 +9,10 @@
     <div class="w-2/3 lg:w-1/2 xl:max-w-screen-sm bg-white">
        
         <div class=" md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
-           
+            <a href="{{ route('main') }}"> 
+                <img src="/storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>  
             <P class="text-center text-gray-700   lg:text-left font-bold ">ログイン</P>
-           
+            
             <div class="  mt-10">
                      <form method="POST" action="{{ route('login') }}">
                     @csrf
