@@ -33,7 +33,7 @@
 </style>
 </head>
 
-<body class=" bg-gray-200 ">
+<body class=" font-sans bg-gray-100">
     <div id="app">
         
       @include('components.nav')

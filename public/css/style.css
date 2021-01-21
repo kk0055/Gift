@@ -1,3 +1,13 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  
+ 
+}
+ 
  a{
     color: black;
  }
@@ -149,15 +159,7 @@
   
 
 /* Head page */
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  
- 
-}
+
 span {
   max-width: 150px;
   overflow: hidden;
@@ -274,10 +276,12 @@ header .logo
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 .menu ul
 {
   position: relative;
+ 
 }
 .menu ul li
 {
@@ -287,13 +291,13 @@ header .logo
 {
   text-decoration: none;
   font-size: 24px;
-  color: #111;
 }
 .menu ul li a:hover
 {
   color: gray; 
 }
 
+/* 投稿ボタン */
 .hbtn {
       position: relative;
       box-sizing: border-box;

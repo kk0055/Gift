@@ -1,4 +1,7 @@
 
+<img src="/storage/image/kasih.png" width="40" height="50" alt="">
+
+
 20201//20
 pusherにデータがsendされてない
 

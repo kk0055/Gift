@@ -2,6 +2,7 @@
   <header>
     
     <h2 class="logo">Kasih</h2>
+ 
     <div class="toggle"></div>
   </header>
   <img
@@ -26,7 +27,9 @@
    
     <li><a class="" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
       </li>
+      
     <li><a href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a></li>
+
     @guest
     <li>   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
       <a class="" href="{{ route('login') }}">ログイン</a>
