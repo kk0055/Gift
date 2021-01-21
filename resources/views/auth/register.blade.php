@@ -4,7 +4,7 @@
 
 <div class="flex items-center justify-center mt-3">
     
-    <div class="lg:w-1/2 xl:max-w-screen-sm bg-white">
+    <div class="w-2/3 lg:w-1/2 xl:max-w-screen-sm bg-white">
        
         <div class=" sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
            

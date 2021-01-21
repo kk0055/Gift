@@ -2,11 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
             <div class="col-md-4 ">
                 <div class="user-wrapper " >
-                    <ul class="users ">
+                    <ul class="users   ">
                     
                       
                         @foreach($users as $user)
