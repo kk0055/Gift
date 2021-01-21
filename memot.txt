@@ -1,6 +1,6 @@
 
-<img src="/storage/image/kasih.png" width="40" height="50" alt="">
-
+<img src="/storage/image/kasih-removebg-preview.png" width="40" height="50" alt="">
+C:\Users\Keisuke\Desktop\Present\public\storage\image\kasih-removebg-preview.png
 
 20201//20
 pusherにデータがsendされてない

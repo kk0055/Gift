@@ -10,9 +10,9 @@
        
         <div class=" md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
            
-            <P class="text-center text-gray-700 font-display lg:text-left text-bold">ログイン</P>
+            <P class="text-center text-gray-700   lg:text-left font-bold ">ログイン</P>
            
-            <div class="mt-10 md:mt-2">
+            <div class="  mt-10">
                      <form method="POST" action="{{ route('login') }}">
                     @csrf
                     @if (session('oauth_error'))
@@ -48,7 +48,7 @@
                             </div>
                             
                         </div>
-                        <input class=" text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="12345" name="password">
+                        <input class=" text-lg py-2  focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="12345" name="password">
                     </div>
                     <div class="mt-10">
                         <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide

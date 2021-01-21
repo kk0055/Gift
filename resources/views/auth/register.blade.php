@@ -10,7 +10,7 @@
            
             <P class="text-center text-gray-700 font-display lg:text-left 
            
-            xl:text-bold">登録</P>
+            font-bold">登録</P>
            
             <div class="mt-12">
                 <form method="POST" action="{{ route('register') }}">
@@ -23,7 +23,7 @@
 
                       <div class="">
                         <div class="text-sm font-bold text-gray-700 tracking-wide">ニックネーム</div>
-                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="taylor" >
+                        <input class="w-full text-lg  border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="taylor" >
                     </div>
                     @error('name')
                     <span class="text-red-500 mt-2 text-sm" role="alert">
@@ -33,7 +33,7 @@
 
                     <div class="mt-2">
                         <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
-                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="taylor@test.com" >
+                        <input class="w-full text-lg border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="taylor@test.com" >
                     </div>
                     @error('email')
                     <span class="text-red-500 mt-2 text-sm" role="alert">
@@ -76,7 +76,7 @@
                 </div>
                 <div class=" space-y-3 w-full mt-3 mb-4">
                     <a
-                      class="block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-white transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" href="{{ route('twitter.login',['provider' => 'twitter']) }}"
+                      class="ml-2  px-6 py-2 text-xs font-medium leading-6 text-center text-white transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" href="{{ route('twitter.login',['provider' => 'twitter']) }}"
                     >
                     <i class="fab fa-twitter mr-2"></i>
                         Twitterで登録する   

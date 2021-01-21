@@ -3,10 +3,13 @@
   @auth
 
   
-    @if (url()->current() !== url('/'))
+    {{-- @if (url()->current() !== url('/'))
       <a class="nav-link " href="{{ route('main') }}"> <span class=""><i class="fas fa-home-lg-alt text-black"></i></span></a>     
+      @endif --}}
+      @if (url()->current() !== url('/'))
+      <a class="nav-link " href="{{ route('main') }}"> <img src="/storage/image/kasih-removebg-preview.png" width="50" height="50" alt=""></a>     
       @endif
-     
+      
   
  <div class="text-2xl  text-black ml-3 my-2" >  <a class="text-2xl mb-2 text-black" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
   <a href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a>
