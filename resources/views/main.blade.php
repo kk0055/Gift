@@ -6,7 +6,7 @@
     @include('head')
    {{--End Head --}}
    
-<div class="flex justify-center mt-2 ">
+<div class="flex justify-center mt-2 	md:text-sm">
   @foreach ($category_list as $item)
   <div class="ml-3" > 
    <a href="{{ route('category.show' , $item->id ) }}">
@@ -17,7 +17,7 @@
     <div class="container mx-auto px-4 pt-16">
         <div class="popular-movies">
        
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
               @foreach ($items as $item) 
                 <div class="mt-8">
                   <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
@@ -28,7 +28,7 @@
                       @endif
                   </a>
                   <div class="mt-2">
-                    <span> <a href="" class="text-lg mt-2 "> {{ $item->user->name }}</a></span> 
+                    <span> <a href="{{ route('users.items', [$item->user->id]) }}" class="text-lg mt-2 "> {{ $item->user->name }}</a></span> 
                       <div class="flex items-start flex-col text-sm mt-1">
                       
                           <span class="">{{ $item->title }}</span>
