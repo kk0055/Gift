@@ -26,12 +26,14 @@
 </section>
 <div class="menu">
   <ul>
-   
+   @auth
+       
+ 
     <li><a class="" href="{{ route('users.items',Auth::user()->id) }}"> {{ Auth::user()->name }}</a>
       </li>
       
     <li><a href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a></li>
-
+    @endauth
     @guest
     <li>   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
       <a class="" href="{{ route('login') }}">ログイン</a>

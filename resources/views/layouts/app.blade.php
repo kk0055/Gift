@@ -42,12 +42,15 @@
 
             @yield('content')
 
-
+          @include('components.footer')
         </main>
     </div>
+     
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
-    
+   
+            {{-- infinite-scroll --}}
+            @yield('scripts')
 
     <script>
         var receiver_id = '';
@@ -254,7 +257,9 @@ const menuToggle = document.querySelector('.toggle');
         menuToggle.classList.toggle('active');
         showcase.classList.toggle('active');
       })
+      
         </script>
+       
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 </body>
 </html>

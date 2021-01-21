@@ -25,7 +25,7 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-    public function index(User $user )
+    public function index(User $user  )
     {
        
         // Message receiveが欲しい
@@ -35,7 +35,7 @@ class ItemController extends Controller
         // dd($receive);
        
         $category_list = Category::all();
-        $items = Item::orderBy('created_at','desc')->with(['user','messages'])->paginate(20);
+        $items = Item::orderBy('created_at','desc')->with(['user','messages'])->simplePaginate(20);
         // dump($items);
         return view('main', [
             'user' => $user,

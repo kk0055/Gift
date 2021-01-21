@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="justify-center col-start-1 col-end-7 ">
+<div class="justify-center col-start-1 col-end-7">
     {{-- Head --}}
     @include('head')
    {{--End Head --}}
@@ -19,7 +19,7 @@
        
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
               @foreach ($items as $item) 
-                <div class="mt-8">
+                <div class="append mt-8 ">
                   <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
                     @if ($item->image)
                       <img src="/storage/image/{{ $item->image }}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
@@ -39,8 +39,30 @@
                  
                   </div>
               </div>
+             
                 @endforeach
+        
             </div>
+            <div class="mt-5">
+          {{ $items->links() }}
+        </div>
         </div> 
+        </div> 
+     
     </div>
 @endsection
+
+{{-- @section('scripts')
+<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+<script>
+  let elem = document.querySelector('.grid');
+  let infScroll = new InfiniteScroll( elem, {
+  // options
+  path: './@{{#}}',
+  append: '.append',
+  
+  
+});
+
+</script>
+@endsection --}}
