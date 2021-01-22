@@ -28,7 +28,7 @@
 
                     <div>
                         <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
-                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="taylor@test.com" >
+                        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}" >
                     </div>
 
                     @error('password')
@@ -49,7 +49,7 @@
                             </div>
                             
                         </div>
-                        <input class=" text-lg py-2  focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="12345" name="password">
+                        <input class=" text-lg py-2  focus:outline-none focus:border-indigo-500 form-control @error('password') is-invalid @enderror" type="password"  placeholder="パスワード" value="{{ old('password') }}" name="password">
                     </div>
                     <div class="mt-10">
                         <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
@@ -76,9 +76,9 @@
                     @csrf
                     <div>
                         <input class="" type="hidden" name="email" 
-                        value="taylor@test.com" >
+                        value="test1@test.com" >
                     </div>
-                        <input class="" type="hidden"  value="12345" name="password">
+                        <input class="" type="hidden"  value="12345678910" name="password">
                   
                     <div class="mt-2">
                         <button class="bg-green-300 px-2 text-gray-100 rounded-full tracking-wide
