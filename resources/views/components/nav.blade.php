@@ -6,7 +6,7 @@
 
 @if (url()->current() !== url('/'))
   <a href="{{ route('main') }}"> 
-    <img src="https://pbs.twimg.com/media/EsUks59U4AERnJm?format=png&name=240x240" width="80" height="50" alt=""></a>     
+    <img src="/storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
 
   @endif
   <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
