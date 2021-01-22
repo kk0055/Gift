@@ -1,4 +1,5 @@
 @if (url()->current() !== url('/'))
+@if (url()->current() !== url('/login') && url()->current() !== url('/register'))
 <div class="topnav" id="myTopnav">
 @auth
 
@@ -32,4 +33,5 @@
   </a></ul>
   @endauth
 </div>
+@endif
 @endif
