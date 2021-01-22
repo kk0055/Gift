@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang='ja' prefix='og: http://ogp.me/ns#'>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:url" content=" ページの URL" />
+ 
+<meta property="og:type" content=" ページの種類" />
+ 
+<meta property="og:title" content="Kasih" />
+ 
+<meta property="og:description" content="中古品が無料で掲載できます。中古品が無料でもらえます" />
+<meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット' name='keywords' />
+<meta property="og:site_name" content="Kasih" />
+ 
+<meta property="og:image" content="https://image.freepik.com/free-vector/city-skyline-landmarks-illustration_23-2148810172.jpg" />
+
   <title>Kasih</title>
  
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -20,11 +32,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    {{-- sweetalert --}}
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
    {{-- CSS --}}
  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <style>
+
 
 
 </style>
@@ -65,7 +77,7 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    // Enable pusher logging - don't include this in production
+  
     Pusher.logToConsole = true;
     var pusher = new Pusher('f215ae5857618ed02fd0', {
           cluster  : 'ap3',
@@ -86,7 +98,7 @@ $(document).ready(function () {
                 
                 $('#' + data.send).click();
             } else {
-                // if receiver is not seleted, add notification for that user
+           
                 var pending = parseInt($('#' + data.send).find('.pending').html());
                 if (pending) {
                     $('#' + data.send).find('.pending').html(pending + 1);
@@ -121,14 +133,14 @@ $(document).ready(function () {
     $(document).on('keyup', '.input-text input', function (e) {
         var messages = $(this).val();
         console.log($('input[name="message"]').val())
-        // check if enter key is pressed and message is not null also receiver is selected
+   
         if (e.keyCode == 13 && messages != '' && receiver_id != '') {
             $(this).val(''); // while pressed enter text box will be empty
             // var datastr = "receiver_id=" + receiver_id + "&message=" + message;
             
             $.ajax({
                 type: "post",
-                url: "message", // need to create this post route
+                url: "message",
                 data:  {
                 message : messages,
                 send : $('input[name="send"]').val(),

@@ -1,7 +1,7 @@
 
 
 //ログを有効にする
-Pusher.logToConsole = true;
+// Pusher.logToConsole = true;
 
 var pusher = new Pusher('f215ae5857618ed02fd0', {
 cluster  : 'ap3',

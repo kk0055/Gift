@@ -197,7 +197,7 @@ header .logo-image {
   background-repeat: no-repeat;
   /* background-size: ; */
   padding: 10px;
-  margin: 0px;
+  margin-bottom: 10px;
   width: 150px;
   height: 100px;
 }
@@ -313,6 +313,8 @@ header .logo-image {
   color: gray; 
 }
 
+/*End  Head page */
+
 /* 投稿ボタン */
 .hbtn {
       position: relative;
@@ -402,6 +404,7 @@ header .logo-image {
     float: right;
     display: block;
   }
+
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
@@ -417,6 +420,7 @@ header .logo-image {
     display: block;
     text-align: left;
   }
+
 }
 
 @media (max-width: 991px)

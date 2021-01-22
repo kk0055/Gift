@@ -2,13 +2,14 @@
   <header>
     
     {{-- <h2 class="logo">Kasih</h2> --}}
-    <div class="logo-image">
+    <div class="logo-image ">
    
-  </div>
+    </div>
+
     <div class="toggle"></div>
   </header>
   <img
-  class="img w-full h-full bg-center bg-cover"
+  class="img w-full h-full bg-center bg-cover "
   style='background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");background-position:right bottom '
 >
   <div class="overlay"></div>

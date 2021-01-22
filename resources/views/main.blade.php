@@ -5,19 +5,22 @@
     {{-- Head --}}
     @include('head')
    {{--End Head --}}
-   
+ 
 <div class="mt-4 container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 ">
   @foreach ($category_list as $item)
-  <div class=" " > 
    <a href="{{ route('category.show' , $item->id ) }}">
-   {{ $item->name }}</a> </div> 
+   {{ $item->name }}</a> 
+  
   @endforeach
- </div>
+
+</div>
+
 
     <div class="container mx-auto px-4 pt-16">
         <div class="">
        
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              
               @foreach ($items as $item) 
                 <div class="append mt-8 ">
                   <a href="{{ route('item.show',['itemId'=> $item->id]) }}">

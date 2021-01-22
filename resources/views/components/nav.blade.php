@@ -1,6 +1,7 @@
 @if (url()->current() !== url('/'))
-@auth
 <div class="topnav" id="myTopnav">
+@auth
+
 
 @if (url()->current() !== url('/'))
   <a href="{{ route('main') }}"> 
@@ -13,9 +14,13 @@
   @guest
   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
   <ul>
- 
-  <a href="{{ route('login') }}"class="right">ログイン</a>
-  <a href="{{ route('register') }}" class="right">会員登録</a>
+    @if (url()->current() !== url('/'))
+    <a href="{{ route('main') }}"> 
+      <img src="/storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
+  
+    @endif      
+  <a href="{{ route('login') }}"class="right mt-3">ログイン</a>
+  <a href="{{ route('register') }}" class="right mt-3">会員登録</a>
 
   @endif
   @else   <li>
