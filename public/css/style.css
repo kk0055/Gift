@@ -193,7 +193,7 @@ header .logo
 }
 
 header .logo-image {
-  background-image: url("storage/image/kasih-removebg-preview.png");
+  background-image: url("../storage/image/kasih-removebg-preview.png");
   background-repeat: no-repeat;
   /* background-size: ; */
   padding: 10px;
@@ -255,7 +255,7 @@ header .logo-image {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #03a9f4;
+  /* background: #03a9f4; */
   mix-blend-mode: overlay;
 }
 .text
