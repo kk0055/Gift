@@ -66,6 +66,7 @@ class ItemController extends Controller
                 
            ]);
         
+           dd($request);
 
            if (!empty($request->image)){
             $image = SaveImagesServices::saveImages($request, 'image');
