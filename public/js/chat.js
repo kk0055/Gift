@@ -56,7 +56,8 @@ headers : {
 $('#btn_send').on('click' , function(){
 $.ajax({
 type : 'POST',
-url : '/chat/send',
+// url : '/chat/send',
+url : '/kasih/chat/send',
 data : {
     message : $('textarea[name="message"]').val(),
     send : $('input[name="send"]').val(),

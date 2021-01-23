@@ -177,7 +177,7 @@ return redirect()->route('item.show',['itemId'=> $item->id])->with('info','編�
 
         $Item->delete();
 
-        return back();
+        return redirect()->route('main')->with('info','削除しました');
     }
 
     public function create()

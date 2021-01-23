@@ -22,7 +22,7 @@
             <div class="col-span-6">
           
               <label for="title" class="block text-sm font-medium text-gray-700">タイトル｜アイテム名</label>
-              <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" >
+              <input type="text" name="title" id="title"  class="mt-1 p-1 focus:outline-none focus:ring focus:border-blue-300  block w-full shadow-sm sm:text-sm rounded-md border border-indigo-600" placeholder="例 : 読まなくなった本あげます" value="{{ old('title') }}" >
             </div>
             @error('title')
             <div class="text-red-500 mb-2 text-sm">
@@ -34,7 +34,7 @@
 
             <div class="col-span-6 mt-3 sm:col-span-6 lg:">
               <label for="body" class="block text-sm font-medium text-gray-700 ">詳細</label>
-              <textarea type="text" name="body" id="body" class=" w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder=" 詳細をご記入ください"></textarea>
+              <textarea type="text" name="body" id="body" class=" w-5  focus:outline-none	 w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-indigo-600"  rows="5"  placeholder=" 詳細をご記入ください" value="" > {{ old('body') }}</textarea>
             </div>
             @error('body')
             <div class="text-red-500 mb-2 text-sm">
