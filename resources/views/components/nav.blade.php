@@ -4,11 +4,11 @@
 @auth
 
 
-@if (url()->current() !== url('/'))
+{{-- @if (url()->current() !== url('/')) --}}
   <a href="{{ route('main') }}"> 
-    <img src="../storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
+    <img src="../storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
 
-  @endif
+  {{-- @endif --}}
   <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
 
   

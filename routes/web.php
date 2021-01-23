@@ -20,7 +20,7 @@ Route::get('/', [ItemController::class, 'index'])->name('main');
 Route::get('/item/create-form', [ItemController::class, 'create'])->name('item.create');
 Route::get('/item/{itemId}', [ItemController::class, 'show'])->name('item.show');
 
-Route::post('/', [ItemController::class, 'store'])->name('item.store');
+Route::post('/item', [ItemController::class, 'store'])->name('item.store');
 Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.destroy');
 Route::get('/item/{item}/edit', [ItemController::class, 'edit'])->name('item.edit');
 Route::post('/item/{item}/edit', [ItemController::class, 'update'])->name('item.update');
@@ -46,7 +46,7 @@ Route::get('/chats/{receive}/received/{itemId}', [ChatsController::class, 'recei
 
 // Route::post('/chats/{id}/send', [ChatsController::class, 'status'])->name('chats.users');
 
-Route::post('chat/send' , [ChatsController::class, 'store'])->name('chatSend');
+Route::post('/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
 
 //Twitter Login
 Route::get('/login/{provider}',
@@ -64,7 +64,7 @@ Route::post('category', [CategoryController::class, 'store'])->name('create_cate
 Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
 
-//Chat
+//AdminChat
 Route::get('/chat-admin', [AdminChatController::class, 'index'])->name('chat.admin');
 Route::get('/message/{id}', [AdminChatController::class, 'getMessage'])->name('message');
 Route::post('message',  [AdminChatController::class, 'sendMessage']);
