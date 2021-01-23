@@ -10,6 +10,8 @@
 
   @endif
   <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
+
+  
   <a  href="{{ route('chat.admin') }}" class="mt-3"><i class="far fa-comment-dots"></i></a>
   @endauth
   @guest

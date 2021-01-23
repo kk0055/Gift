@@ -22,7 +22,7 @@ class SaveImagesServices
     $filenameToStore = $filename.'_'.time().'.'.$extension;
  
     //upload image
-    $path = $request->file($string)->storeAs('public/storage/image', $filenameToStore);
+    $path = $request->file($string)->storeAs('public/image', $filenameToStore);
  
     return $filenameToStore;
  

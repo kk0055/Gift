@@ -45,7 +45,6 @@ class AdminChatController extends Controller
         from users LEFT  JOIN  messages ON users.id = messages.send  and messages.receive  = " . Auth::id() . "
         where messages.user_id = users.id AND  users.id != " . Auth::id() . " 
         group by users.id, users.name,  users.email
-        order by messages.is_read desc
         ");
 
           //正しいやつ

@@ -10,7 +10,7 @@
                     
                       
                         @foreach($users as $user)
-                    
+                    @if(count($user))
                             <li class="user" id="{{ $user->id }}">
                                 {{--will show unread count notification--}}
                                 @if($user->unread)
@@ -28,7 +28,9 @@
                                     </div>
                                 </div>
                             </li>
-                          
+                          @else
+                      <div>No message</div>
+                          @endif
                         @endforeach
                        
                        
