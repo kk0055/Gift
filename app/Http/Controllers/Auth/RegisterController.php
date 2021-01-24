@@ -86,7 +86,7 @@ class RegisterController extends Controller
         
         $user->save();
     
-        return redirect()->route('main')->with('info','Your account has been created');
+        return redirect()->route('login')->with('register','アカウントを作成しました。ログインしてください。');
   
     }
 }

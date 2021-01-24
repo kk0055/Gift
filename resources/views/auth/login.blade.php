@@ -3,6 +3,7 @@
 @section('content')
 
 @include('components.validate')
+@include('components.alert')
 
 <div class="flex items-center justify-center mt-3 ">
     
