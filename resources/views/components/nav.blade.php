@@ -6,7 +6,7 @@
 
 {{-- @if (url()->current() !== url('/')) --}}
   <a href="{{ route('main') }}"> 
-    <img src="../storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
+    <img src="storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
 
   {{-- @endif --}}
   <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
@@ -19,7 +19,7 @@
   <ul>
     @if (url()->current() !== url('/'))
     <a href="{{ route('main') }}"> 
-      <img src="../storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
+      <img src="storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
   
     @endif      
   <a href="{{ route('login') }}"class="right mt-3">ログイン</a>
