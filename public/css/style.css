@@ -240,6 +240,7 @@ header .logo-image {
 }
 .showcase img:before {
   z-index: -1;
+  background-size:cover;
 }
 
 .showcase img
@@ -249,7 +250,8 @@ header .logo-image {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size:cover;
+  /* object-fit: cover; */
   opacity:1.2;
 }
 /* .overlay
