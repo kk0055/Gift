@@ -10,7 +10,7 @@
  
 <meta property="og:title" content="Kasih" />
  
-<meta property="og:description" content="中古品が無料で掲載できます。中古品が無料でもらえます" />
+<meta property="og:description" content="中古品が無料でもらえます。不要なものを載せましょう。無料で掲載できます。" />
 <meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット' name='keywords' />
 <meta property="og:site_name" content="Kasih" />
  
