@@ -10,7 +10,7 @@ use App\Http\Controllers\UserItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminChatController;
 
-
+use Illuminate\Support\Facades\Artisan;
 
 
 Auth::routes();
@@ -72,3 +72,7 @@ Route::post('message',  [AdminChatController::class, 'sendMessage']);
 
 
 
+Route::get('/artisan', function () {
+  $return = Artisan::Call('storage:link');
+  return dd($return);
+});
