@@ -19,7 +19,7 @@
   <ul>
   
     <a href="{{ route('main') }}"> 
-      <img src="../image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
+      <img src="{{ asset('/image/kasih-removebg-preview.png' ) }}" width="80" height="50" alt="KASIH"></a>     
   
    
   <a href="{{ route('login') }}"class="right mt-3">ログイン</a>
