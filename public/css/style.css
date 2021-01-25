@@ -233,14 +233,14 @@ header .logo-image {
   align-items: center;
   transition: 0.5s;
   z-index: 2;
-  background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");
+  background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0") !important;
   background-position:right bottom'
 }
 .showcase.active
 {
   right: 300px;
 }
-.showcase img:before {
+/* .showcase img:before {
   content: "";
   display: block;
   position: fixed;
@@ -254,7 +254,7 @@ header .logo-image {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+} */
 
 .showcase img
 {
@@ -264,6 +264,7 @@ header .logo-image {
   width: 100%;
   height: 100%;
   background-size:cover;
+  background-repeat: no-repeat;
   /* object-fit: cover; */
   opacity:1.2;
 }
