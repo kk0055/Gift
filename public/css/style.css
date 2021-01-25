@@ -233,6 +233,8 @@ header .logo-image {
   align-items: center;
   transition: 0.5s;
   z-index: 2;
+  background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");
+  background-position:right bottom'
 }
 .showcase.active
 {
@@ -459,17 +461,7 @@ header .logo-image {
     height: 300px;
     position:sticky;
 }
-.showcase img
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size:cover !important;
-  /* object-fit: cover; */
-  opacity:1.2;
-}
+
 
 }
 
