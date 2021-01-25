@@ -6,7 +6,7 @@
 
 {{-- @if (url()->current() !== url('/')) --}}
   <a href="{{ route('main') }}"> 
-    <img src="storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
+    <img src="/storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
 
   {{-- @endif --}}
   <a href="{{ route('users.items',Auth::user()->id) }}" class="mt-3">Hello, {{ Auth::user()->name }}</a>
@@ -17,11 +17,11 @@
   @guest
   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
   <ul>
-    @if (url()->current() !== url('/'))
-    <a href="{{ route('main') }}"> 
-      <img src="storage/image/kasih-removebg-preview.png" width="80" height="50" alt=""></a>     
   
-    @endif      
+    <a href="{{ route('main') }}"> 
+      <img src="storage/image/kasih-removebg-preview.png" width="80" height="50" alt="KASIH"></a>     
+  
+   
   <a href="{{ route('login') }}"class="right mt-3">ログイン</a>
   <a href="{{ route('register') }}" class="right mt-3">会員登録</a>
 
