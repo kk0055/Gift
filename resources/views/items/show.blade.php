@@ -8,12 +8,12 @@
     @if( null !== $item->image ||  null !==$item->image2  ) 
       <div class="image-container grid grid-cols-1 ">
        <div class="panel ">
-          <img src="/storage/image/{{ $item->image }}" class="block h-atuto w-full bg-white"  >
+        <img src="{{asset('/storage/image/'.$item->image)  }}" class="block h-atuto w-full bg-white"  >
        </div>
        @if ($item->image2  != null)
            
        <div class="panel">
-        <img src="/storage/image/{{ $item->image2 }}" class="block h-atuto w-full bg-white"  >
+        <img src="{{asset('/storage/image/'.$item->image2)  }}"  class="block h-atuto w-full bg-white"  >
      </div>
      @endif
         @endif
