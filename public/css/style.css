@@ -239,8 +239,19 @@ header .logo-image {
   right: 300px;
 }
 .showcase img:before {
-  z-index: -1;
-  background-size:cover;
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url(photos/2452.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .showcase img
