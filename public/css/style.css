@@ -248,7 +248,7 @@ header .logo-image {
   object-fit: cover;
   opacity:1.2;
 }
-.overlay
+/* .overlay
 {
   position: absolute;
   top: 0;
@@ -257,7 +257,7 @@ header .logo-image {
   height: 100%;
   background: #4cf8ae;
   mix-blend-mode: overlay;
-}
+} */
 .text
 {
   position: relative;
