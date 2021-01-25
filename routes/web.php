@@ -47,7 +47,7 @@ Route::get('/chats/{receive}/received/{itemId}', [ChatsController::class, 'recei
 // Route::post('/chats/{id}/send', [ChatsController::class, 'status'])->name('chats.users');
 
 // Route::post('/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
-Route::post('kasih/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
+Route::post('/chat/send' , [ChatsController::class, 'store'])->name('chatSend');
 
 //Twitter Login
 Route::get('/login/{provider}',

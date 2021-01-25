@@ -233,28 +233,13 @@ header .logo-image {
   align-items: center;
   transition: 0.5s;
   z-index: 2;
-  background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0") !important;
-  background-position:right bottom'
+ 
 }
 .showcase.active
 {
   right: 300px;
 }
-/* .showcase img:before {
-  content: "";
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" ) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
+
 
 .showcase img
 {
@@ -268,16 +253,16 @@ header .logo-image {
   /* object-fit: cover; */
   opacity:1.2;
 }
-/* .overlay
+.overlay
 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #4cf8ae;
+  background: rgb(62, 172, 250);
   mix-blend-mode: overlay;
-} */
+}
 .text
 {
   position: relative;
@@ -463,7 +448,18 @@ header .logo-image {
     position:sticky;
 }
 
-
+.showcase img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  /* object-fit: cover; */
+  opacity:1.2;
+}
 }
 
 
