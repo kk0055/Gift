@@ -27,7 +27,7 @@
                     @if ($item->image)
                       {{-- <img src="public/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
                       {{-- <img src="/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
-                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150">
+                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic" width="192" height="200" class="hover:opacity-75 transition ease-in-out duration-150">
                       @else
                       <img class="no-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="hover:opacity-75 transition ease-in-out duration-150">  
                       @endif
