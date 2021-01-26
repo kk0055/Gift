@@ -239,19 +239,6 @@ header .logo-image {
   right: 300px;
 }
 
-.showcase img:before
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size:cover;
-  background-repeat: no-repeat;
-  /* object-fit: cover; */
-  background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");
-  opacity:1.2;
-}
 
 .showcase img
 {
@@ -276,6 +263,7 @@ header .logo-image {
   background: rgb(62, 172, 250);
   mix-blend-mode: overlay;
 } */
+
 .text
 {
   position: relative;
