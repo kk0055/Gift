@@ -63,14 +63,14 @@
                 <div class="mt-2 text-sm font-display font-semibold text-gray-700 text-center">
                     アカウントをお持ちでない方はこちら<a class="cursor-pointer text-indigo-600 hover:text-indigo-800 ml-2" href="{{ 'register' }}">登録</a>
                 </div>
-                {{-- <div class=" space-y-3 w-full mt-3 mb-4">
+                <div class=" space-y-3 w-full mt-3 mb-4">
                     <a
                       class="ml-2  px-6 py-2 text-xs font-medium leading-6 text-center text-white transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" href="{{ route('twitter.login',['provider' => 'twitter']) }}"
                     >
                     <i class="fab fa-twitter mr-2"></i>
                         Twitterで登録する   
                     </a>
-                </div> --}}
+                </div>
                 {{-- テストボタン --}}
                 <div class="mb-2 ml-2">
                   <form method="POST" action="{{ route('login') }}">
