@@ -36,7 +36,6 @@
     flex: 2;
     margin: 10px;
     position: relative;
-    -webkit-transition: all 700ms ease-in;
   }
   
   .panel.active {
@@ -301,6 +300,11 @@ header .logo-image {
 }
 
 
+.menu.none
+{
+  display:none;
+}
+
 .menu
 {
   position: absolute;
@@ -311,8 +315,10 @@ header .logo-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
+
+
 .menu ul
 {
   position: relative;

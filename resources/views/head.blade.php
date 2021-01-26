@@ -27,7 +27,7 @@
  
   
 </section>
-<div class="menu">
+<div class="menu none">
   <ul>
    @auth
        
