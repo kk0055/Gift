@@ -99,9 +99,9 @@ class ChatsController extends Controller
         event(new ChatMessageReceived($request->all()));
  
         // メール送信
-        // $mailSendUser = User::where('id' , $request->input('receive'))->first();
-        // $to = $mailSendUser->email;
-        // Mail::to($to)->send(new ChatReceived());
+        $mailSendUser = User::where('id' , $request->input('receive'))->first();
+        $to = $mailSendUser->email;
+        Mail::to($to)->send(new ChatReceived());
  
 
         return true;
