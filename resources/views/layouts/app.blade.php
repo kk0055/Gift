@@ -8,7 +8,7 @@
 <meta property="og:type" content=" ページの種類" />
 <meta property="og:title" content="Kasih" />
 <meta property="og:description" content="中古品が無料でもらえます。不要なものを載せましょう。無料で掲載できます。" />
-<meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット' name='keywords' />
+<meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット,無料,不用品処分' name='keywords' />
 <meta property="og:site_name" content="Kasih" />
  
 <meta property="og:image" content="https://image.freepik.com/free-vector/city-skyline-landmarks-illustration_23-2148810172.jpg" />
@@ -66,10 +66,11 @@
 <script src="{{ asset('/js/chat.js') }}"></script>
 {{-- Other --}}
 <script src="{{ asset('/js/other.js') }}"></script>
-<script src="{{ asset('/js/chatadmin.js') }}"></script>
+{{-- <script src="{{ asset('/js/chatadmin.js') }}"></script> --}}
 
 {{--  --}}
-     <script>
+ <script>
+
 
 var receiver_id = '';
 var my_id = "{{ Auth::id() }}";
@@ -80,9 +81,8 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-  
-        Pusher.logToConsole = true;
-    
+        Pusher.logToConsole = false;
+       
     var pusher = new Pusher('f215ae5857618ed02fd0', {
           cluster  : 'ap3',
           encrypted: true
@@ -170,6 +170,7 @@ function scrollToBottomFunc() {
         scrollTop: $('.message-wrapper').get(0).scrollHeight
     }, 50);
 }
+
 
         </script>
 </body>

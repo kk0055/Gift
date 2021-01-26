@@ -31,7 +31,7 @@ class CategoryController extends Controller
         // dd($category);
          
         // $categories_products = Category::where('id',$category )->get();
-        $categories_products =  Item::where('category_id',$category )->get();
+        $categories_products =  Item::where('category_id',$category )->orderBy('created_at','desc')->get();
         $category = Category::find($category);
         // $pruducts = $categories_products->items;
         // dd($category);
