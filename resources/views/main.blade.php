@@ -19,17 +19,17 @@
     <div class="container mx-auto px-4 pt-16">
         <div class="">
        
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
               
               @foreach ($items as $item) 
-                <div class="append mt-8 ">
+                <div class=" mt-8 ">
                   <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
                     @if ($item->image)
                       {{-- <img src="public/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
                       {{-- <img src="/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
-                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic" width="192" height="200" class="hover:opacity-75 transition ease-in-out duration-150">
+                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic"  class="imgae-box hover:opacity-75 transition ">
                       @else
-                      <img class="no-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="hover:opacity-75 transition ease-in-out duration-150">  
+                      <img class="no-image " src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="">  
                       @endif
                   </a>
                   <div class="mt-2">

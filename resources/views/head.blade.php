@@ -12,7 +12,7 @@
   class="main-img w-full h-full bg-center bg-cover "
 
   {{-- style='background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");background-position:right bottom' --}}
-  style='background-image: url("https://images.unsplash.com/photo-1609986826541-063f1aa74219?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHw%3D0");background-position:right bottom '
+  style='background-image: url("/image/bg.jpg");background-position: bottom '
 >
   <div class="overlay"></div>
   <div class="text mt-5">
@@ -36,18 +36,20 @@
       </li>
       
     <li><a href="{{ route('chat.admin') }}"><i class="far fa-comment-dots"></i></a></li>
+
+    <li> <a class="" href="{{ route('logout') }}"> ログアウト <span class="caret"></span></a>
+    </li>
+   
     @endauth
     @guest
-    <li>   @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
+    <li>   
       <a class="" href="{{ route('login') }}">ログイン</a>
-      @endif</li>
-    <li>    @if (url()->current() !== url('/login') && url()->current() !== url('/register'))
+    </li>
+    <li>    
       <a class="" href="{{ route('register') }}">会員登録</a>
-      @endif</li>
+      </li>
       @endguest
-      <li> <a class="" href="{{ route('logout') }}"> ログアウト <span class="caret"></span></a>
-        </li>
-       
+
   </ul>
 </div>
 </div>
