@@ -2,7 +2,7 @@
 新しいメッセージが届きました。
 
 確認はこちら
-@component('mail::button', ['url' => 'https://kasihkasih.net/'])
+@component('mail::button', ['url' => 'https://kasihkasih.net/chat-admin'])
 Button Text
 @endcomponent
 
