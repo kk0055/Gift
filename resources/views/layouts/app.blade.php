@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang='ja' prefix='og: http://ogp.me/ns#'>
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta property="og:url" content="http://kasihkasih.net" />
 <meta property="og:type" content=" ページの種類" />
 <meta property="og:title" content="Kasih" />
-<meta property="og:description" content="中古品が無料でもらえます。不要なものを載せましょう。無料で掲載できます。" />
+<meta property="og:description" content="不要なものを載せましょう。無料で掲載できます。中古品が無料でもらえます。" />
 <meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット,無料,不用品処分' name='keywords' />
 <meta property="og:site_name" content="Kasih" />
  
 <meta property="og:image" content="https://image.freepik.com/free-vector/city-skyline-landmarks-illustration_23-2148810172.jpg" />
 
-  <title>Kasih</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V20FGW204K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V20FGW204K');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
     {{-- Favicon --}}
     <link rel="icon" type="image/png" sizes="32x32"  href="{{ asset('favicon_io/favicon-32x32.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -42,6 +53,7 @@
 <style>
 
 </style>
+<title>Kasih</title>
 </head>
 
 <body class=" font-sans bg-gray-100">
