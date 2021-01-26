@@ -1,3 +1,4 @@
+
 var receiver_id = '';
 var my_id = "{{ Auth::id() }}";
 $(document).ready(function () {
@@ -7,8 +8,8 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+        Pusher.logToConsole = true;
+       
     var pusher = new Pusher('f215ae5857618ed02fd0', {
           cluster  : 'ap3',
           encrypted: true
@@ -28,7 +29,7 @@ $(document).ready(function () {
                 
                 $('#' + data.send).click();
             } else {
-                // if receiver is not seleted, add notification for that user
+           
                 var pending = parseInt($('#' + data.send).find('.pending').html());
                 if (pending) {
                     $('#' + data.send).find('.pending').html(pending + 1);
@@ -60,18 +61,17 @@ $(document).ready(function () {
         });
     });
 
-    
     $(document).on('keyup', '.input-text input', function (e) {
         var messages = $(this).val();
         console.log($('input[name="message"]').val())
-        // check if enter key is pressed and message is not null also receiver is selected
+   
         if (e.keyCode == 13 && messages != '' && receiver_id != '') {
-            $(this).val(''); // while pressed enter text box will be empty
+            $(this).val(''); 
             // var datastr = "receiver_id=" + receiver_id + "&message=" + message;
             
             $.ajax({
                 type: "post",
-                url: "message", // need to create this post route
+                url: "message",
                 data:  {
                 message : messages,
                 send : $('input[name="send"]').val(),

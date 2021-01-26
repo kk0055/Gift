@@ -4,12 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta property="og:url" content=" ページの URL" />
- 
+  <meta property="og:url" content="http://kasihkasih.net" />
 <meta property="og:type" content=" ページの種類" />
- 
 <meta property="og:title" content="Kasih" />
- 
 <meta property="og:description" content="中古品が無料でもらえます。不要なものを載せましょう。無料で掲載できます。" />
 <meta content='中古,あげます,譲ります,無料掲載,掲示板,kasih,カシー,フリーマーケット' name='keywords' />
 <meta property="og:site_name" content="Kasih" />
@@ -38,12 +35,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  
+    {{-- Googleサチコ --}}
+    <meta name="google-site-verification" content="IBlkgmZxcu786C156wF34ALLOhrS_JUJoBkUER_14ok" />
    {{-- CSS --}}
  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <style>
-
-
 
 </style>
 </head>
@@ -70,6 +66,7 @@
 <script src="{{ asset('/js/chat.js') }}"></script>
 {{-- Other --}}
 <script src="{{ asset('/js/other.js') }}"></script>
+<script src="{{ asset('/js/chatadmin.js') }}"></script>
 
 {{--  --}}
      <script>
@@ -84,7 +81,8 @@ $(document).ready(function () {
         }
     });
   
-    Pusher.logToConsole = true;
+        Pusher.logToConsole = true;
+    
     var pusher = new Pusher('f215ae5857618ed02fd0', {
           cluster  : 'ap3',
           encrypted: true
@@ -141,7 +139,7 @@ $(document).ready(function () {
         console.log($('input[name="message"]').val())
    
         if (e.keyCode == 13 && messages != '' && receiver_id != '') {
-            $(this).val(''); // while pressed enter text box will be empty
+            $(this).val(''); 
             // var datastr = "receiver_id=" + receiver_id + "&message=" + message;
             
             $.ajax({
