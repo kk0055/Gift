@@ -7,7 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
-use App\Events\ChatMessagereceived;
+use App\Events\ChatMessageReceived;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ChatReceived;
 
@@ -96,7 +96,7 @@ class ChatsController extends Controller
  
  
         // イベント発火
-        event(new ChatMessagereceived($request->all()));
+        event(new ChatMessageReceived($request->all()));
  
         // メール送信
         // $mailSendUser = User::where('id' , $request->input('receive'))->first();
