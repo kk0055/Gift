@@ -96,7 +96,7 @@ class ChatsController extends Controller
  
  
         // イベント発火
-        event(new ChatMessagereceived($request->all()));
+        // event(new ChatMessagereceived($request->all()));
  
         // メール送信
         // $mailSendUser = User::where('id' , $request->input('receive'))->first();

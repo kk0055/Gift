@@ -288,12 +288,12 @@ header .logo-image {
 }
 
 
-.menu
+.menu.none
 {
   display:none;
 }
 
-.menu.show
+.menu
 {
   position: absolute;
   top: 0;

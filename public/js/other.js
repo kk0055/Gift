@@ -23,7 +23,7 @@ const menu = document.querySelector('.menu');
 menuToggle.addEventListener('click', () => {
 menuToggle.classList.toggle('active');
 showcase.classList.toggle('active');
-menu.classList.add("show");
+menu.classList.remove('none');
 })
 function myFunction() {
 var x = document.getElementById("myTopnav");
