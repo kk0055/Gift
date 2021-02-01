@@ -4,14 +4,21 @@
 Kasihはモノを無料でやり取りできるWebアプリケーションです。
 不要なモノを投稿して、それを欲しい人がいたらチャットが送れる。そんなサービス。
 
+
+
 URL
 https://kasihkasih.net/
+
+
 
 ログイン画面
 ![Screenshot (526)](https://user-images.githubusercontent.com/62654316/106465915-970dae80-64d5-11eb-810a-d306fda72551.png)
 
+
+
+
 メイン画面
-![main](https://user-images.githubusercontent.com/62654316/106466082-d1774b80-64d5-11eb-8e82-6709c4a5b125.png)
+![main (1)](https://user-images.githubusercontent.com/62654316/106466402-3c288700-64d6-11eb-8d9b-f2d197fb0a7e.png)
 
 ## 機能
 
@@ -28,6 +35,7 @@ https://kasihkasih.net/
 ![ERtrim2](https://user-images.githubusercontent.com/62654316/106465865-83fade80-64d5-11eb-9460-99bc04af0e78.png)
 
 # 作った背景
+引っ越しを考えていたときに、メルカリなどフリーマーケットの様なサービスはあるが無料で譲ることを前提にしたサービスはなかったので作ってみようと思い、開発しました。
 
 
 # 苦労した点
