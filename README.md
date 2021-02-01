@@ -7,12 +7,12 @@ Kasihはモノを無料でやり取りできるWebアプリケーションです
 
 
 URL
-https://kasihkasih.net/
+https://kasihkasih.net/  
 
 
 
 ログイン画面
-![Screenshot (526)](https://user-images.githubusercontent.com/62654316/106465915-970dae80-64d5-11eb-810a-d306fda72551.png)
+![Screenshot (526)](https://user-images.githubusercontent.com/62654316/106465915-970dae80-64d5-11eb-810a-d306fda72551.png)    
 
 
 
@@ -54,7 +54,7 @@ https://kasihkasih.net/
 * DBまわり
 
 リレーションがなんとなくしかわかっていなかったことを痛感させられました。
-ドキュメント、Stack Overflowを何回も何回も見て焦らず理解した上で心がけるようになりました。コードだけ流し見しがちですがしっかり説明を読むことが大事。
+ドキュメント、Stack Overflowを何回も何回も見て、焦らず理解した上で書くよう心がけるようになりました。コードだけ流し見しがちですがしっかり説明を読むことが大事。
 
 
 
@@ -64,4 +64,3 @@ https://kasihkasih.net/
 * フロントエンド
 
 あまりCSSは勉強してこなかったので、主にTailwindをつかってデザインしました。Tailwindは使いやすくてすきなのですが細かい修正が難しいなと思います。
-基本的にはググってよさげなデザインをコピペして、細かい部分を修正。
