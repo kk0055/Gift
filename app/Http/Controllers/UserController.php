@@ -9,10 +9,10 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth'])->only(['update', 'edit']);
+        $this->middleware(['auth']);
     }
 
-    public function index(User $user)
+    public function edit(User $user)
     {
        
         return view('users.profile', [
@@ -22,13 +22,14 @@ class UserController extends Controller
         // return ItemResource::collection($items);
     }
 
-    public function edit(User $user  )
+    public function update(Request $request, User $user)
     {
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            ]);
+
        
-        return view('main', [
-            'user' => $user,
-           
-        ]);
-        // return ItemResource::collection($items);
+        return redirect()->route('users.items' ,$user)->with('info','変更しました');
     }
 }

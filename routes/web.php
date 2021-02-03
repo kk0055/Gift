@@ -27,7 +27,9 @@ Route::get('/item/{item}/edit', [ItemController::class, 'edit'])->name('item.edi
 Route::post('/item/{item}/edit', [ItemController::class, 'update'])->name('item.update');
 
 // User
-Route::get('/{user}', [UserController::class, 'index'])->name('user.index');
+Route::get('/{user}/edit', [UserController::class, 'edit'])->name('user.index');
+Route::post('/{user}/edit', [UserController::class, 'update'])->name('user.update');
+
 
 // Route::get('/item/create', function () {
 //   return view('create');
