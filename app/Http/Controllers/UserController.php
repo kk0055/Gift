@@ -12,7 +12,17 @@ class UserController extends Controller
         $this->middleware(['auth'])->only(['update', 'edit']);
     }
 
-    public function index(User $user  )
+    public function index(User $user)
+    {
+       
+        return view('users.profile', [
+            'user' => $user,
+           
+        ]);
+        // return ItemResource::collection($items);
+    }
+
+    public function edit(User $user  )
     {
        
         return view('main', [

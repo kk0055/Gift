@@ -9,6 +9,7 @@ use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\UserItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminChatController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -25,6 +26,8 @@ Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.de
 Route::get('/item/{item}/edit', [ItemController::class, 'edit'])->name('item.edit');
 Route::post('/item/{item}/edit', [ItemController::class, 'update'])->name('item.update');
 
+// User
+Route::get('/{user}', [UserController::class, 'index'])->name('user.index');
 
 // Route::get('/item/create', function () {
 //   return view('create');

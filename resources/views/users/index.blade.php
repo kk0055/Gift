@@ -2,10 +2,13 @@
 
 @section('content')
 
+
 <div class="text-2xl  text-black ml-3 my-2" > {{$user->name }}
+
+
   {{-- <a href="{{ route('chat.index',[$user->id]) }}"><i class="far fa-comment-dots"></i></a> --}}
 </div>
-
+<a href="{{ route('user.index',$user->id) }}">編集</a>
 
 <div class="flex justify-center mt-2 	md:text-sm">
   @foreach ($items as $item)
