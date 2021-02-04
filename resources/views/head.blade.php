@@ -23,8 +23,7 @@
     <a href="{{ route('item.create') }}" class="hbtn hb-fill-on mt-5 ">投稿する</a>
    
   </div>
- 
- 
+
   
 </section>
 <div class="menu none">

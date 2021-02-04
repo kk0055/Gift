@@ -10,6 +10,7 @@ use App\Models\Message;
 use App\Http\Resources\Item as ItemResource;
 use Illuminate\Support\Facades\Auth;
 use App\Services\SaveImagesServices;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -190,4 +191,21 @@ return redirect()->route('item.show',['itemId'=> $item->id])->with('info','ç·¨é›
         ]);
     }
 
+    //Search
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if(!$query) {
+            return redirect()->route('main');
+        }
+       $items = Item::where('title', 'LIKE',"%{$query}%")
+       ->orWhere('body', 'LIKE',"%{$query}%")
+       ->get();
+    
+    //    dd($items);
+       return view('items.search_results',[
+           'items' => $items
+       ]);
+    }
 }
