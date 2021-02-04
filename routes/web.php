@@ -20,20 +20,16 @@ Auth::routes();
 Route::get('/', [ItemController::class, 'index'])->name('main');
 Route::get('/item/create-form', [ItemController::class, 'create'])->name('item.create');
 Route::get('/item/{itemId}', [ItemController::class, 'show'])->name('item.show');
-
 Route::post('/item', [ItemController::class, 'store'])->name('item.store');
 Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.destroy');
 Route::get('/item/{item}/edit', [ItemController::class, 'edit'])->name('item.edit');
 Route::post('/item/{item}/edit', [ItemController::class, 'update'])->name('item.update');
+Route::get('/search', [ItemController::class, 'search'])->name('item.search');
 
-// User
+// Userの登録情報
 Route::get('/{user}/edit', [UserController::class, 'edit'])->name('user.index');
 Route::post('/{user}/edit', [UserController::class, 'update'])->name('user.update');
 
-
-// Route::get('/item/create', function () {
-//   return view('create');
-// });
 
 //Register
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
