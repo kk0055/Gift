@@ -33,7 +33,6 @@ class ItemController extends Controller
         // dd($send);
 
         $user = auth()->user();
-        // dd($receive);
        
         $category_list = Category::all();
         $items = Item::orderBy('created_at','desc')->with(['user','messages'])->simplePaginate(20);
@@ -43,7 +42,7 @@ class ItemController extends Controller
             'items' => $items,
             'category_list' =>$category_list
         ]);
-        // return ItemResource::collection($items);
+      
     }
 
     /**
@@ -67,7 +66,6 @@ class ItemController extends Controller
                 
            ]);
         
-        //    dd($request);
 
            if (!empty($request->image)){
             $image = SaveImagesServices::saveImages($request, 'image');
@@ -103,8 +101,7 @@ class ItemController extends Controller
     public function show($itemId)
     {
         $item = Item::findOrFail($itemId);
-    // dd($item);
-        //一つのItemを返す
+   
         return view('items.show',[
             'item' =>$item
         ]);
@@ -113,16 +110,14 @@ class ItemController extends Controller
     
         public function edit($itemId)
         {
+             //一つのItemを返す
             $item = Item::findOrFail($itemId);
-        // dd($item);
-            //一つのItemを返す
-
-            // dd($item);
+ 
             return view('items.edit',[
                 'item' =>$item
             ]);
 
-      }
+       }
 
 
 public function update(Request $request, $itemId)
@@ -174,7 +169,6 @@ return redirect()->route('item.show',['itemId'=> $item->id])->with('info','編�
       
     public function destroy(Item $Item)
     {
-        // $this->authorize('delete', $Item);
 
         $Item->delete();
 

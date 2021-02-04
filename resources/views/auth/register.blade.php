@@ -19,13 +19,10 @@
                     @if (session('oauth_error'))
                     {{ session('oauth_error') }}
                     @endif
-                
-               
-
+ 
                       <div class="">
                         <div class="text-sm font-bold text-gray-700 tracking-wide">ニックネーム</div>
-                        <input class="w-full text-lg  border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="{{ old('name') }}" >
-                    </div>
+                        <input class="w-full text-lg border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="ニックネーム" value="{{ old('name') }}" ></div>
                     @error('name')
                     <span class="text-red-500 mt-2 text-sm" role="alert">
                         <strong>{{ $message }}</strong>

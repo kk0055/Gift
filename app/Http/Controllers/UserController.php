@@ -24,6 +24,14 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|',
+         ],
+         [
+                'name.required' => 'ニックネームは必須項目です。',
+                'email.required'  => 'メールアドレスは必須項目です。',
+         ]);
         $user->update([
             'name' => $request->name,
             'email' => $request->email,

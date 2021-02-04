@@ -74,12 +74,8 @@ class RegisterController extends Controller
              'password.required'  => 'パスワードは必須項目です。',
              'password.min'  => 'パスワードは5文字以上で入力してください。',
       ]);
-  
-    
-     
+      
         $user =  new User;
-        
-        
         $user->name = $request->name; 
         $user->email = $request->email; 
         $user->password = Hash::make($request->password); 
