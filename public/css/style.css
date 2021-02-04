@@ -374,9 +374,9 @@ header .logo-image {
   width:193px !important;
   height:220px !important;
 }
-img.image-box{
-  width:190px !important;
-  height:217px !important;
+.item-image{
+  width:185px !important;
+  height:215px !important;
 }
 
 .hb-fill-on:hover {
