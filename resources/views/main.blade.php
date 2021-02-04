@@ -38,13 +38,15 @@ md:flex-row items-center justify-between px-4 ">
               @foreach ($items as $item) 
                 <div class=" mt-8 ">
                   <a href="{{ route('item.show',['itemId'=> $item->id]) }}">
+                   <div class="image-box">
                     @if ($item->image)
                       {{-- <img src="public/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
                       {{-- <img src="/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
-                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic"  class="imgae-box hover:opacity-75 transition ">
+                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic"  class="image-box hover:opacity-75 transition ">
                       @else
                       <img class="no-image " src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="">  
                       @endif
+                    </div>
                   </a>
                   <div class="mt-2">
                     <span> <a href="{{ route('users.items', [$item->user->id]) }}" class="text-lg mt-2 "> {{ $item->user->name }}</a></span> 
