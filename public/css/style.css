@@ -371,12 +371,12 @@ header .logo-image {
 } 
  
 .image-box{
-  width:193px;
-  height:220px;
+  width:193px !important;
+  height:220px !important;
 }
 img.image-box{
-  width:190px;
-  height:217px;
+  width:190px !important;
+  height:217px !important;
 }
 
 .hb-fill-on:hover {
