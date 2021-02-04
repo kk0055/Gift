@@ -199,11 +199,7 @@ return redirect()->route('item.show',['itemId'=> $item->id])->with('info','ç·¨é›
         if(!$query) {
             return redirect()->route('main');
         }
-<<<<<<< HEAD
        $items = Item::where('title', 'LIKE',"%{$query}%")
-=======
-       $items = Item::where(DB::raw('title', 'LIKE',"%{$query}%"))
->>>>>>> 132bc600d3d7a72c1e4a95af342f8b763808cbb1
        ->orWhere('body', 'LIKE',"%{$query}%")
        ->get();
     
