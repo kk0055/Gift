@@ -8,7 +8,7 @@
 
 @if (Auth::id() === $user->id)
 <div class="flex justify-start ">
-  <a  href="{{ route('user.index',$user->id) }}" class="inline-flex mb-2 mr-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">登録情報編集</a>
+  <a  href="{{ route('user.index',$user->id) }}" class="inline-flex mb-2 mr-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">登録情報編集</a>
 </div>
 
 @endif

@@ -33,7 +33,7 @@
 
                         
                     <div class="mt-10">
-                        <button class="bg-indigo-500 text-gray-100 p-3 mb-2 rounded-full tracking-wide
+                        <button class="bg-indigo-500 text-gray-100 p-2 mb-2 ml-2 rounded-lg tracking-wide
                         font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
                         shadow-lg">
                         変更
