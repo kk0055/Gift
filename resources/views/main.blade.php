@@ -36,9 +36,10 @@ md:flex-row items-center justify-between px-4 ">
             <div class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
               
               @foreach ($items as $item) 
-            @include('components.item')
-             
-                @endforeach
+               {{-- include components.item--}}
+               @include('components.item')
+               {{-- include components.item--}}
+              @endforeach
         
             </div>
             <div class="mt-5 mb-4">
