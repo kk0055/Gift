@@ -374,6 +374,10 @@ header .logo-image {
   width:193px;
   height:220px;
 }
+img.image-box{
+  width:193px;
+  height:220px;
+}
 
 .hb-fill-on:hover {
       color: rgb(0, 0, 0);

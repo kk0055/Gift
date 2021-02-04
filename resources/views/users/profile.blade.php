@@ -26,10 +26,10 @@
                         <div class="text-sm font-bold text-gray-700 tracking-wide">名前</div>
                         <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="name" name="name"  value="{{ $user->name }}" >
                     </div>
-                    <div>
-                        <div class="text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
+                 
+                        <div class="mt-4 text-sm font-bold text-gray-700 tracking-wide">メールアドレス</div>
                         <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('email') is-invalid @enderror" type="email" name="email"  value="{{ $user->email }}" >
-                    </div>
+                    
 
                         
                     <div class="mt-10">
