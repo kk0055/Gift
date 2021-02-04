@@ -371,7 +371,7 @@ header .logo-image {
 } 
  
 .image-box{
-  width:193px !important;
+  width:100% !important;
   height:220px !important;
 }
 .item-image{
