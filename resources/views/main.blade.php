@@ -42,7 +42,7 @@ md:flex-row items-center justify-between px-4 ">
                     @if ($item->image)
                       {{-- <img src="public/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
                       {{-- <img src="/storage/image/{{ $item->image }}" alt="pic" class="hover:opacity-75 transition ease-in-out duration-150"> --}}
-                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic"  class="image-box hover:opacity-75 transition "width="193" height="220">
+                      <img src="{{asset('/storage/image/'.$item->image)  }}" alt="pic"  class="image-box hover:opacity-75 transition " width="193" height="220">
                       @else
                       <img class="no-image " src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" alt="No Picture" class="">  
                       @endif
