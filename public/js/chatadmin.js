@@ -1,7 +1,7 @@
 
 var receiver_id = '';
 var my_id = "{{ Auth::id() }}";
-$(document).ready(function () {
+jQuery(function () {
     // ajax setup form csrf token
     $.ajaxSetup({
         headers: {
@@ -23,11 +23,11 @@ $(document).ready(function () {
         // alert(JSON.stringify(data));
         if (my_id == data.send) {
           
-            $('#' + data.receive).click();
+            $('#' + data.receive).on(click,function(){});
         } else if (my_id == data.receive) {
             if (receiver_id == data.send) {
                 
-                $('#' + data.send).click();
+                $('#' + data.send).on(click,function(){});
             } else {
            
                 var pending = parseInt($('#' + data.send).find('.pending').html());
@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
   
     
-    $('.user').click(function () {
+    $('.user').on(click,function () {
         $('.user').removeClass('active');
         $(this).addClass('active');
         $(this).find('.pending').remove();

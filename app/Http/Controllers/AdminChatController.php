@@ -31,16 +31,6 @@ class AdminChatController extends Controller
     public function index()
     {
       
-        
-        
-        //正しいやつ
-        // $users = DB::select("select users.id, users.name, users.email,  count(is_read) as unread 
-        // from users LEFT  JOIN  messages ON users.id = messages.send and is_read = 0 and messages.receive  = " . Auth::id() . "
-        // where users.id != " . Auth::id() . " 
-        // group by users.id, users.name,  users.email
-        // order by messages.is_read desc
-        // ");
-
         $users = DB::select("select users.id, users.name, users.email,  count( case is_read when '0' then 1 else null end ) as unread 
         from users LEFT  JOIN  messages ON users.id = messages.send  and messages.receive  = " . Auth::id() . "
         where messages.user_id = users.id AND  users.id != " . Auth::id() . " 
@@ -67,10 +57,10 @@ class AdminChatController extends Controller
     {
         $my_id = Auth::id();
 
-        // Make read all unread message
+        // 既読にする
         Message::where(['send' => $user_id, 'receive' => $my_id])->update(['is_read' => 1]);
 
-        // Get all message from selected user
+        // 選択したユーザーのメッセージを取得
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('send', $user_id)->where('receive', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
@@ -94,7 +84,7 @@ class AdminChatController extends Controller
         $data->send = $send;
         $data->receive = $receive;
         $data->message = $message;
-        $data->is_read = 0; // message will be unread when sending message
+        $data->is_read = 0; 
         $data->item_id = $item;
         $data->user_id = Auth::user()->id;
         $data->save();

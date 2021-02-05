@@ -10,9 +10,6 @@
          <div class="mt-10">
             <form method="POST" action="{{ route('user.update',$user) }}">
               @csrf
-             
-
-              
                       {{--名前--}}
                         <div class="text-sm font-bold text-gray-700 tracking-wide">名前</div>
                         <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 form-control @error('name') is-invalid @enderror" type="name" name="name"  value="{{ $user->name }}" >

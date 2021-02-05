@@ -37,7 +37,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
      {{-- jquery --}}
-   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -76,9 +76,10 @@
 
 {{-- chat --}}
 <script src="{{ asset('/js/chat.js') }}"></script>
+{{-- <script src="{{ asset('/js/chatadmin.js') }}"></script> --}}
 {{-- Other --}}
 <script src="{{ asset('/js/other.js') }}"></script>
-{{-- <script src="{{ asset('/js/chatadmin.js') }}"></script> --}}
+
 
 {{--  --}}
  <script>
@@ -184,6 +185,6 @@ function scrollToBottomFunc() {
 }
 
 
-        </script>
+ </script>
 </body>
 </html>
