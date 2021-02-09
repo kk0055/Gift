@@ -19,9 +19,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-// Vue.component('chat-component', require('./components/ChatComponent.vue').default);
+Vue.component('follow-button', require('./components/FollowButton.vue').default);
 
 // Vue.component('items', require('./components/Items.vue').default);
 // Vue.component('navbar', require('./components/Navbar.vue').default);
