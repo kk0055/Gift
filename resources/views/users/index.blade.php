@@ -13,7 +13,11 @@
 
 @if (Auth::id() !== $user->id)
 <div class="flex justify-start ">
-  <follow-button user-id="{{ $user->id }}"></follow-button>
+  <follow-button 
+  user-id="{{ $user->id }}" 
+   follows="{{ $follows }}"
+  ></follow-button>
+  {{-- {{ $user->following->count() }} --}}
 </div>
 @endif
 

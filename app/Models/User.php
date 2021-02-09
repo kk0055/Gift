@@ -51,14 +51,10 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function following()
+    public function follow()
     {
-        return $this->belongsToMany(Profile::class);
-    }
-
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
+        return $this->belongsToMany(self::class, 'follows', 'user_id', 'followed_user_id')
+            ->using(Follow::class);
     }
 
    
