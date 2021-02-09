@@ -10,6 +10,7 @@ use App\Http\Controllers\UserItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminChatController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FollowController;
 
 
 
@@ -72,4 +73,6 @@ Route::get('/message/{id}', [AdminChatController::class, 'getMessage'])->name('m
 Route::post('message',  [AdminChatController::class, 'sendMessage']);
 
 
+//Follow
+Route::post('follow/{user}',[FollowController::class, 'follow']);
 
