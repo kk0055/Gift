@@ -11,11 +11,11 @@
 </div>
 @endif
 
-{{-- @if (Auth::id() !== $user->id)
+@if (Auth::id() !== $user->id)
 <div class="flex justify-start ">
   <follow-button user-id="{{ $user->id }}"></follow-button>
 </div>
-@endif --}}
+@endif
 
 @include('components.alert')
 
