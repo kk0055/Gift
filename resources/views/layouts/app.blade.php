@@ -79,6 +79,7 @@
 {{-- <script src="{{ asset('/js/chatadmin.js') }}"></script> --}}
 {{-- Other --}}
 <script src="{{ asset('/js/other.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
 
 
 {{--  --}}
