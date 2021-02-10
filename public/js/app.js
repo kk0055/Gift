@@ -1935,6 +1935,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
       })["catch"](function (errors) {
         if (errors.response.status == 401) {
+          alert("ごめんなさい。ログインしてください(T_T)");
           window.location = '/login';
         }
       });
@@ -1942,7 +1943,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     buttonText: function buttonText() {
-      return this.status ? 'Unfollow' : 'Follow';
+      return this.status ? 'フォロー中' : 'フォローする';
     }
   }
 });
@@ -43657,16 +43658,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c(
-      "button",
-      {
-        staticClass:
-          "inline-flex mb-2 ml-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-        attrs: { href: "" },
-        on: { click: _vm.followUser }
-      },
-      [_vm._v("Follow")]
-    )
+    _c("button", {
+      staticClass:
+        "inline-flex mb-2 ml-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+      attrs: { href: "" },
+      domProps: { textContent: _vm._s(_vm.buttonText) },
+      on: { click: _vm.followUser }
+    })
   ])
 }
 var staticRenderFns = []

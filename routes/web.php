@@ -75,5 +75,5 @@ Route::post('message',  [AdminChatController::class, 'sendMessage']);
 
 //Follow
 Route::post('follow/{user}',[FollowController::class, 'follow']);
-Route::delete('follow/{user}',[FollowController::class, 'unfollow']);
+
 

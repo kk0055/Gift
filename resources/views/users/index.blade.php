@@ -5,21 +5,25 @@
 <div class="text-2xl  text-black ml-3 my-2" > {{$user->name }}
 </div>
 
+
 @if (Auth::id() === $user->id)
-<div class="flex justify-start ">
+<div class="flex justify-start ml-3">
   <a  href="{{ route('user.index',$user->id) }}" class="inline-flex mb-2 mr-2 py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">登録情報編集</a>
 </div>
 @endif
 
 @if (Auth::id() !== $user->id)
-<div class="flex justify-start ">
+<div class="flex justify-start ml-3">
   <follow-button 
   user-id="{{ $user->id }}" 
    follows="{{ $follows }}"
   ></follow-button>
-  {{-- {{ $user->following->count() }} --}}
+
 </div>
 @endif
+
+<div class="ml-3">{{ $numberOfFollowing }} フォロー
+  {{ $numberOfFollowed }} フォロワー</div>
 
 @include('components.alert')
 

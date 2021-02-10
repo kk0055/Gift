@@ -9,7 +9,7 @@ class Follow extends Pivot
 {
     use HasFactory;
 
-    protected $table = 'follow';
+    protected $table = 'follows';
     public $timestamps = false;
     protected $guarded = [];
 }
