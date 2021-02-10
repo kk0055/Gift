@@ -15,11 +15,12 @@ class UserItemController extends Controller
         //フォローしてるかどうか
         $follows = (auth()->user()) ? auth()->user()->follow->contains($user->id): false;
         
+        //フォローしている数
         $following = Follow::where('user_id', $user->id)->get();
         $numberOfFollowing = count( $following );
        
+         //フォローされている数
         $followed = Follow::where('followed_user_id', $user->id)->get();
-        $numberOfFollowing = count( $following );
         $numberOfFollowed = count( $followed );
         // dd($numberOfFollowing);
         $items = $user->items()->with('user')->paginate(20);
